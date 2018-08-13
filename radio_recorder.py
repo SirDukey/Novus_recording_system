@@ -7,8 +7,8 @@ from flask import flash
 
 def record(name, url):
 
-    loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
-    #loc = '/mnt/broadcast/unindexed/'
+    #loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
+    loc = '/mnt/broadcast/unindexed/'
 
     def ffmpeg(name, url, loc):
 
