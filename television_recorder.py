@@ -27,18 +27,18 @@ def record(name, url):
                             '1',
                             '-ar',
                             '16000',
-                            # '-b:v', '1M',
-                            # '-vf', 'scale=320:240',
+                             '-b:v', '1M',
+                             '-vf', 'scale=320:240',
                             '-f',
                             'segment',
                             '-segment_time',
                             '120',
                             '-strftime',
                             '1',
-                            # '-force_key_frames', '120',
+                            '-force_key_frames', '120',
                             '-reset_timestamps',
                             '1',
-                            loc + name + '.%Y-%m-%d_%H-%M-%S.wav'])
+                            loc + name + '.%Y-%m-%d_%H-%M-%S.mp4'])
 
         with open('pids/' + name + '.pid', 'w') as f:
             f.write(str(process.pid))

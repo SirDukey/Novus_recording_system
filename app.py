@@ -3,6 +3,7 @@ from flask_simplelogin import SimpleLogin, login_required
 from app_94_7 import main_94_7
 from app_5FM import main_5FM
 from app_1FM import main_1FM
+from app_MNET import main_MNET
 
 app = Flask(__name__)
 
@@ -59,6 +60,21 @@ def control_radio():
                            Highveld_status=Highveld_status,
                            FiveFM_status=FiveFM_status,
                            OneFM_status=OneFM_status)
+
+
+@app.route('/control_television',  methods=['GET', 'POST'])
+@login_required
+def control_television():
+
+    '''define the file.pid of each channel'''
+    MNET_pid = open('pids/MNET.pid', 'r')
+    MNET_status = MNET_pid.read()
+    MNET_pid.close()
+
+    main_MNET()
+
+    return render_template('control_television.html', title='Novus recording system',
+                           MNET_status=MNET_status)
 
 
 if __name__ == '__main__':
