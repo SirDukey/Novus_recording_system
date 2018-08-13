@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+&emsp;<a href="{{ url_for('control_radio') }}"><button>refresh</button></a>
+<br>
+<br>
+
+<div class="container-fluid">
+
+
+
+    <!-- 1FM channel -->
+    <form action="" method="POST">
+        <h4>1FM</h4>
+        <div class="btn-group">
+            <input class="btn btn-primary" type="submit" value="start" name="1FM_start">
+            <input class="btn btn-primary" type="submit" value="stop" name="1FM_stop">
+        </div>
+
+        {% if 'none' in OneFM_status %}
+            <span class="label label-danger">stopped</span>
+        {% else %}
+            <span class="label label-success">running</span>
+        {% endif %}
+        <span class="label label-info">www</span>
+    </form>
+    <br>
+        <audio src="http://5.153.107.45:2016/mp3_ultra" preload="none" controls style=" width:100px;"></audio>
+    <br>
+    <br>
+
+
+
+    <!-- 5FM channel -->
+    <form action="" method="POST">
+        <h4>5FM</h4>
+        <div class="btn-group">
+            <input class="btn btn-primary" type="submit" value="start" name="5FM_start">
+            <input class="btn btn-primary" type="submit" value="stop" name="5FM_stop">
+        </div>
+
+        {% if 'none' in FiveFM_status %}
+            <span class="label label-danger">stopped</span>
+        {% else %}
+            <span class="label label-success">running</span>
+        {% endif %}
+        <span class="label label-info">dab</span>
+    </form>
+    <br>
+        <audio src="rtp://127.0.0.1:1234" preload="none" controls style=" width:100px;"></audio>
+    <br>
+    <br>
+
+
+
+    <!-- 94.7 channel -->
+    <form action="" method="POST">
+        <h4>94.7 Highveld Stereo</h4>
+        <div class="btn-group">
+            <input class="btn btn-primary" type="submit" value="start" name="94_7_start">
+            <input class="btn btn-primary" type="submit" value="stop" name="94_7_stop">
+        </div>
+
+            {% if 'none' in Highveld_status %}
+                <span class="label label-danger">stopped</span>
+            {% else %}
+                <span class="label label-success">running</span>
+            {% endif %}
+                <span class="label label-info">www</span>
+        </form>
+    <br>
+        <audio src="http://19073.live.streamtheworld.com:3690/FM947_SC" preload="none" controls style=" width:100px;"></audio>
+    <br>
+    <br>
+
+
+
+</div>
+
+{% endblock %}
