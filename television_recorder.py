@@ -35,7 +35,7 @@ def record(name, url):
                             '120',
                             '-strftime',
                             '1',
-                            '-force_key_frames', '120',
+                            # '-force_key_frames', '120',
                             '-reset_timestamps',
                             '1',
                             loc + name + '.%Y-%m-%d_%H-%M-%S.mp4'])
