@@ -1,9 +1,13 @@
 from flask import Flask, request, render_template, redirect, url_for, Response, flash, send_file
 from flask_simplelogin import SimpleLogin, login_required
+
 from app_94_7 import main_94_7
 from app_5FM import main_5FM
 from app_1FM import main_1FM
+
 from app_MNET import main_MNET
+from app_VUZU import main_VUZU
+from app_KYKNET import main_Kyk_Net
 
 app = Flask(__name__)
 
@@ -71,10 +75,22 @@ def control_television():
     MNET_status = MNET_pid.read()
     MNET_pid.close()
 
+    VUZU_pid = open('pids/VUZU.pid', 'r')
+    VUZU_status = VUZU_pid.read()
+    VUZU_pid.close()
+
+    Kyk_Net_pid = open('pids/Kyk_Net.pid', 'r')
+    Kyk_Net_status = Kyk_Net_pid.read()
+    Kyk_Net_pid.close()
+
     main_MNET()
+    main_VUZU()
+    main_Kyk_Net()
 
     return render_template('control_television.html', title='Novus recording system',
-                           MNET_status=MNET_status)
+                           MNET_status=MNET_status,
+                           VUZU_status=VUZU_status,
+                           Kyk_Net_status=Kyk_Net_status)
 
 
 if __name__ == '__main__':
