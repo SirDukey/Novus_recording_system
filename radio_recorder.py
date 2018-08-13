@@ -6,7 +6,8 @@ from datetime import datetime
 
 def record(name, url):
 
-    loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
+    #loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
+    loc = '/mnt/broadcast/unindexed/'
 
     def ffmpeg(name, url, loc):
 
