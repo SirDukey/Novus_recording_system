@@ -8,7 +8,7 @@ def main_5FM():
     if '5FM_start' in request.form:
         print('5FM_start')
         name = '5FM'
-        url = 'rtp://127.0.0.1:1234'
+        url = 'http://albert.antfarm.co.za:8000/5fm'
         record(name, url)
 
     elif '5FM_stop' in request.form:
