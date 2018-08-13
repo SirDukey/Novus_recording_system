@@ -2,6 +2,7 @@ import subprocess as sp
 from multiprocessing import Process
 from os.path import exists
 from datetime import datetime
+from flask import flash
 
 
 def record(name, url):
@@ -43,6 +44,7 @@ def record(name, url):
             f.write(str(process.pid))
 
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:', str(process.pid))
+        flash('started ' + name + ' on pid: ' + str(process.pid))
         return process.pid
 
     p = Process(target=ffmpeg, args=(name, url, loc))
@@ -52,3 +54,4 @@ def record(name, url):
 
     else:
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + loc, 'is not mounted')
+        flash(loc + ' is not mounted')

@@ -50,11 +50,10 @@ def control_radio():
     OneFM_status = OneFM_pid.read()
     OneFM_pid.close()
 
-    if request.method == 'POST':
 
-        main_94_7()
-        main_5FM()
-        main_1FM()
+    main_94_7()
+    main_1FM()
+    main_5FM()
 
     return render_template('control_radio.html', title='Novus recording system',
                            Highveld_status=Highveld_status,
