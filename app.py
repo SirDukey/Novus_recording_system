@@ -75,7 +75,7 @@ def control_radio():
     main_5FM()
     main_2OceansVibe()
     main_567_CapeTalk()
-    main_94_5_KFM
+    main_94_5_KFM()
 
     return render_template('control_radio.html', title='Novus recording system',
                            Highveld_status=Highveld_status,
