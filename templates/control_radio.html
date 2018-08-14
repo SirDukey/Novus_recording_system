@@ -5,81 +5,108 @@
 <br>
 <br>
 
-<div class="container-fluid">
+<div class="container">
 
+<table class="table table-striped">
 
+    <tr>
+        <th>Channel</th>
+        <th>Type</th>
+        <th>Status</th>
+        <th>Control</th>
+    </tr>
 
-    <!-- 1FM channel -->
-    <form action="" method="POST">
-        <h4>1FM</h4>
-        <div class="btn-group">
-            <input class="btn btn-primary" type="submit" value="start" name="1FM_start">
-            <input class="btn btn-primary" type="submit" value="stop" name="1FM_stop">
-        </div>
-
-        <span class="label label-info">www</span>
-        {% if 'none' in OneFM_status %}
-            <span class="label label-danger">stopped</span>
-        {% else %}
-            <span class="label label-success">running</span>
-            <span class="label label-warning">{{ OneFM_status }}</span>
-        {% endif %}
-
-    </form>
-    <br>
-        <audio src="http://5.153.107.45:2016/mp3_ultra" preload="none" controls style=" width:100px;"></audio>
-    <br>
-    <br>
-
-
-
-    <!-- 5FM channel -->
-    <form action="" method="POST">
-        <h4>5FM</h4>
-        <div class="btn-group">
-            <input class="btn btn-primary" type="submit" value="start" name="5FM_start">
-            <input class="btn btn-primary" type="submit" value="stop" name="5FM_stop">
-        </div>
-
-        <span class="label label-info">www</span>
-        {% if 'none' in FiveFM_status %}
-            <span class="label label-danger">stopped</span>
-        {% else %}
-            <span class="label label-success">running</span>
-            <span class="label label-warning">{{ FiveFM_status }}</span>
-        {% endif %}
-
-    </form>
-    <br>
-        <audio src="http://albert.antfarm.co.za:8000/5fm" preload="none" controls style=" width:100px;"></audio>
-    <br>
-    <br>
-
-
-
-    <!-- 94.7 channel -->
-    <form action="" method="POST">
-        <h4>94.7 Highveld Stereo</h4>
-        <div class="btn-group">
-            <input class="btn btn-primary" type="submit" value="start" name="94_7_start">
-            <input class="btn btn-primary" type="submit" value="stop" name="94_7_stop">
-        </div>
-
-            <span class="label label-info">www</span>
-            {% if 'none' in Highveld_status %}
-                <span class="label label-danger">stopped</span>
-            {% else %}
-                <span class="label label-success">running</span>
-                <span class="label label-warning">{{ Highveld_status }}</span>
-            {% endif %}
-
+    <tr>
+        <form action="" method="POST">
+            <td>
+                <h4>1FM</h4>
+            </td>
+            <td>
+                <span class="label label-info">www</span>
+            </td>
+            <td>
+                {% if 'none' in OneFM_status %}
+                    <span class="label label-danger">stopped</span>
+                {% else %}
+                    <span class="label label-success">running</span>
+                    <span class="label label-warning">{{ OneFM_status }}</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="btn-group">
+                    {% if 'none' in OneFM_status %}
+                        <input class="btn btn-primary" type="submit" value="start" name="1FM_start">
+                        <input class="btn btn-primary active" type="submit" value="stop" name="1FM_stop">
+                    {% else %}
+                        <input class="btn btn-primary active" type="submit" value="start" name="1FM_start">
+                        <input class="btn btn-primary" type="submit" value="stop" name="1FM_stop">
+                    {% endif %}
+                </div>
+            </td>
         </form>
-    <br>
-        <audio src="http://19073.live.streamtheworld.com:3690/FM947_SC" preload="none" controls style=" width:100px;"></audio>
-    <br>
-    <br>
+    </tr>
 
+    <tr>
+        <form action="" method="POST">
+            <td>
+                <h4>5FM</h4>
+            </td>
+            <td>
+                <span class="label label-info">www</span>
+            </td>
+            <td>
+                {% if 'none' in FiveFM_status %}
+                    <span class="label label-danger">stopped</span>
+                {% else %}
+                    <span class="label label-success">running</span>
+                    <span class="label label-warning">{{ FiveFM_status }}</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="btn-group">
+                    {% if 'none' in FiveFM_status %}
+                        <input class="btn btn-primary" type="submit" value="start" name="5FM_start">
+                        <input class="btn btn-primary active" type="submit" value="stop" name="5FM_stop">
+                    {% else %}
+                        <input class="btn btn-primary active" type="submit" value="start" name="5FM_start">
+                        <input class="btn btn-primary" type="submit" value="stop" name="5FM_stop">
+                    {% endif %}
+                </div>
+            </td>
+        </form>
+    </tr>
 
+    <tr>
+        <form action="" method="POST">
+            <td>
+                <h4>94.7 Highveld Stereo</h4>
+            </td>
+            <td>
+                <span class="label label-info">www</span>
+            </td>
+            <td>
+                {% if 'none' in Highveld_status %}
+                    <span class="label label-danger">stopped</span>
+                {% else %}
+                    <span class="label label-success">running</span>
+                    <span class="label label-warning">{{ Highveld_status }}</span>
+                {% endif %}
+            </td>
+            <td>
+                <div class="btn-group">
+                    {% if 'none' in Highveld_status %}
+                        <input class="btn btn-primary" type="submit" value="start" name="94_7_start">
+                        <input class="btn btn-primary active" type="submit" value="stop" name="94_7_stop">
+                    {% else %}
+                        <input class="btn btn-primary active" type="submit" value="start" name="94_7_start">
+                        <input class="btn btn-primary" type="submit" value="stop" name="94_7_stop">
+                    {% endif %}
+                </div>
+            </td>
+        </form>
+    </tr>
+
+</table>
 
 </div>
 
