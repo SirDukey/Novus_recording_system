@@ -6,6 +6,7 @@ from app_5FM import main_5FM
 from app_1FM import main_1FM
 from app_2OceansVibe import main_2OceansVibe
 from app_567_CapeTalk import main_567_CapeTalk
+from app_94_5_KFM import main_94_5_KFM
 
 from app_MNET import main_MNET
 from app_VUZU import main_VUZU
@@ -65,18 +66,24 @@ def control_radio():
     Five67_CapeTalk_status = Five67_CapeTalk_pid.read()
     Five67_CapeTalk_pid.close()
 
+    Ninety4_5_KFM_pid = open('pids/94_5_KFM.pid', 'r')
+    Ninety4_5_KFM_status = Ninety4_5_KFM_pid.read()
+    Ninety4_5_KFM_pid.close()
+
     main_94_7()
     main_1FM()
     main_5FM()
     main_2OceansVibe()
     main_567_CapeTalk()
+    main_94_5_KFM
 
     return render_template('control_radio.html', title='Novus recording system',
                            Highveld_status=Highveld_status,
                            FiveFM_status=FiveFM_status,
                            OneFM_status=OneFM_status,
                            TWOOceansVibe_status=TWOOceansVibe_status,
-                           Five67_CapeTalk_status=Five67_CapeTalk_status)
+                           Five67_CapeTalk_status=Five67_CapeTalk_status,
+                           Ninety4_5_KFM_status=Ninety4_5_KFM_status)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
