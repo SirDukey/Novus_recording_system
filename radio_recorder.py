@@ -17,7 +17,7 @@ def record(name, url):
                             '-nostats',
                             '-loglevel',
                             '0',
-                            '-y'
+                            # '-y'
                             '-i',
                             url,
                             # '-c, 'copy',
