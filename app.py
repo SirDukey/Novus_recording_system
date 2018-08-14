@@ -10,6 +10,7 @@ from app_94_5_KFM import main_94_5_KFM
 from app_99FM import main_99FM
 from app_Algoa_FM import main_Algoa_FM
 from app_BayFM import main_BayFM
+from app_Cape_Pulpit import main_Cape_Pulpit
 
 from app_MNET import main_MNET
 from app_VUZU import main_VUZU
@@ -85,6 +86,10 @@ def control_radio():
     BayFM_status = BayFM_pid.read()
     BayFM_pid.close()
 
+    Cape_Pulpit_pid = open('pids/Cape_Pulpit.pid', 'r')
+    Cape_Pulpit_status = Cape_Pulpit_pid.read()
+    Cape_Pulpit_pid.close()
+
     main_94_7()
     main_1FM()
     main_5FM()
@@ -94,6 +99,7 @@ def control_radio():
     main_99FM()
     main_Algoa_FM()
     main_BayFM()
+    main_Cape_Pulpit()
 
     return render_template('control_radio.html', title='Novus recording system',
                            Highveld_status=Highveld_status,
@@ -104,7 +110,8 @@ def control_radio():
                            Ninety4_5_KFM_status=Ninety4_5_KFM_status,
                            Ninety9FM_status=Ninety9FM_status,
                            Algoa_FM_status=Algoa_FM_status,
-                           BayFM_status=BayFM_status)
+                           BayFM_status=BayFM_status,
+                           Cape_Pulpit_status=Cape_Pulpit_status)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
