@@ -16,305 +16,38 @@
         <th>Control</th>
     </tr>
 
+{% for item in radio %}
     <tr>
         <form action="" method="POST">
             <td>
-                <h4>1FM</h4>
+                <h4>{{ item[0] }}</h4>
             </td>
             <td>
                 <span class="label label-info">www</span>
             </td>
             <td>
-                {% if 'none' in OneFM_status %}
+                {% if 'none' in item[3](item[0]) %}
                     <span class="label label-danger">stopped</span>
                 {% else %}
                     <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ OneFM_status }}</span>
+                    <span class="label label-warning">{{ item[3](item[0]) }}</span>
                 {% endif %}
             </td>
             <td>
                 <div class="btn-group">
-                    {% if 'none' in OneFM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="1FM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="1FM_stop">
+                    {% if 'none' in item[3](item[0]) %}
+                        <input class="btn btn-primary" type="submit" value="start" name="{{ item[0] }}_start">
+                        <input class="btn btn-primary active" type="submit" value="stop" name="{{ item[0] }}_stop">
                     {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="1FM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="1FM_stop">
+                        <input class="btn btn-primary active" type="submit" value="start" name="{{ item[0] }}_start">
+                        <input class="btn btn-primary" type="submit" value="stop" name="{{ item[0] }}_stop">
                     {% endif %}
                 </div>
             </td>
         </form>
     </tr>
 
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>2OceansVibe</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in TWOOceansVibe_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ TWOOceansVibe_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in TWOOceansVibe_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="2OceansVibe_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="2OceansVibe_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="2OceansVibe_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="2OceansVibe_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>5FM</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in FiveFM_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ FiveFM_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in FiveFM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="5FM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="5FM_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="5FM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="5FM_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>567 CapeTalk</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Five67_CapeTalk_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Five67_CapeTalk_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Five67_CapeTalk_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="567_CapeTalk_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="567_CapeTalk_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="567_CapeTalk_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="567_CapeTalk_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-        <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>94.5 KFM</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Ninety4_5_KFM_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Ninety4_5_KFM_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Ninety4_5_KFM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="94_5_KFM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="94_5_KFM_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="94_5_KFM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="94_5_KFM_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>94.7 Highveld Stereo</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Highveld_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Highveld_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Highveld_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="94_7_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="94_7_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="94_7_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="94_7_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>99FM</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Ninety9FM_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Ninety9FM_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Ninety9FM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="99FM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="99FM_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="99FM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="99FM_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>Algoa FM</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Algoa_FM_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Algoa_FM_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Algoa_FM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="Algoa_FM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="Algoa_FM_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="Algoa_FM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="Algoa_FM_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-    <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>Bay FM</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in BayFM_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ BayFM_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in BayFM_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="BayFM_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="BayFM_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="BayFM_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="BayFM_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
-
-        <tr>
-        <form action="" method="POST">
-            <td>
-                <h4>Cape Pulpit</h4>
-            </td>
-            <td>
-                <span class="label label-info">www</span>
-            </td>
-            <td>
-                {% if 'none' in Cape_Pulpit_status %}
-                    <span class="label label-danger">stopped</span>
-                {% else %}
-                    <span class="label label-success">running</span>
-                    <span class="label label-warning">{{ Cape_Pulpit_status }}</span>
-                {% endif %}
-            </td>
-            <td>
-                <div class="btn-group">
-                    {% if 'none' in Cape_Pulpit_status %}
-                        <input class="btn btn-primary" type="submit" value="start" name="Cape_Pulpit_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="Cape_Pulpit_stop">
-                    {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="Cape_Pulpit_start">
-                        <input class="btn btn-primary" type="submit" value="stop" name="Cape_Pulpit_stop">
-                    {% endif %}
-                </div>
-            </td>
-        </form>
-    </tr>
+{% endfor %}
 
 </table>
 

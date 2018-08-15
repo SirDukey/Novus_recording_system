@@ -1,124 +1,15 @@
-from flask import Flask, request, render_template
-from flask_simplelogin import SimpleLogin, login_required
-from process_control import kill_pid
-from radio_recorder import rad_record
-from television_recorder import tv_record
-import subprocess as sp
 
 
-app = Flask(__name__)
+def rmain():
+    pass
 
-app.config['SIMPLELOGIN_USERNAME'] = 'admin'
-app.config['SIMPLELOGIN_PASSWORD'] = 'global01a'
-SECRET_KEY = 'oV8rgcvFY1YcEWo7jXmoPQi5gaeX1J'
-app.config['SECRET_KEY'] = SECRET_KEY
+def tmain():
+    pass
 
-SimpleLogin(app)
+def get_pid():
+    pass
 
-
-def check_pid(pid_num, name, url):
-
-    '''first test'''
-    cmd = 'pgrep ffmpeg'
-    res = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
-
-    output, error = res.communicate()
-    output = output.decode('ascii')
-    error = error.decode('ascii')
-
-    '''second test'''
-    cmd2 = 'ps -ax | grep ffmpeg'
-    res2 = sp.Popen(cmd2, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
-
-    output2, error2 = res2.communicate()
-    output2 = output2.decode('ascii')
-    error2 = error2.decode('ascii')
-
-    if str(pid_num) in output and url not in output2:
-        with open('pids/' + name + '.pid', 'w') as f:
-            f.write('none')
-
-    elif str(pid_num) not in output2 and url not in output2:
-        with open('pids/' + name + '.pid', 'w') as f:
-            f.write('none')
-
-    elif str(pid_num) not in output:
-        with open('pids/' + name + '.pid', 'w') as f:
-            f.write('none')
-
-    elif error:
-        print(error)
-
-    elif error2:
-        print(error2)
-
-
-def rmain(name, url):
-
-    if name + '_start' in request.form:
-
-        print(name + '_start')
-        rad_record(name, url)
-
-    elif name + '_stop' in request.form:
-
-        print(name + '_stop')
-        try:
-            with open('pids/{}.pid'.format(name), 'r') as f:
-                try:
-                    kill_pid(f.read(), name, url)
-                except:
-                    print('no such process')
-        finally:
-            with open('pids/{}.pid'.format(name), 'w') as f:
-                f.write('none')
-
-    elif request.method == 'GET':
-
-        pidf = open('pids/' + name + '.pid', 'r')
-        pid_num = pidf.read()
-        pidf.close()
-        check_pid(pid_num, name, url)
-
-
-def tmain(name, url):
-
-    if name + '_start' in request.form:
-
-        print(name + '_start')
-
-        tv_record(name, url)
-
-    elif name + '_stop' in request.form:
-
-        print(name + '_stop')
-        try:
-            with open('pids/{}.pid'.format(name), 'r') as f:
-                try:
-                    kill_pid(f.read(), name, url)
-                except:
-                    print('no such process')
-        finally:
-            with open('pids/{}.pid'.format(name), 'w') as f:
-                f.write('none')
-
-    elif request.method == 'GET':
-
-        pidf = open('pids/' + name + '.pid', 'r')
-        pid_num = pidf.read()
-        pidf.close()
-        check_pid(pid_num, name, url)
-
-
-def get_pid(name):
-
-    with open('pids/' + name + '.pid', 'r') as f:
-        return f.read()
-
-
-def content():
-
-    CMS_DICT = {
+CMS_DICT = {
         'radio': [
             ['1FM', 'http://5.153.107.45:2016/mp3_ultra', rmain, get_pid],
             ['5FM', 'http://albert.antfarm.co.za:8000/5fm', rmain, get_pid],
@@ -187,53 +78,7 @@ def content():
         ]
     }
 
-    return CMS_DICT
+for item in CMS_DICT['radio']:
 
-
-@app.route('/login')
-def login():
-
-    return render_template('login.html', title='Novus recording system')
-
-
-@app.route('/logout')
-def logout():
-
-    return render_template('login.html', title='Novus recording system')
-
-
-@app.route('/')
-@login_required
-def index():
-
-    return render_template('index.html', title='Novus recording system')
-
-
-@app.route('/control_radio',  methods=['GET', 'POST'])
-@login_required
-def control_radio():
-
-    CMS_DICT = content()
-    radio = CMS_DICT['radio']
-
-    for item in radio:
-        item[2](item[0], item[1])
-
-    return render_template('control_radio.html', title='Novus recording system', radio=radio)
-
-
-@app.route('/control_television',  methods=['GET', 'POST'])
-@login_required
-def control_television():
-
-    CMS_DICT = content()
-    tv = CMS_DICT['tv']
-
-    for item in tv:
-        item[2](item[0], item[1])
-
-    return render_template('control_television.html', title='Novus recording system', tv=tv)
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5001)
+    with open(item[0] + '.pid', 'w') as f:
+        f.write('none')

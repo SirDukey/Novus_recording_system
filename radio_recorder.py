@@ -5,7 +5,7 @@ from datetime import datetime
 from flask import flash
 
 
-def record(name, url):
+def rad_record(name, url):
 
     #loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
     loc = '/mnt/broadcast/unindexed/'
