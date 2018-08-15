@@ -190,9 +190,24 @@ def content():
             ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid]
         ],
         'tv': [
-            ['MNET', 'rtp://@225.0.1.101:1100', tmain, get_pid],
-            ['VUZU', 'rtp://@225.0.1.103:1200', tmain, get_pid],
-            ['KYKNET', 'rtp://@225.0.1.116:1100', tmain, get_pid]
+            ['M_NET', 'rtp://@225.0.1.101:1100', tmain, get_pid],
+            ['Vuzu', 'rtp://@225.0.1.103:1200', tmain, get_pid],
+            ['kykNET', 'rtp://@225.0.1.116:1100', tmain, get_pid],
+            ['SABC_News', 'rtp://@225.0.1.40:1200', tmain, get_pid],
+            ['SABC1', 'rtp://@225.0.1.189:1100', tmain, get_pid],
+            ['SABC2', 'rtp://@225.0.1.191:1200', tmain, get_pid],
+            ['SABC3', 'rtp://@225.0.1.192:1100', tmain, get_pid],
+            ['Soweto_TV', 'rtp://@225.0.1.207:1100', tmain, get_pid],
+            ['SuperSport_1', 'rtp://@225.0.1.194:1100', tmain, get_pid],
+            ['SuperSport_2', 'rtp://@225.0.1.200:1200', tmain, get_pid],
+            ['SuperSport_3', 'rtp://@225.0.1.201:1100', tmain, get_pid],
+            ['SuperSport_4', 'rtp://@225.0.1.202:1200', tmain, get_pid],
+            ['SuperSport_5', 'rtp://@225.0.1.203:1100', tmain, get_pid],
+            ['SuperSport_6', 'rtp://@225.0.1.204:1200', tmain, get_pid],
+            ['SuperSport_7', 'rtp://@225.0.1.205:1100', tmain, get_pid],
+            ['SuperSport_8', 'rtp://@225.0.1.206:1200', tmain, get_pid],
+            ['SuperSport_Blitz', 'rtp://@225.0.1.42:1100', tmain, get_pid]
+
         ]
     }
 
@@ -241,7 +256,7 @@ def control_television():
     for item in tv:
         item[2](item[0], item[1])
 
-    return render_template('control_television.html', title='Novus recording system', tv=tv)
+    return render_template('control_television.html', title='Novus recording system', tv=tv, running=running)
 
 
 if __name__ == '__main__':
