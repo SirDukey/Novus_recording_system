@@ -24,7 +24,7 @@
                 <h4>{{ item[0] }}</h4>
             </td>
             <td>
-                <span class="label label-info">www</span>
+                <span class="label label-info">{{ item[4] }}</span>
             </td>
             <td>
                 {% if 'none' in item[3](item[0]) %}
@@ -39,9 +39,9 @@
                 <div class="btn-group">
                     {% if 'none' in item[3](item[0]) %}
                         <input class="btn btn-primary" type="submit" value="start" name="{{ item[0] }}_start">
-                        <input class="btn btn-primary active" type="submit" value="stop" name="{{ item[0] }}_stop">
+                        <input class="btn btn-primary active" type="submit" value="stop" disabled="disabled" name="{{ item[0] }}_stop">
                     {% else %}
-                        <input class="btn btn-primary active" type="submit" value="start" name="{{ item[0] }}_start">
+                        <input class="btn btn-primary active" type="submit" value="start" disabled="disabled" name="{{ item[0] }}_start">
                         <input class="btn btn-primary" type="submit" value="stop" name="{{ item[0] }}_stop">
                     {% endif %}
                 </div>
