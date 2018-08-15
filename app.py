@@ -117,13 +117,23 @@ def get_pid(name):
         return f.read()
 
 
-def running():
-    cmd = 'ps -ef | grep ffmpeg | wc -l'
+def wav_running():
+    cmd = 'ps -ef | grep ffmpeg | grep .wav | wc -l'
     res = sp.Popen(cmd, shell=True, stdout=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('ascii')
-    output = int(output) - 2
+    output = int(output) - 1
     return output
+
+
+def mp4_running():
+    cmd = 'ps -ef | grep ffmpeg | grep .mp4 | wc -l'
+    res = sp.Popen(cmd, shell=True, stdout=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    output = int(output) - 1
+    return output
+
 
 def content():
 
@@ -243,7 +253,7 @@ def control_radio():
     for item in radio:
         item[2](item[0], item[1])
 
-    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=running)
+    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=wav_running)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
@@ -256,7 +266,7 @@ def control_television():
     for item in tv:
         item[2](item[0], item[1])
 
-    return render_template('control_television.html', title='Novus recording system', tv=tv, running=running)
+    return render_template('control_television.html', title='Novus recording system', tv=tv, running=mp4_running)
 
 
 if __name__ == '__main__':
