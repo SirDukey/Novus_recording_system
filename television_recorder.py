@@ -8,7 +8,8 @@ from flask import flash
 def tv_record(name, url):
 
     #loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
-    loc = '/mnt/broadcast/unindexed/'
+    #loc = '/mnt/broadcast/unindexed/'
+    loc = '/tmp/'
 
     def ffmpeg(name, url, loc):
 
