@@ -242,6 +242,12 @@ def index():
     return render_template('index.html', title='Novus recording system')
 
 
+@app.route('/info')
+@login_required
+def info():
+
+    return render_template('info.html', title='Novus recording system', wav_running=wav_running, tv_running=mp4_running)
+
 @app.route('/control_radio',  methods=['GET', 'POST'])
 @login_required
 def control_radio():
