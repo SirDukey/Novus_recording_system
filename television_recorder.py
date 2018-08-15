@@ -19,7 +19,7 @@ def tv_record(name, url):
                             '0',
                             # '-y'
                             '-i',
-                            url,
+                            '"url"'.format(url),
                             # '-c, 'copy',
                             '-b:a',
                             '64000',
