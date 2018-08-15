@@ -4,6 +4,7 @@ from process_control import kill_pid
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
+from os import system
 
 
 app = Flask(__name__)
@@ -116,6 +117,14 @@ def get_pid(name):
         return f.read()
 
 
+def running():
+    cmd = 'ps -ef | grep ffmpeg | wc -l'
+    res = sp.Popen(cmd, shell=True, stdout=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    output = int(output) - 2
+    return output
+
 def content():
 
     CMS_DICT = {
@@ -219,7 +228,7 @@ def control_radio():
     for item in radio:
         item[2](item[0], item[1])
 
-    return render_template('control_radio.html', title='Novus recording system', radio=radio)
+    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=running)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
