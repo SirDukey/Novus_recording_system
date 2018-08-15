@@ -19,7 +19,7 @@ def rad_record(name, url):
                             '0',
                             # '-y'
                             '-i',
-                            '"url"'.format(url),
+                            url,
                             # '-c, 'copy',
                             '-b:a',
                             '64000',
