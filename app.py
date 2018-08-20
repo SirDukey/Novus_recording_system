@@ -4,6 +4,7 @@ from process_control import kill_pid
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
+from info import disk_usage, mem_usage
 
 
 app = Flask(__name__)
@@ -37,6 +38,7 @@ def check_pid(pid_num, name, url):
     if str(pid_num) in output and url not in output2:
         with open('pids/' + name + '.pid', 'w') as f:
             f.write('none')
+            # kill ?
 
     elif str(pid_num) not in output2 and url not in output2:
         with open('pids/' + name + '.pid', 'w') as f:
@@ -116,8 +118,26 @@ def get_pid(name):
         return f.read()
 
 
-def wav_running():
-    cmd = 'ps -ef | grep ffmpeg | grep .wav | wc -l'
+def get_auto(name):
+
+    with open('auto/' + name + '.auto', 'r') as f:
+        return f.read()
+
+
+def set_auto(name):
+    if name + '_enabled' in request.form:
+        with open('auto/' + name + '.auto', 'w') as f:
+            f.write('enabled')
+
+    elif name + '_disabled' in request.form:
+        with open('auto/' + name + '.auto', 'w') as f:
+            f.write('disabled')
+
+    elif request.method == 'GET':
+        pass
+
+def mp3_running():
+    cmd = 'ps -ef | grep ffmpeg | grep .mp3 | wc -l'
     res = sp.Popen(cmd, shell=True, stdout=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('ascii')
@@ -138,84 +158,84 @@ def content():
 
     CMS_DICT = {
         'radio': [
-            ['1FM', 'http://5.153.107.45:2016/mp3_ultra', rmain, get_pid, 'www'],
-            ['5FM', 'http://albert.antfarm.co.za:8000/5fm', rmain, get_pid, 'www'],
-            ['94_7_Highveld_Stereo', 'http://19113.live.streamtheworld.com:3690/FM947_SC', rmain, get_pid, 'www'],
-            ['94_5_KFM', 'http://19993.live.streamtheworld.com/KFM_SC', rmain, get_pid, 'www'],
-            ['2OceansVibe', 'http://playerservices.streamtheworld.com/api/livestream-redirect/OCEANSVIBE_SC', rmain, get_pid, 'www'],
-            ['567_CapeTalk', 'http://19373.live.streamtheworld.com:3690/CAPE_TALK_SC', rmain, get_pid, 'www'],
-            ['99FM', 'http://ice31.securenetsystems.net/99FM?type=mp3', rmain, get_pid, 'www'],
-            ['Algoa_FM', 'https://edge.iono.fm/xice/54_medium.aac?p=embed', rmain, get_pid, 'www'],
-            ['BayFM', 'http://85.25.18.48/;.mp3', rmain, get_pid, 'www'],
-            ['Cape_Pulpit', 'http://albert.antfarm.co.za:8000/RadioPulpit', rmain, get_pid, 'www'],
-            ['Capricorn', 'http://albert.antfarm.co.za:8000/CapricornFM', rmain, get_pid, 'www'],
-            ['ChaiFM', 'http://listenlive-c2p1.ndstream.net:8060/;', rmain, get_pid, 'www'],
-            ['Channel_Africa', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/557f47f80b264cea8e88346a123eedcd/playlist.m3u8?sid=0e728a7b-2ce4-44ba-b1d1-b64610a10547', rmain, get_pid, 'www'],
-            ['Classic_FM', 'https://edge.iono.fm/xice/49_medium.aac?p=embed', rmain, get_pid, 'www'],
-            ['CliffCentral_com', 'http://edge.iono.fm/xice/cliffcentral_live_medium.mp3', rmain, get_pid, 'www'],
-            ['East_Coast_Radio', 'http://edge.iono.fm/xice/ecr_live_medium.mp3', rmain, get_pid, 'www'],
-            ['Eldos_FM', 'http://core2.netdynamix.co.za:8100/;', rmain, get_pid, 'www'],
-            ['Fine_Music_Radio', 'http://edge.iono.fm/xice/fmr_live_medium.mp3?p=embed', rmain, get_pid, 'www'],
-            ['Fresh_FM', 'http://ample-zeno-02.radiojar.com/2b729cqx73duv?rj-ttl=5&rj-token=AAABZTMPpQtBNgSGaINlnak7_XktOhkAJPzuWahBJlaZ6r70oYUqJQ', rmain, get_pid, 'www'],
-            ['Gagasi_FM', 'http://capeant.antfarm.co.za:8000/gagasi', rmain, get_pid, 'www'],
-            ['Good_Hope_FM', 'http://radiostream.co.za:9104/;', rmain, get_pid, 'www'],
-            ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www'],
-            ['Heart_104_9_FM', 'http://capeant.antfarm.co.za:9000/HeartFM', rmain, get_pid, 'www'],
-            ['Hot_91_9_FM', 'https://ice31.securenetsystems.net/HOT919?playSessionID=6BA86A5D-978A-CE95-E5FCD2BA152A9F00', rmain, get_pid, 'www'],
-            ['Ikwekwezi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/ff6c43748de44108a31d127b4b205c12/playlist.m3u8?sid=ec9213ca-5fb1-46fc-aee4-010f51a7b9a1', rmain, get_pid, 'www'],
-            ['IMPACT_RADIO', 'http://zas1.ndx.co.za/proxy/impactradio?mp=/stream', rmain, get_pid, 'www'],
-            ['Jacaranda_FM', 'https://edge.iono.fm/xice/jacarandafm_live_medium.aac', rmain, get_pid, 'www'],
-            ['Jozi_FM', 'http://capeant.antfarm.co.za:8000/JoziFM', rmain, get_pid, 'www'],
-            ['Kaya_FM', 'http://iceant.antfarm.co.za:8000/Kaya_MP3', rmain, get_pid, 'www'],
-            ['Lesedi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/273707ee34a94d87a51c4785b48256a5/playlist.m3u8?sid=3626cb83-cc20-446d-af4a-9bd9b2e85cd8', rmain, get_pid, 'www'],
-            ['Ligwalagwala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/568fc5738cce4434aa6db69e928084be/playlist.m3u8?sid=d68ad834-f7c8-4054-91c8-04eb5fc5988d', rmain, get_pid, 'www'],
-            ['Lotus_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/9d1c7019ff894e5191b954eff03d7c77/playlist.m3u8', rmain, get_pid, 'www'],
-            ['Metro_FM', 'http://server21a.oneradiohost.com/4rrv3hw6bq5tv', rmain, get_pid, 'www'],
-            ['Mix_93_8_FM', 'http://50.7.77.114:8007/;', rmain, get_pid, 'www'],
-            ['Motsweding_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/97f660b5d3c949e094ca1d8c983551d2/playlist.m3u8?sid=b2268fb7-3931-451d-bd85-d45061df1d14', rmain, get_pid, 'www'],
-            ['Munghana_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/14e03c487fa44d3686ff65f483373d62/playlist.m3u8?sid=2994f2bb-84ce-4b91-bcb3-0ba391f4e232', rmain, get_pid, 'www'],
-            ['OFM', 'http://edge.iono.fm/xice/ofm_live_medium.mp3', rmain, get_pid, 'www'],
-            ['Phalaphala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/0e6fc9cfa7aa4264ad93f87dc4f75c3b/playlist.m3u8?sid=1449b747-5c87-44fc-b32e-30b2e645cc10', rmain, get_pid, 'www'],
-            ['Power_FM', 'http://albert.antfarm.co.za:8000/PowerFM64k_BKP', rmain, get_pid, 'www'],
-            ['PRETORIA_FM', 'http://capeant.antfarm.co.za:8000/ptafm', rmain, get_pid, 'www'],
-            ['Radio_2000', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/a3d1e938cf9c49db874906a8138ecf10/playlist.m3u8?sid=42174fcb-c143-46be-afb6-aa6a051bb5f6', rmain, get_pid, 'www'],
-            ['Radio_aBr', 'http://20873.live.streamtheworld.com/AFRICABUSINESSRADIO_S01.mp3?tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=none&sbmid=5986bfc2-741c-4dd0-a045-4ed9c00754fd', rmain, get_pid, 'www'],
-            ['Radio_Sonder_Grense', 'http://albert.antfarm.co.za:8000/RSG', rmain, get_pid, 'www'],
-            ['Radio_Today', 'http://162.244.80.118:5350/radiotoday', rmain, get_pid, 'www'],
-            ['Radio_Tygerberg', 'http://radiotygerberg.highquality.radiostream.co.za/', rmain, get_pid, 'www'],
-            ['Radiowave', 'http://ice8.securenetsystems.net/967FM?playSessionID=6BF86BAD-EE45-8412-BAF6422EA13DEAA5', rmain, get_pid, 'www'],
-            ['Rise_FM', 'http://zas2.ndx.co.za/proxy/risefm?mp=/stream&1533914047229', rmain, get_pid, 'www'],
-            ['SAfm', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/620e01258f5b49568546ff239ff2a32f/playlist.m3u8?sid=6b1940eb-8142-48c2-96a4-2833da32c842', rmain, get_pid, 'www'],
-            ['Smile_90_4_FM', 'http://edge.iono.fm/xice/smile_live_medium.mp3', rmain, get_pid, 'www'],
-            ['Talk_Radio_702', 'http://20133.live.streamtheworld.com/FM702_SC', rmain, get_pid, 'www'],
-            ['Thobela_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/58024f759ef343e5b43f99b0c55d84aa/playlist.m3u8?sid=f8ec6d59-1cc4-4b2a-9cad-3aa292d950b1', rmain, get_pid, 'www'],
-            ['TuksFM', 'https://edge.iono.fm/xice/tuksfm_live_medium.mp3', rmain, get_pid, 'www'],
-            ['UCT_Radio', 'https://edge.iono.fm/xice/uctradio_live_medium.aac?p=embed', rmain, get_pid, 'www'],
-            ['Ukhozi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/c04e80a90111477a88867b697e2203c0/playlist.m3u8?sid=74b0f5a0-e224-40eb-b34d-e5c2a4eb4526', rmain, get_pid, 'www'],
-            ['Umhlobo_Wenene_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/7844ef4be8164a66a0e21bdfe374bff5/playlist.m3u8?sid=04003ca0-d6d5-4606-aecd-29b686b592da', rmain, get_pid, 'www'],
-            ['Voice_of_the_Cape', 'http://edge.iono.fm/xice/voc_live_high.mp3', rmain, get_pid, 'www'],
-            ['Voice_of_Wits', 'http://146.141.76.196:8080/stream/live.mp3', rmain, get_pid, 'www'],
-            ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www'],
-            ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www']
+            ['1FM', 'http://5.153.107.45:2016/mp3_ultra', rmain, get_pid, 'www', get_auto, set_auto],
+            ['5FM', 'http://albert.antfarm.co.za:8000/5fm', rmain, get_pid, 'www', get_auto, set_auto],
+            ['94_7_Highveld_Stereo', 'http://19113.live.streamtheworld.com:3690/FM947_SC', rmain, get_pid, 'www', get_auto, set_auto],
+            ['94_5_KFM', 'http://19993.live.streamtheworld.com/KFM_SC', rmain, get_pid, 'www', get_auto, set_auto],
+            ['2OceansVibe', 'http://playerservices.streamtheworld.com/api/livestream-redirect/OCEANSVIBE_SC', rmain, get_pid, 'www', get_auto, set_auto],
+            ['567_CapeTalk', 'http://19373.live.streamtheworld.com:3690/CAPE_TALK_SC', rmain, get_pid, 'www', get_auto, set_auto],
+            ['99FM', 'http://ice31.securenetsystems.net/99FM?type=mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Algoa_FM', 'https://edge.iono.fm/xice/54_medium.aac?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
+            ['BayFM', 'http://85.25.18.48/;.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Cape_Pulpit', 'http://albert.antfarm.co.za:8000/RadioPulpit', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Capricorn', 'http://albert.antfarm.co.za:8000/CapricornFM', rmain, get_pid, 'www', get_auto, set_auto],
+            ['ChaiFM', 'http://listenlive-c2p1.ndstream.net:8060/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Channel_Africa', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/557f47f80b264cea8e88346a123eedcd/playlist.m3u8?sid=0e728a7b-2ce4-44ba-b1d1-b64610a10547', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Classic_FM', 'https://edge.iono.fm/xice/49_medium.aac?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
+            ['CliffCentral_com', 'http://edge.iono.fm/xice/cliffcentral_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['East_Coast_Radio', 'http://edge.iono.fm/xice/ecr_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Eldos_FM', 'http://core2.netdynamix.co.za:8100/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Fine_Music_Radio', 'http://edge.iono.fm/xice/fmr_live_medium.mp3?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Fresh_FM', 'http://ample-zeno-02.radiojar.com/2b729cqx73duv?rj-ttl=5&rj-token=AAABZTMPpQtBNgSGaINlnak7_XktOhkAJPzuWahBJlaZ6r70oYUqJQ', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Gagasi_FM', 'http://capeant.antfarm.co.za:8000/gagasi', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Good_Hope_FM', 'http://radiostream.co.za:9104/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Heart_104_9_FM', 'http://capeant.antfarm.co.za:9000/HeartFM', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Hot_91_9_FM', 'https://ice31.securenetsystems.net/HOT919?playSessionID=6BA86A5D-978A-CE95-E5FCD2BA152A9F00', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Ikwekwezi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/ff6c43748de44108a31d127b4b205c12/playlist.m3u8?sid=ec9213ca-5fb1-46fc-aee4-010f51a7b9a1', rmain, get_pid, 'www', get_auto, set_auto],
+            ['IMPACT_RADIO', 'http://zas1.ndx.co.za/proxy/impactradio?mp=/stream', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Jacaranda_FM', 'https://edge.iono.fm/xice/jacarandafm_live_medium.aac', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Jozi_FM', 'http://capeant.antfarm.co.za:8000/JoziFM', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Kaya_FM', 'http://iceant.antfarm.co.za:8000/Kaya_MP3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Lesedi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/273707ee34a94d87a51c4785b48256a5/playlist.m3u8?sid=3626cb83-cc20-446d-af4a-9bd9b2e85cd8', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Ligwalagwala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/568fc5738cce4434aa6db69e928084be/playlist.m3u8?sid=d68ad834-f7c8-4054-91c8-04eb5fc5988d', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Lotus_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/9d1c7019ff894e5191b954eff03d7c77/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Metro_FM', 'http://server21a.oneradiohost.com/4rrv3hw6bq5tv', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Mix_93_8_FM', 'http://50.7.77.114:8007/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Motsweding_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/97f660b5d3c949e094ca1d8c983551d2/playlist.m3u8?sid=b2268fb7-3931-451d-bd85-d45061df1d14', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Munghana_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/14e03c487fa44d3686ff65f483373d62/playlist.m3u8?sid=2994f2bb-84ce-4b91-bcb3-0ba391f4e232', rmain, get_pid, 'www', get_auto, set_auto],
+            ['OFM', 'http://edge.iono.fm/xice/ofm_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Phalaphala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/0e6fc9cfa7aa4264ad93f87dc4f75c3b/playlist.m3u8?sid=1449b747-5c87-44fc-b32e-30b2e645cc10', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Power_FM', 'http://albert.antfarm.co.za:8000/PowerFM64k_BKP', rmain, get_pid, 'www', get_auto, set_auto],
+            ['PRETORIA_FM', 'http://capeant.antfarm.co.za:8000/ptafm', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_2000', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/a3d1e938cf9c49db874906a8138ecf10/playlist.m3u8?sid=42174fcb-c143-46be-afb6-aa6a051bb5f6', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_aBr', 'http://20873.live.streamtheworld.com/AFRICABUSINESSRADIO_S01.mp3?tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=none&sbmid=5986bfc2-741c-4dd0-a045-4ed9c00754fd', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_Sonder_Grense', 'http://albert.antfarm.co.za:8000/RSG', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_Today', 'http://162.244.80.118:5350/radiotoday', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_Tygerberg', 'http://radiotygerberg.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radiowave', 'http://ice8.securenetsystems.net/967FM?playSessionID=6BF86BAD-EE45-8412-BAF6422EA13DEAA5', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Rise_FM', 'http://zas2.ndx.co.za/proxy/risefm?mp=/stream&1533914047229', rmain, get_pid, 'www', get_auto, set_auto],
+            ['SAfm', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/620e01258f5b49568546ff239ff2a32f/playlist.m3u8?sid=6b1940eb-8142-48c2-96a4-2833da32c842', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Smile_90_4_FM', 'http://edge.iono.fm/xice/smile_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Talk_Radio_702', 'http://20133.live.streamtheworld.com/FM702_SC', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Thobela_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/58024f759ef343e5b43f99b0c55d84aa/playlist.m3u8?sid=f8ec6d59-1cc4-4b2a-9cad-3aa292d950b1', rmain, get_pid, 'www', get_auto, set_auto],
+            ['TuksFM', 'https://edge.iono.fm/xice/tuksfm_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['UCT_Radio', 'https://edge.iono.fm/xice/uctradio_live_medium.aac?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Ukhozi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/c04e80a90111477a88867b697e2203c0/playlist.m3u8?sid=74b0f5a0-e224-40eb-b34d-e5c2a4eb4526', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Umhlobo_Wenene_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/7844ef4be8164a66a0e21bdfe374bff5/playlist.m3u8?sid=04003ca0-d6d5-4606-aecd-29b686b592da', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Voice_of_the_Cape', 'http://edge.iono.fm/xice/voc_live_high.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Voice_of_Wits', 'http://146.141.76.196:8080/stream/live.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www', get_auto, set_auto]
         ],
         'tv': [
-            ['M_NET', 'rtp://@225.0.1.101:1100', tmain, get_pid, 'dstv'],
-            ['Vuzu', 'rtp://@225.0.1.103:1200', tmain, get_pid, 'dstv'],
-            ['kykNET', 'rtp://@225.0.1.116:1100', tmain, get_pid, 'dstv'],
-            ['SABC_News', 'rtp://@225.0.1.40:1200', tmain, get_pid, 'dstv'],
-            ['SABC1', 'rtp://@225.0.1.189:1100', tmain, get_pid, 'dstv'],
-            ['SABC2', 'rtp://@225.0.1.191:1200', tmain, get_pid, 'dstv'],
-            ['SABC3', 'rtp://@225.0.1.192:1100', tmain, get_pid, 'dstv'],
-            ['Soweto_TV', 'rtp://@225.0.1.207:1100', tmain, get_pid, 'dstv'],
-            ['SuperSport_1', 'rtp://@225.0.1.194:1100', tmain, get_pid, 'dstv'],
-            ['SuperSport_2', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv'],
-            ['SuperSport_3', 'rtp://@225.0.1.201:1100', tmain, get_pid, 'dstv'],
-            ['SuperSport_4', 'rtp://@225.0.1.202:1200', tmain, get_pid, 'dstv'],
-            ['SuperSport_5', 'rtp://@225.0.1.203:1100', tmain, get_pid, 'dstv'],
-            ['SuperSport_6', 'rtp://@225.0.1.204:1200', tmain, get_pid, 'dstv'],
-            ['SuperSport_7', 'rtp://@225.0.1.205:1100', tmain, get_pid, 'dstv'],
-            ['SuperSport_8', 'rtp://@225.0.1.206:1200', tmain, get_pid, 'dstv'],
-            ['SuperSport_Blitz', 'rtp://@225.0.1.42:1100', tmain, get_pid, 'dstv']
+            ['M_NET', 'rtp://@225.0.1.101:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Vuzu', 'rtp://@225.0.1.103:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['kykNET', 'rtp://@225.0.1.116:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC_News', 'rtp://@225.0.1.40:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC1', 'rtp://@225.0.1.189:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC2', 'rtp://@225.0.1.191:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC3', 'rtp://@225.0.1.192:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Soweto_TV', 'rtp://@225.0.1.207:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_1', 'rtp://@225.0.1.194:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_2', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_3', 'rtp://@225.0.1.201:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_4', 'rtp://@225.0.1.202:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_5', 'rtp://@225.0.1.203:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_6', 'rtp://@225.0.1.204:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_7', 'rtp://@225.0.1.205:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_8', 'rtp://@225.0.1.206:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_Blitz', 'rtp://@225.0.1.42:1100', tmain, get_pid, 'dstv', get_auto, set_auto]
 
         ]
     }
@@ -246,7 +266,15 @@ def index():
 @login_required
 def info():
 
-    return render_template('info.html', title='Novus recording system', wav_running=wav_running, tv_running=mp4_running)
+    du = disk_usage()
+    mem = mem_usage()
+
+    return render_template('info.html', title='Novus recording system',
+                           mp3_running=mp3_running,
+                           tv_running=mp4_running,
+                           du=du,
+                           mem=mem)
+
 
 @app.route('/control_radio',  methods=['GET', 'POST'])
 @login_required
@@ -257,8 +285,9 @@ def control_radio():
 
     for item in radio:
         item[2](item[0], item[1])
+        item[6](item[0])
 
-    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=wav_running)
+    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=mp3_running)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
@@ -270,6 +299,7 @@ def control_television():
 
     for item in tv:
         item[2](item[0], item[1])
+        item[6](item[0])
 
     return render_template('control_television.html', title='Novus recording system', tv=tv, running=mp4_running)
 

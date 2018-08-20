@@ -1,33 +1,36 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+&emsp;<a href="{{ url_for('info') }}"><button>refresh</button></a>
+<br>
+<br>
 
 <div class="container">
-    CPU
+    CPU utilisation
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em;">
-            0%
+            10%
         </div>
     </div>
 
-    Memory
+    Memory usage of 64G
     <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 2%;">
-            2%
+        <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ mem }};">
+            {{ mem }}
         </div>
     </div>
 
-    Disk
+    Disk usage of /mnt/broadcast/
     <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: 30%;">
-            30%
+        <div class="progress-bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="min-width: 2em; width: {{ du }};">
+            {{ du }}
         </div>
     </div>
 
     <br>
 
     <table class="table">
-        <tr><td>Radio channels running</td><td>{{ wav_running() }}</td></tr>
+        <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
         <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
     </table>
 

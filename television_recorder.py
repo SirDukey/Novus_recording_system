@@ -14,10 +14,13 @@ def tv_record(name, url):
     def ffmpeg(name, url, loc):
 
         process = sp.Popen(['ffmpeg',
-                            '-re',
+                            #'-re',
                             '-nostats',
                             '-loglevel',
                             '0',
+                            '-xerror',
+                            '-progress',
+                            'timestamps/' + name + '.ts',
                             # '-y'
                             '-i',
                             url,
@@ -45,7 +48,7 @@ def tv_record(name, url):
             f.write(str(process.pid))
 
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:', str(process.pid))
-        flash('started ' + name + ' on pid: ' + str(process.pid))
+        #flash('started ' + name + ' on pid: ' + str(process.pid))
         return process.pid
 
     p = Process(target=ffmpeg, args=(name, url, loc))

@@ -13,4 +13,6 @@ Checkout the screenshots folder to see examples of the system.
 ## TODO: 
 * logs
 * create way for make display the running states, currently it reads a .pid file < DONE
-* create cms dictionaries for control pages to iterate over, will allow system to be updated dynamically without hardcoding in channels
+* create cms dictionaries for control pages to iterate over, will allow system to be updated dynamically without hardcoding in channels < DONE
+* monitor cpu, memory, hdd and running ffmpeg processes
+* create watcher to auto restart broken ffmpeg processes/streams, run from cron and flock

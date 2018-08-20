@@ -13,14 +13,19 @@ def rad_record(name, url):
     def ffmpeg(name, url, loc):
 
         process = sp.Popen(['ffmpeg',
-                            '-re',
+                            #'-re',
                             '-nostats',
                             '-loglevel',
                             '0',
-                            # '-y'
+                            '-xerror',
+                            '-progress',
+                            'timestamps/' + name + '.ts',
+                            #'-y'
                             '-i',
                             url,
                             # '-c, 'copy',
+                            '-codec:a',
+                            'libmp3lame',
                             '-b:a',
                             '64000',
                             '-ac',
@@ -38,13 +43,13 @@ def rad_record(name, url):
                             # '-force_key_frames', '120',
                             '-reset_timestamps',
                             '1',
-                            loc + name + '.%Y-%m-%d_%H-%M-%S.wav'])
+                            loc + name + '.%Y-%m-%d_%H-%M-%S.mp3'])
 
         with open('pids/' + name + '.pid', 'w') as f:
             f.write(str(process.pid))
 
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:', str(process.pid))
-        flash('started ' + name + ' on pid: ' + str(process.pid))
+        #flash('started ' + name + ' on pid: ' + str(process.pid))
         return process.pid
 
     p = Process(target=ffmpeg, args=(name, url, loc))

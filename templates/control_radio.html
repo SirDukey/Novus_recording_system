@@ -15,6 +15,7 @@
         <th>Status</th>
         <th><span class="badge">{{ running() }} running</span></th>
         <th>Control</th>
+        <th>Auto start</th>
     </tr>
 
 {% for item in radio %}
@@ -46,7 +47,17 @@
                     {% endif %}
                 </div>
             </td>
-
+            <td>
+                <div class="btn-group">
+                    {% if 'disabled' in item[5](item[0]) %}
+                        <input class="btn btn-primary" type="submit" value="enable" name="{{ item[0] }}_enabled">
+                        <input class="btn btn-primary active" type="submit" value="disable" disabled="disabled" name="{{ item[0] }}_disabled">
+                    {% else %}
+                        <input class="btn btn-primary active" type="submit" value="enable" disabled="disabled" name="{{ item[0] }}_enabled">
+                        <input class="btn btn-primary" type="submit" value="disable" name="{{ item[0] }}_disabled">
+                    {% endif %}
+                </div>
+            </td>
         </form>
     </tr>
 
