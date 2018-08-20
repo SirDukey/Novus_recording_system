@@ -4,7 +4,7 @@ from process_control import kill_pid
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
-from info import disk_usage, mem_usage
+from info import disk_usage, mem_usage, cpu_usage
 
 
 app = Flask(__name__)
@@ -268,12 +268,14 @@ def info():
 
     du = disk_usage()
     mem = mem_usage()
+    cpu = cpu_usage()
 
     return render_template('info.html', title='Novus recording system',
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
                            du=du,
-                           mem=mem)
+                           mem=mem,
+                           cpu=cpu)
 
 
 @app.route('/control_radio',  methods=['GET', 'POST'])
