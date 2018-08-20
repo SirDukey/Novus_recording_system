@@ -47,5 +47,12 @@ def mem_usage():
 
 
 def cpu_usage():
-
-    pass
+    cmd = ['mpstat']
+    res = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+    outlist = output.split(' ')
+    idle = outlist[-1]
+    used = 100.00 - float(idle)
+    return '%.0f' % used + '%'
