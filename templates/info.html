@@ -6,6 +6,7 @@
 <br>
 
 <div class="container">
+
     CPU utilisation
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="min-width: {{ cpu }};">
@@ -31,11 +32,7 @@
 
     <table class="table">
         <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
-        {{ total_enabled = 0 }}
-        {% for channel in radio %}
-            {% for state in channel[5] %}
-            {% endor %}
-        {% endif%}
+        <!--<tr><td>Radio channels set to auto start</td><td>{{ total_enabled }}</td></tr>-->
         <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
     </table>
 

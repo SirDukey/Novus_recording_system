@@ -10,6 +10,7 @@
 <table class="table table-striped table-hover">
 
     <tr>
+        <th>#</th>
         <th>Channel</th>
         <th>Type</th>
         <th>Status</th>
@@ -21,6 +22,7 @@
 {% for item in tv %}
     <tr>
         <form action="" method="POST">
+            <td>{{ loop.index }}</td>
             <td>
                 <h4>{{ item[0] }}</h4>
             </td>

@@ -266,18 +266,19 @@ def index():
 @login_required
 def info():
 
-    du = disk_usage()
-    mem = mem_usage()
-    cpu = cpu_usage()
+    #du = disk_usage()
+    #mem = mem_usage()
+    #cpu = cpu_usage()
 
     return render_template('info.html', title='Novus recording system',
                            radio=radio,
                            tv=tv,
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
-                           du=du,
-                           mem=mem,
-                           cpu=cpu)
+                           #du=du,
+                           #mem=mem,
+                           #cpu=cpu
+           )
 
 
 @app.route('/control_radio',  methods=['GET', 'POST'])
