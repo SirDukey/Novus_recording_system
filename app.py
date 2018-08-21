@@ -266,6 +266,10 @@ def index():
 @login_required
 def info():
 
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+    tv = CMS_DICT['tv']
+
     du = disk_usage()
     mem = mem_usage()
     cpu = cpu_usage()
