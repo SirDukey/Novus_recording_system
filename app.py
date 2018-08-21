@@ -120,7 +120,7 @@ def get_pid(name):
 
 def get_auto(name):
 
-    with open('/Novus_recording_system/auto/' + name + '.auto', 'r') as f:
+    with open('auto/' + name + '.auto', 'r') as f:
         return f.read()
 
 
