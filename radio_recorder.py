@@ -23,6 +23,8 @@ def rad_record(name, url):
                             #'-y'
                             '-i',
                             url,
+                            '-stimeout',
+                            '10000',
                             # '-c, 'copy',
                             '-codec:a',
                             'libmp3lame',

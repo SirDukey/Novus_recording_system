@@ -31,6 +31,11 @@
 
     <table class="table">
         <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
+        {{ total_enabled = 0 }}
+        {% for channel in radio %}
+            {% for state in channel[5] %}
+            {% endor %}
+        {% endif%}
         <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
     </table>
 

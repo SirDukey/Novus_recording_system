@@ -271,6 +271,8 @@ def info():
     cpu = cpu_usage()
 
     return render_template('info.html', title='Novus recording system',
+                           radio=radio,
+                           tv=tv,
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
                            du=du,
