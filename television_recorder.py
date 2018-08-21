@@ -24,6 +24,8 @@ def tv_record(name, url):
                             # '-y'
                             '-i',
                             url,
+                            '-stimeout',
+                            '10000',
                             # '-c, 'copy',
                             '-b:a',
                             '64000',

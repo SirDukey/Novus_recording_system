@@ -34,11 +34,12 @@ def job():
                     print(get_time(), station[0], 'restart')
                     try:
                         print(get_time(), 'attempting to kill station {}'.format(station[0]))
-                        kill(station[3](station[0]), signal.SIGKILL)
+                        kill(station[3](station[0]), 9)
                     except:
                         print(get_time(), station[0], 'pid not present')
                     finally:
                         print(get_time(), 'starting {}'.format(station[0]))
+                        sleep(2)
                         rad_record(station[0], station[1])
 
                 else:
@@ -62,7 +63,7 @@ def job():
                     print(get_time(), station[0], 'restart')
                     try:
                         print(get_time(), 'attempting to kill station {}'.format(station[0]))
-                        kill(station[3](station[0]), signal.SIGKILL)
+                        kill(station[3](station[0]), 9)
                     except:
                         print(get_time(), station[0], 'pid not present')
                     finally:
@@ -80,7 +81,7 @@ def job():
 
 if __name__ == '__main__':
 
-    every(5).seconds.do(job)
+    every(10).seconds.do(job)
 
     while True:
         run_pending()
