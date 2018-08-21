@@ -68,6 +68,7 @@ def job():
                         print(get_time(), station[0], 'pid not present')
                     finally:
                         print(get_time(), 'starting {}'.format(station[0]))
+                        sleep(2)
                         tv_record(station[0], station[1])
 
                 else:
