@@ -53,7 +53,7 @@ def job():
     # print('checking tv for enabled')
     for station in tv:
 
-        if station[5] == 'enabled':
+        if station[5](station[0]) == 'enabled':
             if 'timestamps/{}.ts'.format(station[0]):
                 first_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
                 sleep(5)
