@@ -219,23 +219,23 @@ def content():
             ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www', get_auto, set_auto]
         ],
         'tv': [
-            ['M_NET', 'rtp://@225.0.1.101:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['Vuzu', 'rtp://@225.0.1.103:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['kykNET', 'rtp://@225.0.1.116:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SABC_News', 'rtp://@225.0.1.40:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SABC1', 'rtp://@225.0.1.189:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SABC2', 'rtp://@225.0.1.191:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SABC3', 'rtp://@225.0.1.192:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['Soweto_TV', 'rtp://@225.0.1.207:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_1', 'rtp://@225.0.1.194:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_2', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_3', 'rtp://@225.0.1.201:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_4', 'rtp://@225.0.1.202:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_5', 'rtp://@225.0.1.203:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_6', 'rtp://@225.0.1.204:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_7', 'rtp://@225.0.1.205:1100', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_8', 'rtp://@225.0.1.206:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_Blitz', 'rtp://@225.0.1.42:1100', tmain, get_pid, 'dstv', get_auto, set_auto]
+            ['M_NET', 'rtp://@225.0.1.101:1101', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Vuzu', 'rtp://@225.0.1.116:1116', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['kykNET', 'rtp://@225.0.1.144:1144', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC_News', 'rtp://@225.0.1.44:1404', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC1', 'rtp://@225.0.1.191:1191', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC2', 'rtp://@225.0.1.192:1192', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SABC3', 'rtp://@225.0.1.193:1193', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Soweto_TV', 'rtp://@225.0.1.251:1251', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_1', 'rtp://@225.0.1.201:1201', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_2', 'rtp://@225.0.1.202:1202', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_3', 'rtp://@225.0.1.203:1203', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_4', 'rtp://@225.0.1.204:1204', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_5', 'rtp://@225.0.1.205:1205', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_6', 'rtp://@225.0.1.206:1206', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_7', 'rtp://@225.0.1.207:1207', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_8', 'rtp://@225.0.1.208:1208', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_Blitz', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto]
 
         ]
     }
