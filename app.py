@@ -136,6 +136,7 @@ def set_auto(name):
     elif request.method == 'GET':
         pass
 
+
 def mp3_running():
     cmd = 'ps -ef | grep ffmpeg | grep .mp3 | wc -l'
     res = sp.Popen(cmd, shell=True, stdout=sp.PIPE)

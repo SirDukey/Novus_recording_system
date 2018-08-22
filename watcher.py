@@ -27,7 +27,7 @@ def job():
         if station[5](station[0]) == 'enabled':
             if 'timestamps/{}.ts'.format(station[0]):
                 first_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
-                sleep(1)
+                sleep(5)
                 second_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
 
                 if str(second_timestamp) in str(first_timestamp):
@@ -56,7 +56,7 @@ def job():
         if station[5] == 'enabled':
             if 'timestamps/{}.ts'.format(station[0]):
                 first_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
-                sleep(1)
+                sleep(5)
                 second_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
 
                 if str(second_timestamp) in str(first_timestamp):
@@ -71,6 +71,7 @@ def job():
                         sleep(2)
                         tv_record(station[0], station[1])
 
+
                 else:
                     try:
                         sp.Popen(['truncate', '-s0', 'timestamps/{}.ts'.format(station[0])])
@@ -82,8 +83,8 @@ def job():
 
 if __name__ == '__main__':
 
-    every(10).seconds.do(job)
+    every(13).seconds.do(job)
 
     while True:
         run_pending()
-        sleep(1)
+        sleep(2)
