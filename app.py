@@ -268,7 +268,7 @@ def index():
 @login_required
 def info():
 
-    if request.method == 'POST':
+    if request.form.get('cwl'):
         clear_watcher_log()
 
     CMS_DICT = content()
