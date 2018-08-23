@@ -275,7 +275,7 @@ def info():
     du = disk_usage()
     mem = mem_usage()
     cpu = cpu_usage()
-    cwl = clear_watcher_log()
+    cwl = clear_watcher_log
 
     return render_template('info.html', title='Novus recording system',
                            radio=radio,
