@@ -264,7 +264,7 @@ def index():
     return render_template('index.html', title='Novus recording system')
 
 
-@app.route('/info')
+@app.route('/info', methods=['GET', 'POST'])
 @login_required
 def info():
 
