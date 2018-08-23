@@ -5,7 +5,7 @@ from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
 from info import disk_usage, mem_usage, cpu_usage
-from get_watcher_log import watcher_log
+from get_watcher_log import watcher_log, clear_watcher_log
 
 
 app = Flask(__name__)
@@ -284,7 +284,8 @@ def info():
                            du=du,
                            mem=mem,
                            cpu=cpu,
-                           watcher_log=watcher_log
+                           watcher_log=watcher_log,
+                           cwl=clear_watcher_log
            )
 
 

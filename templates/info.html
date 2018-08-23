@@ -43,6 +43,7 @@
     <h3 class="panel-title">Watcher log file</h3>
   </div>
   <div class="panel-body">
+      <button type="submit" name="{{ cwl() }}">clear logs</button>
         {% for i in watcher_log() %}
             {{ i }}<br>
         {% endfor %}
