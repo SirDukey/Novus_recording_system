@@ -14,11 +14,12 @@ CMS_DICT = content()
 radio = CMS_DICT['radio']
 tv = CMS_DICT['tv']
 
+'''
 pid = getpid()
 with open('pids/watcher.pid', 'w') as f:
     f.write(pid)
 print('Watcher started on pid:', str(pid))
-
+'''
 
 def get_time():
     return str(datetime.now())
