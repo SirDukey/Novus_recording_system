@@ -3,7 +3,6 @@
 {% block body %}
 &emsp;<a href="{{ url_for('info') }}"><button>refresh</button></a>
 <br>
-<input class="btn btn-primary" type="submit" value="clear log" name="{{ cwl }}">
 <br>
 
 <div class="container">
@@ -41,13 +40,14 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Watcher log file</h3>&nbsp;&nbsp;
-      <input class="btn btn-primary" type="submit" value="clear log" name="{{ cwl }}">
+    <h3 class="panel-title">Watcher log file</h3>
   </div>
   <div class="panel-body">
-    {% for i in watcher_log() %}
-        {{ i }}<br>
-    {% endfor %}
+      <input class="btn btn-primary" type="submit" value="clear log" name="{{ cwl }}">
+      <br>
+        {% for i in watcher_log() %}
+            {{ i }}<br>
+        {% endfor %}
   </div>
 </div>
 
