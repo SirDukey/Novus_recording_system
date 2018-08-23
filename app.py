@@ -268,6 +268,9 @@ def index():
 @login_required
 def info():
 
+    if request.method == 'POST':
+        clear_watcher_log()
+
     CMS_DICT = content()
     radio = CMS_DICT['radio']
     tv = CMS_DICT['tv']
@@ -284,8 +287,7 @@ def info():
                            du=du,
                            mem=mem,
                            cpu=cpu,
-                           watcher_log=watcher_log,
-                           cwl=clear_watcher_log
+                           watcher_log=watcher_log
            )
 
 
