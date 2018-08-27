@@ -14,9 +14,24 @@
         <th>Channel</th>
         <th>Type</th>
         <th>Status</th>
-        <th><span class="badge">{{ running() }} running</span></th>
-        <th>Control</th>
-        <th>Auto start</th>
+        <th><span class="badge" id="running">{{ running() }} running</span></th>
+        <th><span class="badge" id="count_enabled">{{ tcount_enabled() }} enabled</span></th>
+        <th>Control
+            <form action="" method="post">
+                <div class="btn-group">
+                    <input class="btn btn-success btn-xs" type="submit" value="start all" name="tstart_all">
+                    <input class="btn btn-danger btn-xs" type="submit" value="stop all" name="kill_all">
+                </div>
+            </form>
+        </th>
+        <th>Auto start
+        <form action="" method="post">
+                <div class="btn-group">
+                    <input class="btn btn-success btn-xs" type="submit" value="enable all" name="tenable_all">
+                    <input class="btn btn-danger btn-xs" type="submit" value="disable all" name="tdisable_all">
+                </div>
+            </form>
+        </th>
     </tr>
 
 {% for item in tv %}
@@ -29,6 +44,9 @@
             <td>
                 <span class="label label-info">{{ item[4] }}</span>
             </td>
+
+            <td><!--spacer--></td>
+
             <td>
                 {% if 'none' in item[3](item[0]) %}
                     <span class="label label-danger">stopped</span>
@@ -37,7 +55,9 @@
                     <span class="label label-warning">{{ item[3](item[0]) }}</span>
                 {% endif %}
             </td>
-            <td></td>
+
+            <td><!--spacer--></td>
+
             <td>
                 <div class="btn-group">
                     {% if 'none' in item[3](item[0]) %}

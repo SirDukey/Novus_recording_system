@@ -1,6 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask_simplelogin import SimpleLogin, login_required
-from process_control import kill_pid
+from process_control import kill_pid, kill_all
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
@@ -156,6 +156,83 @@ def mp4_running():
     return output
 
 
+def rcount_enabled():
+
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+
+    counter = 0
+
+    for item in radio:
+        with open('auto/' + item[0] + '.auto', 'r') as f:
+            res = f.read()
+            if 'enabled' in res:
+                counter += 1
+    return counter
+
+
+def tcount_enabled():
+
+    CMS_DICT = content()
+    tv = CMS_DICT['tv']
+
+    counter = 0
+
+    for item in tv:
+        with open('auto/' + item[0] + '.auto', 'r') as f:
+            res = f.read()
+            if 'enabled' in res:
+                counter += 1
+    return counter
+
+
+# TODO: start_all
+def rstart_all():
+
+    for item in radio:
+        item[2](item[0], item[1])
+
+
+def renable_all():
+
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+
+    for item in radio:
+        with open('auto/' + item[0] + '.auto', 'w') as f:
+            f.write('enabled')
+
+
+def tenable_all():
+
+    CMS_DICT = content()
+    tv = CMS_DICT['tv']
+
+    for item in tv:
+        with open('auto/' + item[0] + '.auto', 'w') as f:
+            f.write('enabled')
+
+
+def rdisable_all():
+
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+
+    for item in radio:
+        with open('auto/' + item[0] + '.auto', 'w') as f:
+            f.write('disabled')
+
+
+def tdisable_all():
+
+    CMS_DICT = content()
+    tv = CMS_DICT['tv']
+
+    for item in tv:
+        with open('auto/' + item[0] + '.auto', 'w') as f:
+            f.write('disabled')
+
+
 def content():
 
     CMS_DICT = {
@@ -298,11 +375,23 @@ def control_radio():
     CMS_DICT = content()
     radio = CMS_DICT['radio']
 
+    if request.form.get('rstart_all'):
+        rstart_all()
+    elif request.form.get('kill_all'):
+        kill_all()
+    elif request.form.get('renable_all'):
+        renable_all()
+    elif request.form.get('rcd disable_all'):
+        rdisable_all()
+
     for item in radio:
         item[2](item[0], item[1])
         item[6](item[0])
 
-    return render_template('control_radio.html', title='Novus recording system', radio=radio, running=mp3_running)
+    return render_template('control_radio.html', title='Novus recording system',
+                           radio=radio,
+                           running=mp3_running,
+                           rcount_enabled=rcount_enabled)
 
 
 @app.route('/control_television',  methods=['GET', 'POST'])
@@ -312,11 +401,23 @@ def control_television():
     CMS_DICT = content()
     tv = CMS_DICT['tv']
 
+    if request.form.get('tstart_all'):
+        tstart_all()
+    elif request.form.get('kill_all'):
+        kill_all()
+    elif request.form.get('tenable_all'):
+        tenable_all()
+    elif request.form.get('tdisable_all'):
+        tdisable_all()
+
     for item in tv:
         item[2](item[0], item[1])
         item[6](item[0])
 
-    return render_template('control_television.html', title='Novus recording system', tv=tv, running=mp4_running)
+    return render_template('control_television.html', title='Novus recording system',
+                           tv=tv,
+                           running=mp4_running,
+                           tcount_enabled=tcount_enabled)
 
 
 if __name__ == '__main__':

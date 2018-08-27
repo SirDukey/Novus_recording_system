@@ -42,3 +42,7 @@ def kill_pid(pid_num, name, url):
     elif error2:
         print(error2)
 
+
+def kill_all():
+    sp.Popen(['pkill', 'ffmpeg'])
+
