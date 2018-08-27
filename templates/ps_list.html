@@ -23,12 +23,14 @@
 
       <br>
       <table class="table table-striped table-hover">
-          <tr>
+
 
         {% for i in show_running_ps() %}
+          <tr>
               <td>{{ i }}</td>
-        {% endfor %}
           </tr>
+        {% endfor %}
+
   </div>
 </div>
 
