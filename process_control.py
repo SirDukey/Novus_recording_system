@@ -46,7 +46,7 @@ def kill_pid(pid_num, name, url):
 def kill_all():
     sp.Popen(['pkill', 'ffmpeg'])
 
-
+'''
 def show_running_ps():
     res = sp.Popen(['ps', '-ax'], stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
@@ -54,9 +54,28 @@ def show_running_ps():
     error = error.decode('ascii')
     if output:
         ps_ls = output.split('\n')
-        for l in ps_ls:
+        for l in sorted(ps_ls):
             if 'ffmpeg' in l:
                 yield l
 
     elif error:
         return error
+'''
+def show_running_ps():
+    res = sp.Popen(['ps', '-ax'], stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+    if output:
+        ps_ls = output.split('\n')
+        new_ls = {'PID': 'NAME'}
+        for l in sorted(ps_ls):
+            if 'ffmpeg' in l:
+                l = l.split(' ')
+                new_ls['PID'] = l[0]
+                new_ls['NAME'] = l[-1]
+                yield new_ls['PID'], new_ls['NAME']
+
+
+def ps_kill(pid):
+    kill(int(pid), 9)

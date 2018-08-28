@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 from flask_simplelogin import SimpleLogin, login_required
-from process_control import kill_pid, kill_all, show_running_ps
+from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
@@ -368,13 +368,20 @@ def info():
            )
 
 
-@app.route('/ps_list')
+@app.route('/ps_list', methods=['GET', 'POST'])
 @login_required
 def ps_list():
+
+    if request.method == 'POST':
+        pid = request.form.get('ps_kill')
+        ps_kill(pid)
+
     return render_template('ps_list.html', title='Novus recording system',
                            show_running_ps=show_running_ps,
                            mp3_running=mp3_running,
-                           tv_running=mp4_running
+                           tv_running=mp4_running,
+                           rcount_enabled=rcount_enabled,
+                           tcount_enabled=tcount_enabled
                            )
 
 
