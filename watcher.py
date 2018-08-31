@@ -38,20 +38,20 @@ def job():
 
                 if str(second_timestamp) in str(first_timestamp):
                     with open('logs/watcher.log', 'a') as f:
-                        f.write(get_time() + ' ' + station[0] + ' restart')
+                        f.write(get_time() + ' ' + station[0] + ' restart\n')
                     print(get_time(), station[0], 'restart')
                     try:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' attempting to kill station {}'.format(station[0]))
+                            f.write(get_time() + ' attempting to kill station {}\n'.format(station[0]))
                         print(get_time(), 'attempting to kill station {}'.format(station[0]))
                         kill(station[3](station[0]), 9)
                     except:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' ' + station[0] + ' pid not present')
+                            f.write(get_time() + ' ' + station[0] + ' pid not present\n')
                         print(get_time(), station[0], 'pid not present')
                     finally:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' starting {}'.format(station[0]))
+                            f.write(get_time() + ' starting {}\n'.format(station[0]))
                         print(get_time(), 'starting {}'.format(station[0]))
                         sleep(2)
                         rad_record(station[0], station[1])
@@ -75,20 +75,20 @@ def job():
 
                 if str(second_timestamp) in str(first_timestamp):
                     with open('logs/watcher.log', 'a') as f:
-                        f.write(get_time() + ' ' + station[0] + ' restart')
+                        f.write(get_time() + ' ' + station[0] + ' restart\n')
                     print(get_time(), station[0], 'restart')
                     try:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' attempting to kill station {}'.format(station[0]))
+                            f.write(get_time() + ' attempting to kill station {}\n'.format(station[0]))
                         print(get_time(), 'attempting to kill station {}'.format(station[0]))
                         kill(station[3](station[0]), 9)
                     except:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' ' + station[0] + ' pid not present')
+                            f.write(get_time() + ' ' + station[0] + ' pid not present\n')
                         print(get_time(), station[0], 'pid not present')
                     finally:
                         with open('logs/watcher.log', 'a') as f:
-                            f.write(get_time() + ' starting {}'.format(station[0]))
+                            f.write(get_time() + ' starting {}\n'.format(station[0]))
                         print(get_time(), 'starting {}'.format(station[0]))
                         sleep(2)
                         tv_record(station[0], station[1])
