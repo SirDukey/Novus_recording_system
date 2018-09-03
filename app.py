@@ -444,6 +444,15 @@ def preview():
 
     return render_template('preview.html')
 
+@app.route('/test')
+@login_required
+def test():
+    def gen(mov):
+        with open(mov, 'rb') as f:
+            yield f.read()
+
+    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')), mimetype='video/MPV')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
