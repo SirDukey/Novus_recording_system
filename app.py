@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template,Response, stream_with_context, redirect
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
@@ -6,6 +6,7 @@ from television_recorder import tv_record
 import subprocess as sp
 from info import disk_usage, mem_usage, cpu_usage
 from get_watcher_log import watcher_log, clear_watcher_log
+import json
 
 
 app = Flask(__name__)
@@ -441,7 +442,12 @@ def control_television():
 @login_required
 def preview():
 
-    return render_template('preview.html', title='Novus recording system')
+    def gen(mov):
+        with open(mov, 'rb') as f:
+            yield f.read()
+
+    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
