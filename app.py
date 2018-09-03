@@ -451,7 +451,7 @@ def test():
         with open(mov, 'rb') as f:
             yield f.read()
 
-    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')), mimetype='video/MPV')
+    return Response(stream_with_context(gen('test.mp4')), mimetype='video/mp4')
 
 
 if __name__ == '__main__':
