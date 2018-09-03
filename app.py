@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template,Response, stream_with_context, url_for
+from flask import Flask, request, render_template
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
@@ -6,7 +6,6 @@ from television_recorder import tv_record
 import subprocess as sp
 from info import disk_usage, mem_usage, cpu_usage
 from get_watcher_log import watcher_log, clear_watcher_log
-import json
 
 
 app = Flask(__name__)
@@ -438,20 +437,10 @@ def control_television():
                            tcount_enabled=tcount_enabled)
 
 
-@app.route('/preview')
+@app.route('/player')
 @login_required
-def preview():
-
-    return render_template('preview.html')
-
-@app.route('/test')
-@login_required
-def test():
-    def gen(mov):
-        with open(mov, 'rb') as f:
-            yield f.read()
-
-    return Response(stream_with_context(gen('test.mp4')), mimetype='video/mp4')
+def player():
+    return render_template('player.html')
 
 
 if __name__ == '__main__':
