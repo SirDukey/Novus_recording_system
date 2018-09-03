@@ -437,5 +437,11 @@ def control_television():
                            tcount_enabled=tcount_enabled)
 
 
+@app.route('/preview')
+@login_required
+def preview():
+
+    return render_template('preview.html', title='Novus recording system')
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)

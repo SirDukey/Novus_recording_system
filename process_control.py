@@ -61,6 +61,7 @@ def show_running_ps():
     elif error:
         return error
 '''
+
 def show_running_ps():
     res = sp.Popen(['ps', '-ax'], stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
