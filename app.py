@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template,Response, stream_with_context, redirect
+from flask import Flask, request, render_template,Response, stream_with_context, url_for
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
@@ -442,11 +442,7 @@ def control_television():
 @login_required
 def preview():
 
-    def gen(mov):
-        with open(mov, 'rb') as f:
-            yield f.read()
-
-    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')), mimetype='multipart/x-mixed-replace')
+    return render_template('preview.html')
 
 
 if __name__ == '__main__':
