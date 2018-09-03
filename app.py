@@ -446,7 +446,7 @@ def preview():
         with open(mov, 'rb') as f:
             yield f.read()
 
-    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')), mimetype='video/mp4')
+    return Response(stream_with_context(gen('rtp://@225.0.1.101:1101')), mimetype='multipart/x-mixed-replace')
 
 
 if __name__ == '__main__':
