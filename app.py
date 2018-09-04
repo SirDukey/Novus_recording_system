@@ -443,5 +443,11 @@ def player():
     return render_template('player.html')
 
 
+@app.route('/encoder')
+@login_required
+def encoder():
+    return render_template('encoder.html')
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
