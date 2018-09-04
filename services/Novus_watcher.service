@@ -1,0 +1,16 @@
+[Unit]
+Description=Novus watcher
+After=multi-user.target
+
+[Service]
+Type=idle
+WorkingDirectory=/Novus_recording_system
+ExecStart=/usr/bin/python3 /Novus_recording_system/watcher.py &>> /Novus_recording_system/logs/watcher.log
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=mutli-user.target
+
