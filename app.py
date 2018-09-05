@@ -242,7 +242,7 @@ def find_mp4(name):
             else:
                 return 'test_pattern.mp4'
     else:
-        return 'directory_not_found'
+        return 'test_pattern.mp4'
 
 
 def content():
@@ -457,8 +457,21 @@ def player():
 
 @app.route('/stream/<name>')
 def stream(name):
-    with open(name, 'rb') as f:
-        return Response(stream_with_context(f), mimetype='video/mp4')
+    def generate():
+        with open(name, 'rb') as f:
+            while True:
+                yield f.read()
+
+    return Response(generate(), mimetype='video/mp4', direct_passthrough=Tru)
+
+
+@app.route('/test')
+def test():
+    def generate():
+        with open('test_pattern.mp4', 'rb') as f:
+            while True:
+                yield f.read()
+    return Response(generate(), mimetype="video/mp4", direct_passthrough=True)
 
 
 if __name__ == '__main__':
