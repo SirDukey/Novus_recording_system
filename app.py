@@ -238,13 +238,11 @@ def find_mp4(name):
     if path.exists('/mnt/broadcast/unindexed/'):
         for clip in listdir('/mnt/broadcast/unindexed/'):
             if name in clip:
-                with open('/mnt/broadcast/unindexed/{}'.format(clip), 'rb') as f:
-                    return Response(stream_with_context(f), mimetype='video/mp4')
+                return '/mnt/broadcast/unindexed/{}'.format(clip)
             else:
-                with open('test_pattern.mp4', 'rb') as f:
-                    return Response(stream_with_context(f), mimetype='video/mp4')
+                return 'test_pattern.mp4'
     else:
-        return 'directory not found'
+        return 'test_pattern.mp4'
 
 
 def content():
@@ -455,6 +453,12 @@ def control_television():
 @login_required
 def player():
     return render_template('player.html', find_mp4=find_mp4)
+
+
+@app.route('/stream/<name>')
+def stream(name):
+    with open(name, 'rb') as f:
+        return Response(stream_with_context(f), mimetype='video/mp4', direct_passthrough=True)
 
 
 if __name__ == '__main__':

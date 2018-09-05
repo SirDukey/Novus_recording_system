@@ -10,9 +10,7 @@
 
     <div class="row">
         <div class="col-md-3">M_NET
-            <video autoplay>
-                <source src="{{ find_mp4('M_NET') }}" type="video/mp4">
-            </video>
+            <video src="{{ url_for('stream', name=find_mp4('M_NET')) }}" controls autoplay></video>
         </div>
         <!--
         <div class="col-md-3">Vuzu
