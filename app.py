@@ -6,6 +6,7 @@ from television_recorder import tv_record
 import subprocess as sp
 from info import disk_usage, mem_usage, cpu_usage
 from get_watcher_log import watcher_log, clear_watcher_log
+from os import listdir, path
 
 
 app = Flask(__name__)
@@ -440,7 +441,18 @@ def control_television():
 @app.route('/player')
 @login_required
 def player():
-    return render_template('player.html')
+
+    def find_mp4(name):
+        if path.exists('/mnt/broadcast/unindexed/'):
+            for video in listdir('/mnt/broadcast/unindexed/'):
+                if name in video:
+                    return video
+                else:
+                    return 'test_pattern.mp4'
+        else:
+            return 'test_pattern.mp4'
+
+    return render_template('player.html', find_mp4=find_mp4)
 
 
 if __name__ == '__main__':
