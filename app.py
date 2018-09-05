@@ -242,7 +242,7 @@ def find_mp4(name):
             else:
                 return 'test_pattern.mp4'
     else:
-        return 'test_pattern.mp4'
+        return 'directory_not_found'
 
 
 def content():
