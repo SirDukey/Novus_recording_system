@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
@@ -238,9 +238,9 @@ def find_mp4(name):
     if path.exists('/mnt/broadcast/unindexed/'):
         for clip in listdir('/mnt/broadcast/unindexed/'):
             if name in clip:
-                return '/mnt/broadcast/unindexed/{}'.format(clip)
+                return Response('/mnt/broadcast/unindexed/{}'.format(clip), direct_passthrough=True)
             else:
-                return 'no clip found'
+                return Response('test_pattern.mp4', direct_passthrough=True)
     else:
         return 'directory not found'
 
