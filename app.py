@@ -238,9 +238,11 @@ def find_mp4(name):
     if path.exists('/mnt/broadcast/unindexed/'):
         for clip in listdir('/mnt/broadcast/unindexed/'):
             if name in clip:
-                return Response(stream_with_context('/mnt/broadcast/unindexed/{}'.format(clip)), direct_passthrough=True)
+                with open('/mnt/broadcast/unindexed/{}'.format(clip), 'rb') as f:
+                    return Response(stream_with_context(f), direct_passthrough=True)
             else:
-                return Response(stream_with_context('test_pattern.mp4'), direct_passthrough=True)
+                with open('test_pattern.mp4', 'rb') as f:
+                    return Response(stream_with_context(f), direct_passthrough=True)
     else:
         return 'directory not found'
 
