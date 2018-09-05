@@ -449,9 +449,9 @@ def player():
                     print('found', video)
                     return video
                 else:
-                    return 'nothing'
+                    return 'no video found'
         else:
-            return 'test_pattern.mp4'
+            return 'directory not found'
 
     return render_template('player.html', find_mp4=find_mp4)
 
