@@ -234,6 +234,17 @@ def tdisable_all():
             f.write('disabled')
 
 
+def find_mp4(name):
+    if path.exists('/mnt/broadcast/unindexed/'):
+        for clip in listdir('/mnt/broadcast/unindexed/'):
+            if name in clip:
+                return '/mnt/broadcast/unindexed/{}'.format(clip)
+            else:
+                return 'no clip found'
+    else:
+        return 'directory not found'
+
+
 def content():
 
     CMS_DICT = {
@@ -441,18 +452,6 @@ def control_television():
 @app.route('/player')
 @login_required
 def player():
-
-    def find_mp4():
-        if path.exists('/mnt/broadcast/unindexed/'):
-            for video in listdir('/mnt/broadcast/unindexed/'):
-                if 'M_NET' in video:
-                    print('found', video)
-                    return video
-                else:
-                    return 'no video found'
-        else:
-            return 'directory not found'
-
     return render_template('player.html', find_mp4=find_mp4)
 
 
