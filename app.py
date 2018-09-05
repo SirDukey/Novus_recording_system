@@ -462,7 +462,7 @@ def stream(name):
             while True:
                 yield f.read()
 
-    return Response(generate(), mimetype='video/mp4', direct_passthrough=Tru)
+    return Response(generate(), mimetype='video/mp4', direct_passthrough=True)
 
 
 @app.route('/test')
