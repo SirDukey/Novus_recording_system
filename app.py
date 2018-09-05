@@ -458,7 +458,7 @@ def player():
 @app.route('/stream/<name>')
 def stream(name):
     with open(name, 'rb') as f:
-        return Response(stream_with_context(f), mimetype='video/mp4', direct_passthrough=True)
+        return Response(stream_with_context(f), mimetype='video/mp4')
 
 
 if __name__ == '__main__':
