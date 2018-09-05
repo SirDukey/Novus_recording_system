@@ -442,13 +442,14 @@ def control_television():
 @login_required
 def player():
 
-    def find_mp4(name):
+    def find_mp4():
         if path.exists('/mnt/broadcast/unindexed/'):
             for video in listdir('/mnt/broadcast/unindexed/'):
-                if name in video:
+                if 'M_NET' in video:
+                    print('found', video)
                     return video
                 else:
-                    return 'test_pattern.mp4'
+                    return 'nothing'
         else:
             return 'test_pattern.mp4'
 
