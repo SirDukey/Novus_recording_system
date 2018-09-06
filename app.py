@@ -238,7 +238,7 @@ def find_mp4(name):
     if path.exists('/mnt/broadcast/unindexed/'):
         for clip in listdir('/mnt/broadcast/unindexed/'):
             if name in clip:
-                return '/mnt/broadcast/unindexed/{}'.format(clip)
+                return clip
             else:
                 return 'test_pattern.mp4'
     else:
@@ -452,15 +452,24 @@ def control_television():
 @app.route('/player')
 @login_required
 def player():
-    return render_template('player.html', find_mp4=find_mp4)
+
+    CMS_DICT = content()
+    tv = CMS_DICT['tv']
+
+    return render_template('player.html', find_mp4=find_mp4, tv=tv)
 
 
 @app.route('/stream/<name>')
 def stream(name):
     def generate():
-        with open(name, 'rb') as f:
-            while True:
-                yield f.read()
+        if 'test_pattern.mp4' not in name:
+            with open('/mnt/broadcast/unindexed/' + name, 'rb') as f:
+                while True:
+                    yield f.read()
+        else:
+            with open('test_pattern.mp4', 'rb') as f:
+                while True:
+                    yield f.read()
 
     return Response(generate(), mimetype='video/mp4', direct_passthrough=True)
 

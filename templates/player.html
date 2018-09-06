@@ -9,42 +9,105 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-3">M_NET
-            <video src="{{ url_for('stream', name=find_mp4('M_NET')) }}" controls autoplay></video>
+        <div class="col-sm-3 text-center">
+            M_NET
         </div>
-        <!--
-        <div class="col-md-3">Vuzu
-            <iframe src="http://192.168.1.111:8090/Vuzu"></iframe>
+        <div class="col-sm-3 text-center">
+            Vuzu
+        </div>
+        <div class="col-sm-3 text-center">
+            kykNET
+        </div>
+        <div class="col-sm-3 text-center">
+            ETV
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('test')) }}" controls autoplay muted width="300" height="250"></video>
         </div>
 
-        <div class="col-md-3">kykNET
-            <iframe src="http://192.168.1.111:8090/kykNET"></iframe>
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('Vuzu')) }}" controls autoplay muted width="300" height="250"></video>
         </div>
 
-        <div class="col-md-3">ETV
-            <iframe src="http://192.168.1.111:8090/ETV"></iframe>
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('kykNET')) }}" controls autoplay muted width="300" height="250"></video>
         </div>
-        -->
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('ETV')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+    </div>
+
+     <div class="row">
+        <div class="col-sm-3 text-center">
+            SABC1
+        </div>
+        <div class="col-sm-3 text-center">
+            SABC2
+        </div>
+        <div class="col-sm-3 text-center">
+            SABC3
+        </div>
+        <div class="col-sm-3 text-center">
+            SABC_News
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SABC1')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SABC2')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SABC3')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SABC_News')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 text-center">
+            Soweto_TV
+        </div>
+        <div class="col-sm-3 text-center">
+            SuperSport_1
+        </div>
+        <div class="col-sm-3 text-center">
+            SuperSport_2
+        </div>
+        <div class="col-sm-3 text-center">
+            SuperSport_3
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('Soweto_TV')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_1')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_2')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
+        <div class="col-sm-3 text-center">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_3')) }}" controls autoplay muted width="300" height="250"></video>
+        </div>
+
     </div>
 <!--
-    <div class="row">
-      <div class="col-md-3">SABC1
-          <iframe src="http://192.168.1.111:8090/SABC1"></iframe>
-      </div>
-
-      <div class="col-md-3">SABC2
-          <iframe src="http://192.168.1.111:8090/SABC2"></iframe>
-      </div>
-
-      <div class="col-md-3">SABC3
-          <iframe src="http://192.168.1.111:8090/SABC3"></iframe>
-      </div>
-
-       <div class="col-md-3">SABC_News
-           <iframe src="http://192.168.1.111:8090/SABC_News"></iframe>
-       </div>
-    </div>
-
     <div class="row">
         <div class="col-md-3">Soweto_TV
             <iframe src="http://192.168.1.111:8090/Soweto_TV"></iframe>
@@ -91,6 +154,10 @@
         </div>
     </div>
 -->
+
+    {% for channel in tv %}
+    {{ channel[0] }}
+    {% endfor %}
 </div>
 
 
