@@ -513,8 +513,8 @@ def stream(name):
 @app.route('/test')
 def test():
 
-    return Response(encoder_status(), direct_passthrough=True)
-    #return render_template('test.html', encoder_status=encoder_status())
+    #return Response(encoder_status(), direct_passthrough=True)
+    return render_template('test.html', encoder_status=encoder_status())
 
 
 
