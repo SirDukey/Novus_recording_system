@@ -245,6 +245,41 @@ def find_mp4(name):
         return 'test_pattern.mp4'
 
 
+def encoder_status():
+    unit_dict = {
+        '192.168.55.3': '',
+        '192.168.55.4': '',
+        '192.168.55.5': '',
+        '192.168.55.6': '',
+        '192.168.55.7': '',
+        '192.168.55.8': '',
+        '192.168.55.9': '',
+        '192.168.55.10': '',
+        '192.168.55.11': '',
+        '192.168.55.12': '',
+        '192.168.55.13': '',
+        '192.168.55.14': '',
+        '192.168.55.15': ''
+    }
+
+    for unit in unit_dict.keys():
+        res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
+        output, error = res.communicate()
+        output = output.decode('ascii')
+        if '0 received' in output:
+            unit_dict[unit] = 'offline'
+        else:
+            unit_dict[unit] = 'online'
+    return unit_dict
+    '''
+    if 'offline' in unit_dict.values():
+        for unit in unit_dict.items():
+            if 'offline' in unit:
+                unit[0], unit[1]
+    else:
+        return 'online'
+    '''
+
 def content():
 
     CMS_DICT = {
@@ -460,6 +495,7 @@ def player():
 
 
 @app.route('/stream/<name>')
+@login_required
 def stream(name):
     def generate():
         if 'test_pattern.mp4' not in name:
@@ -476,11 +512,10 @@ def stream(name):
 
 @app.route('/test')
 def test():
-    def generate():
-        with open('test_pattern.mp4', 'rb') as f:
-            while True:
-                yield f.read()
-    return Response(generate(), mimetype="video/mp4", direct_passthrough=True)
+
+    return Response(encoder_status(), direct_passthrough=True)
+    #return render_template('test.html', encoder_status=encoder_status())
+
 
 
 if __name__ == '__main__':
