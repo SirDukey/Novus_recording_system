@@ -235,8 +235,8 @@ def tdisable_all():
 
 
 def find_mp4(name):
-    if path.exists('/mnt/broadcast/unindexed/'):
-        for clip in listdir('/mnt/broadcast/unindexed/'):
+    if path.exists('/Novus_recording_system/clips/'):
+        for clip in listdir('/Novus_recording_system/clips/'):
             if name in clip:
                 return clip
             else:
