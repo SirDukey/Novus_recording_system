@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, Response, stream_with_context
+from flask import Flask, request, render_template, Response
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record
@@ -6,7 +6,9 @@ from television_recorder import tv_record
 import subprocess as sp
 from info import mem_usage, cpu_usage, disk_usage
 from get_watcher_log import watcher_log, clear_watcher_log
-from os import listdir, path
+from os import listdir
+import random
+from time import sleep
 
 
 app = Flask(__name__)
@@ -497,6 +499,11 @@ def player():
 @login_required
 def stream(name):
     def generate():
+
+        i = random.randint(1, 99)
+        num = i / 100
+        sleep(num)
+
         if 'test_pattern.mp4' not in name:
             with open('clips/' + name, 'rb') as f:
                 while True:
