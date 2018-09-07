@@ -11,7 +11,9 @@ def disk_usage():
 
     if output:
         outlist = output.split('\n')
+        print(outlist)
         outlist = outlist[3].split(' ')
+        print(outlist)
         return outlist[-2]
 
     elif error:
@@ -29,14 +31,12 @@ def mem_usage():
     error = error.decode('ascii')
 
     if output:
-        outlist = output.split('\n')
-        outlist = outlist[1].split(' ')
-        total = outlist[12]
-        print(total)
-        used = outlist[20]
-        print(used)
-        #total = float(total)
-        #used = float(used)
+        output = output.split('\n')
+        output = output[1]
+        output = output.split(' ')
+        output = list(filter(None, output))
+        total = int(output[1])
+        used = int(output[2])
         diff_perc = (total - used) / total * 100
         used_perc = 100 - diff_perc
         output = '%.0f' % used_perc + '%'
