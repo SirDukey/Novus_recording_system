@@ -10,11 +10,12 @@ def disk_usage():
     error = error.decode('ascii')
 
     if output:
-        outlist = output.split('\n')
-        print(outlist)
-        outlist = outlist[3].split(' ')
-        print(outlist)
-        return outlist[-2]
+        output = output.split('\n')
+        for line in output:
+            if '/mnt/broadcast' in line:
+                line = line.split(' ')
+                used_perc = list(filter(None, line))
+                return used_perc[-2]
 
     elif error:
         print(error)
