@@ -406,10 +406,11 @@ def info():
                            tv=tv,
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
-                           #du=du,
+                           du=du,
                            mem=mem,
                            cpu=cpu,
-                           watcher_log=watcher_log
+                           watcher_log=watcher_log,
+                           encoder_check=encoder_check()
            )
 
 

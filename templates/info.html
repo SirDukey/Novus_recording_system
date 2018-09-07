@@ -34,6 +34,11 @@
         <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
         <!--<tr><td>Radio channels set to auto start</td><td>{{ total_enabled }}</td></tr>-->
         <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
+        <tr><td>encoders status</td><td>
+            {% for i in encoder_check %}
+                {{ i }}<br>
+            {% endfor %}
+        </td></tr>
     </table>
 
 </div>
