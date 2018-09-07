@@ -500,7 +500,7 @@ def player():
 def stream(name):
     def generate():
 
-        i = random.randint(1, 99)
+        i = random.randint(100, 300)
         num = i / 100
         sleep(num)
 
