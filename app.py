@@ -245,23 +245,29 @@ def find_mp4(name):
         return 'test_pattern.mp4'
 
 
-def encoder_status():
+def encoder_check():
+    '''
     unit_dict = {
-        '192.168.55.3': '',
-        '192.168.55.4': '',
-        '192.168.55.5': '',
-        '192.168.55.6': '',
-        '192.168.55.7': '',
-        '192.168.55.8': '',
-        '192.168.55.9': '',
-        '192.168.55.10': '',
-        '192.168.55.11': '',
-        '192.168.55.12': '',
-        '192.168.55.13': '',
-        '192.168.55.14': '',
-        '192.168.55.15': ''
+            '192.168.55.3': '',
+            '192.168.55.4': '',
+            '192.168.55.5': '',
+            '192.168.55.6': '',
+            '192.168.55.7': '',
+            '192.168.55.8': '',
+            '192.168.55.9': '',
+            '192.168.55.10': '',
+            '192.168.55.11': '',
+            '192.168.55.12': '',
+            '192.168.55.13': '',
+            '192.168.55.14': '',
+            '192.168.55.15': ''
+        }
+    '''
+    unit_dict = {
+        '192.168.1.25': '',
+        '192.168.1.26': '',
+        '8.8.8.8': ''
     }
-
     for unit in unit_dict.keys():
         res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
         output, error = res.communicate()
@@ -270,15 +276,13 @@ def encoder_status():
             unit_dict[unit] = 'offline'
         else:
             unit_dict[unit] = 'online'
-    return unit_dict
-    '''
     if 'offline' in unit_dict.values():
         for unit in unit_dict.items():
             if 'offline' in unit:
-                unit[0], unit[1]
+                yield str(unit[0]) + ' ' + str(unit[1])
     else:
-        return 'online'
-    '''
+        yield 'online'
+
 
 def content():
 
@@ -511,11 +515,9 @@ def stream(name):
 
 
 @app.route('/test')
+@login_required
 def test():
-
-    #return Response(encoder_status(), direct_passthrough=True)
-    return render_template('test.html', encoder_status=encoder_status())
-
+    return render_template('test.html', encoder_check=encoder_check())
 
 
 if __name__ == '__main__':

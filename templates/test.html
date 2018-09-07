@@ -2,6 +2,9 @@
 
 {% block body %}
 
-{{ encoder_status }}
+
+{% for i in encoder_check %}
+{{ i }}<br>
+{% endfor %}
 
 {% endblock %}
