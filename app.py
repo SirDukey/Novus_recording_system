@@ -235,12 +235,12 @@ def tdisable_all():
 
 
 def find_mp4(name):
-    if path.exists('/Novus_recording_system/clips/'):
-        for clip in listdir('/Novus_recording_system/clips/'):
-            if name in clip:
-                return clip
-            else:
-                return 'test_pattern.mp4'
+
+    clips = listdir('clips/')
+    for clip in clips:
+        if name in clip:
+            return clip
+
     else:
         return 'test_pattern.mp4'
 
@@ -498,7 +498,7 @@ def player():
 def stream(name):
     def generate():
         if 'test_pattern.mp4' not in name:
-            with open('/mnt/broadcast/unindexed/' + name, 'rb') as f:
+            with open('clips/' + name, 'rb') as f:
                 while True:
                     yield f.read()
         else:
