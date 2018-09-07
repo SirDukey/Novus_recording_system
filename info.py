@@ -22,7 +22,7 @@ def disk_usage():
 
 def mem_usage():
 
-    cmd= ['free', '-h']
+    cmd= ['free', '-m']
     res = sp.Popen(cmd, stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('ascii')
@@ -31,8 +31,8 @@ def mem_usage():
     if output:
         outlist = output.split('\n')
         outlist = outlist[1].split(' ')
-        total = outlist[12].strip('G')
-        used = outlist[20].strip('G')
+        total = outlist[12]
+        used = outlist[20]
         total = float(total)
         used = float(used)
         diff_perc = (total - used) / total * 100
