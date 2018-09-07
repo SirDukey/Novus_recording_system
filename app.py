@@ -509,11 +509,5 @@ def stream(name):
     return Response(generate(), mimetype='video/mp4', direct_passthrough=True)
 
 
-@app.route('/test')
-@login_required
-def test():
-    return render_template('test.html', encoder_check=encoder_check())
-
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001)
