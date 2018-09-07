@@ -32,9 +32,11 @@ def mem_usage():
         outlist = output.split('\n')
         outlist = outlist[1].split(' ')
         total = outlist[12]
+        print(total)
         used = outlist[20]
-        total = float(total)
-        used = float(used)
+        print(used)
+        #total = float(total)
+        #used = float(used)
         diff_perc = (total - used) / total * 100
         used_perc = 100 - diff_perc
         output = '%.0f' % used_perc + '%'
