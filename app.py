@@ -246,7 +246,6 @@ def find_mp4(name):
 
 
 def encoder_check():
-    '''
     unit_dict = {
             '192.168.55.3': '',
             '192.168.55.4': '',
@@ -262,12 +261,7 @@ def encoder_check():
             '192.168.55.14': '',
             '192.168.55.15': ''
         }
-    '''
-    unit_dict = {
-        '192.168.1.25': '',
-        '192.168.1.26': '',
-        '8.8.8.8': ''
-    }
+
     for unit in unit_dict.keys():
         res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
         output, error = res.communicate()
