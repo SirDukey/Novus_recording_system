@@ -238,7 +238,7 @@ def tdisable_all():
 
 def find_mp4(name):
 
-    clips = listdir('/home/mike/Documents/Python/Novus_recording_system/clips/')
+    clips = listdir('clips/')
     count = 0
     my_ls = []
     try:
