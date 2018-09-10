@@ -249,11 +249,12 @@ def find_mp4(name):
                 my_ls.sort()
         if count > 2:
             return my_ls[-2]
+        elif count == 1:
+            return 'test_pattern.mp4'
         else:
             return my_ls[0]
     except:
         return 'test_pattern.mp4'
-
 
 
 def encoder_check():
@@ -287,6 +288,12 @@ def encoder_check():
                 yield str(unit[0]) + ' ' + str(unit[1])
     else:
         yield 'online'
+
+
+def show_clips():
+    clip_dir = listdir('clips/')
+    clip_dir.sort()
+    return clip_dir
 
 
 def content():
@@ -438,7 +445,8 @@ def ps_list():
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
                            rcount_enabled=rcount_enabled,
-                           tcount_enabled=tcount_enabled
+                           tcount_enabled=tcount_enabled,
+                           show_clips=show_clips
                            )
 
 

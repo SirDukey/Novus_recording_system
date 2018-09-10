@@ -5,118 +5,15 @@
 &emsp;<a href="{{ url_for('player') }}"><button>refresh</button></a>
 <br>
 <br>
-<!--
-<div class="container-fluid">
 
-    <div class="row">
-        <div class="col-sm-3 text-center">
-            M_NET
-        </div>
-        <div class="col-sm-3 text-center">
-            Vuzu
-        </div>
-        <div class="col-sm-3 text-center">
-            kykNET
-        </div>
-        <div class="col-sm-3 text-center">
-            ETV
-        </div>
-    </div>
-    <div class="row" >
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('M_NET')) }}" controls autoplay muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('Vuzu')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('kykNET')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('ETV')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-    </div>
-
-     <div class="row">
-        <div class="col-sm-3 text-center">
-            SABC1
-        </div>
-        <div class="col-sm-3 text-center">
-            SABC2
-        </div>
-        <div class="col-sm-3 text-center">
-            SABC3
-        </div>
-        <div class="col-sm-3 text-center">
-            SABC_News
-        </div>
-    </div>
-    <div class="row" >
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SABC1')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SABC2')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SABC3')) }}" controls autoplay muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SABC_News')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-sm-3 text-center">
-            Soweto_TV
-        </div>
-        <div class="col-sm-3 text-center">
-            SuperSport_1
-        </div>
-        <div class="col-sm-3 text-center">
-            SuperSport_2
-        </div>
-        <div class="col-sm-3 text-center">
-            SuperSport_3
-        </div>
-    </div>
-
-    <div class="row" >
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('Soweto_TV')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SuperSport_1')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SuperSport_2')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-        <div class="col-sm-3 text-center">
-            <video src="{{ url_for('stream', name=find_mp4('SuperSport_3')) }}" controls muted width="300" height="250"></video>
-        </div>
-
-    </div>
-</div>
--->
 <div class="container-fluid">
 
     {% for channel in tv %}
     {{ channel[0] }}
-    <video src="{{ url_for('stream', name=find_mp4(channel[0])) }}" controls autoplay loop muted width="300" height="250"></video>
+    <video src="{{ url_for('stream', name=find_mp4(channel[0])) }}"
+           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+           controls autoplay loop muted width="300" height="250"></video>
     {% endfor %}
 </div>
-
-
 
 {% endblock %}

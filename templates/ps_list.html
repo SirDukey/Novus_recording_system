@@ -5,7 +5,18 @@
 <br>
 <br>
 
-<div class="container">
+
+
+<div class="container col-md-6">
+    {% for clip in show_clips() %}
+        {% if clip != 'sync.sh' %}
+            {{ clip }}<br>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+<div class="container col-md-6">
 
     <table class="table table-striped">
         <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
@@ -15,6 +26,8 @@
     </table>
 
 </div>
+
+&nbsp
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -40,8 +53,6 @@
 
   </div>
 </div>
-
-
 
 
 {% endblock %}
