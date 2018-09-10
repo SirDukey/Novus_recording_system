@@ -241,7 +241,12 @@ def find_mp4(name):
     clips = listdir('clips/')
     for clip in clips:
         if name in clip:
-            return clip
+            my_ls = []
+            my_ls.append(clip)
+            my_ls.sort()
+
+            return my_ls[0]
+
 
     else:
         return 'test_pattern.mp4'
