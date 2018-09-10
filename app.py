@@ -254,7 +254,7 @@ def find_mp4(name):
         else:
             return my_ls[0]
     except:
-        return 'test_pattern.jpg4'
+        return 'test_pattern.jpg'
 
 
 def encoder_check():
