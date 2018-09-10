@@ -254,7 +254,7 @@ def find_mp4(name):
         else:
             return my_ls[0]
     except:
-        return 'test_pattern.mp4'
+        return 'test_pattern.jpg4'
 
 
 def encoder_check():
@@ -515,13 +515,14 @@ def player():
 @app.route('/stream/<name>')
 @login_required
 def stream(name):
+
     def generate():
 
         i = random.randint(100, 500)
         num = i / 100
         sleep(num)
 
-        if 'test_pattern.mp4' not in name:
+        if 'test_pattern.jpg' not in name:
 
             with open('clips/' + name, 'rb') as f:
                 while True:
