@@ -241,15 +241,17 @@ def find_mp4(name):
     clips = listdir('clips/')
     for clip in clips:
         if name in clip:
+            count = 0
             my_ls = []
             my_ls.append(clip)
             my_ls.sort()
-            try:
-                try:
-                    return my_ls[-2]
-                except:
-                    return my_ls[-1]
-            except:
+            for i in my_ls:
+                count += 1
+            if count > 2:
+                return my_ls[-2]
+            elif count == 2:
+                return my_ls[-1]
+            else:
                 return my_ls[0]
 
     else:
