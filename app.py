@@ -244,9 +244,13 @@ def find_mp4(name):
             my_ls = []
             my_ls.append(clip)
             my_ls.sort()
-
-            return min(my_ls)
-
+            try:
+                try:
+                    return my_ls[-2]
+                except:
+                    return my_ls[-1]
+            except:
+                return my_ls[0]
 
     else:
         return 'test_pattern.mp4'
