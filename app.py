@@ -238,24 +238,22 @@ def tdisable_all():
 
 def find_mp4(name):
 
-    clips = listdir('clips/')
-    for clip in clips:
-        if name in clip:
-            count = 0
-            my_ls = []
-            my_ls.append(clip)
-            my_ls.sort()
-            for i in my_ls:
+    clips = listdir('/home/mike/Documents/Python/Novus_recording_system/clips/')
+    count = 0
+    my_ls = []
+    try:
+        for clip in clips:
+            if name in clip:
                 count += 1
-            if count > 2:
-                return my_ls[-2]
-            elif count == 2:
-                return my_ls[-1]
-            else:
-                return my_ls[0]
-
-    else:
+                my_ls.append(clip)
+                my_ls.sort()
+        if count > 2:
+            return my_ls[-2]
+        else:
+            return my_ls[0]
+    except:
         return 'test_pattern.mp4'
+
 
 
 def encoder_check():
