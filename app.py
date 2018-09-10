@@ -243,7 +243,7 @@ def find_mp4(name):
         if name in clip:
             my_ls = []
             my_ls.append(clip)
-            my_ls.sort()
+            my_ls.sort(reverse=True)
 
             return my_ls[0]
 
