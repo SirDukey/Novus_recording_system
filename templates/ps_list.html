@@ -5,54 +5,57 @@
 <br>
 <br>
 
+<div class="container-fluid">
+
+    <div class="col-md-6">
+        {% for clip in show_clips() %}
+            {% if clip != 'sync.sh' %}
+                {{ clip }}<br>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 
-<div class="container col-md-6">
-    {% for clip in show_clips() %}
-        {% if clip != 'sync.sh' %}
-            {{ clip }}<br>
-        {% endif %}
-    {% endfor %}
-</div>
+    <div class="col-md-6">
 
+        <table class="table table-striped">
+            <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
+            <tr><td>Radio channels set to auto start</td><td>{{ rcount_enabled() }}</td></tr>
+            <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
+            <tr><td>TV channels set to auto start</td><td>{{ tcount_enabled() }}</td></tr>
+        </table>
 
-<div class="container col-md-6">
-
-    <table class="table table-striped">
-        <tr><td>Radio channels running</td><td>{{ mp3_running() }}</td></tr>
-        <tr><td>Radio channels set to auto start</td><td>{{ rcount_enabled() }}</td></tr>
-        <tr><td>TV channels running</td><td>{{ tv_running() }}</td></tr>
-        <tr><td>TV channels set to auto start</td><td>{{ tcount_enabled() }}</td></tr>
-    </table>
+    </div>
 
 </div>
 
 &nbsp
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Running processes</h3>
-  </div>
-  <div class="panel-body">
+<div class="container-fluid col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Running processes</h3>
+      </div>
+      <div class="panel-body">
 
-      <br>
-      <table class="table table-hover">
-        <th>Terminate</th><th>Description</th>
+          <br>
+          <table class="table table-hover">
+            <th>Terminate</th><th>Description</th>
 
-        {% for i in show_running_ps() %}
+            {% for i in show_running_ps() %}
 
-          <tr>
-              <td>
-                  <form action="" method="post">
-                    <input class="btn btn-danger btn-xs" type="submit" value="{{ i[0] }}" name="ps_kill">
-                  </form>
-              </td>
-              <td>{{ i[1] }}</td>
-          </tr>
-        {% endfor %}
+              <tr>
+                  <td>
+                      <form action="" method="post">
+                        <input class="btn btn-danger btn-xs" type="submit" value="{{ i[0] }}" name="ps_kill">
+                      </form>
+                  </td>
+                  <td>{{ i[1] }}</td>
+              </tr>
+            {% endfor %}
 
-  </div>
+      </div>
+    </div>
 </div>
-
 
 {% endblock %}
