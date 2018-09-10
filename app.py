@@ -9,7 +9,7 @@ from get_watcher_log import watcher_log, clear_watcher_log
 from os import listdir
 import random
 from time import sleep
-
+from multiprocessing import Process
 
 app = Flask(__name__)
 
@@ -500,14 +500,16 @@ def player():
 def stream(name):
     def generate():
 
-        i = random.randint(100, 300)
+        i = random.randint(100, 500)
         num = i / 100
         sleep(num)
 
         if 'test_pattern.mp4' not in name:
+
             with open('clips/' + name, 'rb') as f:
                 while True:
                     yield f.read()
+
         else:
             with open('test_pattern.mp4', 'rb') as f:
                 while True:
@@ -517,4 +519,4 @@ def stream(name):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5001)
+    app.run(host='0.0.0.0', debug=True, port=5001, threaded=True)
