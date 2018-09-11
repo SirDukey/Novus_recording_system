@@ -377,7 +377,9 @@ def content():
             ['SuperSport_6', 'rtp://@225.0.1.206:1206', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_7', 'rtp://@225.0.1.207:1207', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_8', 'rtp://@225.0.1.208:1208', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_Blitz', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto]
+            ['SuperSport_Blitz', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['CNBC', 'rtp://@225.0.1.41:1410', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Business_Day', 'rtp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto]
 
         ]
     }
