@@ -14,7 +14,7 @@ def tv_record(name, url):
     def ffmpeg(name, url, loc):
 
         process = sp.Popen(['ffmpeg',
-                            #'-re',
+                            '-re',
                             '-nostats',
                             '-loglevel',
                             '0',
