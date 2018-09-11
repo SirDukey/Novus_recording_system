@@ -451,6 +451,13 @@ def ps_list():
                            )
 
 
+@app.route('/encoder')
+@login_required
+def encoder():
+
+    return render_template('encoder.html', title='Novus recording system')
+
+
 @app.route('/control_radio',  methods=['GET', 'POST'])
 @login_required
 def control_radio():
