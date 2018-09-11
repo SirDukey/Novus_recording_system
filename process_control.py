@@ -62,7 +62,7 @@ def show_running_ps():
                 l_name = l[-1].split('/')
                 l_name = l_name[-1].split('.')
                 l_name = l_name[0]
-                yield l_name, l_pid
+                yield l_pid, l_name
     if error:
         return error
 
