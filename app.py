@@ -380,7 +380,6 @@ def content():
             ['SuperSport_Blitz', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['CNBC', 'rtp://@225.0.1.41:1410', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['Business_Day', 'rtp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto]
-
         ]
     }
 
