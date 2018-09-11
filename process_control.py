@@ -58,7 +58,11 @@ def show_running_ps():
             if 'ffmpeg' in l:
                 l = l.split(' ')
                 l = list(filter(None, l))
-                yield l[0], l[-1]
+                l_pid = l[0]
+                l_name = l[-1].split('/')
+                l_name = l_name[-1].split('.')
+                l_name = l_name[0]
+                yield l_name, l_pid
     if error:
         return error
 
