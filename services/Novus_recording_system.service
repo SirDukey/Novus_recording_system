@@ -5,7 +5,7 @@ After=multi-user.target
 [Service]
 Type=idle
 WorkingDirectory=/Novus_recording_system
-ExecStart=/usr/bin/python3 /Novus_recording_system/app.py
+ExecStart=/usr/local/bin/gunicorn -w 100 -t 5 app:app --reload --bind 0.0.0.0:5001
 StandardError=journal
 StandardOutput=journal
 Restart=on-failure
@@ -13,4 +13,6 @@ RestartSec=5s
 
 [Install]
 WantedBy=mutli-user.target
+
+
 

@@ -21,6 +21,11 @@ app.config['SECRET_KEY'] = SECRET_KEY
 SimpleLogin(app)
 
 
+def readme():
+    with open('README.md', 'r') as f:
+        return f.read()
+
+
 def check_pid(pid_num, name, url):
 
     '''first test'''
@@ -381,7 +386,10 @@ def content():
             ['SuperSport_8', 'udp://@225.0.1.208:1208', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_Blitz', 'udp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['CNBC_Africa', 'udp://@225.0.1.41:1410', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['BusinessDay_TV', 'udp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto]
+            ['BusinessDay_TV', 'udp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['BBC_World_News', 'udp://@225.0.1.40:1400', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['eNews_Channel_Africa', 'udp://@225.0.1.43:1403', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Sky_News', 'udp://@225.0.1.45:1405', tmain, get_pid, 'dstv', get_auto, set_auto]
         ]
     }
 
@@ -404,7 +412,7 @@ def logout():
 @login_required
 def index():
 
-    return render_template('index.html', title='Novus recording system')
+    return render_template('index.html', title='Novus recording system', readme=readme())
 
 
 @app.route('/info', methods=['GET', 'POST'])
