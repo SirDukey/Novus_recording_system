@@ -369,7 +369,7 @@ def content():
             ['SABC2', 'rtp://@225.0.1.192:1192', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SABC3', 'rtp://@225.0.1.193:1193', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['Soweto_TV', 'rtp://@225.0.1.251:1251', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_1', 'rtp://@225.0.1.201:1201', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_1', 'udp://@225.0.1.201:1201', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_2', 'rtp://@225.0.1.202:1202', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_3', 'rtp://@225.0.1.203:1203', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_4', 'rtp://@225.0.1.204:1204', tmain, get_pid, 'dstv', get_auto, set_auto],
@@ -377,7 +377,7 @@ def content():
             ['SuperSport_6', 'rtp://@225.0.1.206:1206', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_7', 'rtp://@225.0.1.207:1207', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['SuperSport_8', 'rtp://@225.0.1.208:1208', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['SuperSport_Blitz', 'rtp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['SuperSport_Blitz', 'udp://@225.0.1.200:1200', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['CNBC_Africa', 'rtp://@225.0.1.41:1410', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['BusinessDay_TV', 'rtp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto]
         ]
