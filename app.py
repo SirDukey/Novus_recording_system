@@ -22,8 +22,10 @@ SimpleLogin(app)
 
 
 def readme():
+    read_me_file = []
     with open('README.md', 'r') as f:
-        return f.read()
+        read_me_file.append(f.read().split('\n'))
+    return read_me_file
 
 
 def du_clip_dir():

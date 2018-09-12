@@ -12,8 +12,12 @@
   </div>
 
 </p>
-    {{ readme }}
-<p>
 
+<p>
+    <div class="container">
+        {% for line in readme[0] %}
+            {{ line }}<br>
+        {% endfor %}
+    </div>
 </p>
 {% endblock %}
