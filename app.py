@@ -389,7 +389,9 @@ def content():
             ['BusinessDay_TV', 'udp://@225.0.1.42:1412', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['BBC_World_News', 'udp://@225.0.1.40:1400', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['eNews_Channel_Africa', 'udp://@225.0.1.43:1403', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['Sky_News', 'udp://@225.0.1.45:1405', tmain, get_pid, 'dstv', get_auto, set_auto]
+            ['Sky_News', 'udp://@225.0.1.45:1405', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['CNN_International', 'udp://@225.0.1.46:1401', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['BBC_Brit', 'udp://@225.0.1.120:1120', tmain, get_pid, 'dstv', get_auto, set_auto]
         ]
     }
 
