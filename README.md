@@ -10,6 +10,7 @@ Checkout the screenshots folder to see examples of the system.
 * DAB+FM (Realtek 2832) usb dongle for stations that do not have an internet stream
 * rtl_fm (found in rtl-sdr) for accessing the usb dongle fm stream
 * gunicorn wsgi server
+* mpstat from the systat package used for cpu info
 * nginx for client requests, config is found in services directory
 * DSTV streams via Televes HDMI encoders
 * crontab entries as follows:
