@@ -47,6 +47,25 @@ def du_clip_dir():
         return error
 
 
+def du_unindexed_dir():
+    res = sp.Popen(['du', '-hs', '/mnt/broadcast/unindexed'], stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+    if output:
+        if 'M' in output:
+            output = output.split('M')
+            return str(output[0]) + 'M'
+        elif 'G' in output:
+            output = output.split('G')
+            return str(output[0]) + 'G'
+        elif 'K' in output:
+            output = output.split('K')
+            return str(output[0]) + 'K'
+    elif error:
+        return error
+
+
 def check_pid(pid_num, name, url):
 
     '''first test'''
@@ -469,7 +488,8 @@ def info():
                            cpu=cpu,
                            watcher_log=watcher_log,
                            encoder_check=encoder_check(),
-                           du_clip_dir=du_clip_dir()
+                           du_clip_dir=du_clip_dir(),
+                           du_unindexed_dir=du_unindexed_dir()
            )
 
 
