@@ -45,22 +45,38 @@
 
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Watcher log file</h3>
-  </div>
-  <div class="panel-body">
-      <form action="" method="POST">
-        <input class="btn btn-default" type="submit" value="clear log" name="cwl">
-      </form>
-      <br>
-        {% for i in watcher_log() %}
-            {{ i }}<br>
-        {% endfor %}
-  </div>
+<div class="container-fluid col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Watcher log file</h3>
+      </div>
+      <div class="panel-body">
+          <form action="" method="POST">
+            <input class="btn btn-default" type="submit" value="clear log" name="cwl">
+          </form>
+          <br>
+            {% for i in watcher_log() %}
+                {{ i }}<br>
+            {% endfor %}
+      </div>
+    </div>
 </div>
 
-
-
+<div class="container-fluid col-lg-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Routing table</h3>
+      </div>
+      <div class="panel-body">
+          <form action="" method="POST">
+            <input class="btn btn-default" type="submit" value="add routes" name="set_routes">
+          </form>
+          <br>
+            {% for i in get_routes() %}
+                {{ i }}<br>
+            {% endfor %}
+      </div>
+    </div>
+</div>
 
 {% endblock %}

@@ -353,6 +353,24 @@ def show_mnt():
     return mnt_dir
 
 
+def get_routes():
+    res = sp.Popen(['ip', 'r'], stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+
+    if output:
+        my_ls = []
+        my_ls.append(output.split('\n'))
+        return my_ls[0]
+    elif error:
+        return error
+
+
+def set_routes():
+    sp.Popen(['sh', 'routes.sh'])
+
+
 def content():
 
     CMS_DICT = {
@@ -475,6 +493,8 @@ def info():
 
     if request.form.get('cwl'):
         clear_watcher_log()
+    elif request.form.get('set_routes'):
+        set_routes()
 
     CMS_DICT = content()
     radio = CMS_DICT['radio']
@@ -495,7 +515,8 @@ def info():
                            watcher_log=watcher_log,
                            encoder_check=encoder_check(),
                            du_clip_dir=du_clip_dir(),
-                           du_unindexed_dir=du_unindexed_dir()
+                           du_unindexed_dir=du_unindexed_dir(),
+                           get_routes=get_routes
            )
 
 
