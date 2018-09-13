@@ -611,5 +611,17 @@ def stream(name):
     return Response(generate(), mimetype='video/mp4', direct_passthrough=True)
 
 
+@app.route('/audio_player')
+@login_required
+def audio_player():
+
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+
+    return render_template('audio_player.html', title='Novus recording system',
+                           radio=radio
+                           )
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001, threaded=True)

@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container">
+{% for channel in radio %}
+{{ channel[0] }}<br>
+<audio src="{{ channel[1] }}" controls preload="none"></audio><br>
+{% endfor %}
+</div>
+
+{% endblock %}
