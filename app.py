@@ -322,6 +322,12 @@ def show_clips():
     return clip_dir
 
 
+def show_mnt():
+    mnt_dir = listdir('/mnt/broadcast/unindexed/')
+    mnt_dir.sort()
+    return mnt_dir
+
+
 def content():
 
     CMS_DICT = {
@@ -481,7 +487,8 @@ def ps_list():
                            tv_running=mp4_running,
                            rcount_enabled=rcount_enabled,
                            tcount_enabled=tcount_enabled,
-                           show_clips=show_clips
+                           show_clips=show_clips,
+                           show_mnt=show_mnt
                            )
 
 
