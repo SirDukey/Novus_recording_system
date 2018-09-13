@@ -8,6 +8,7 @@
         <th>Channel</th>
         <th>Url</th>
         <th>Status</th>
+        <th><!--spacer--></th>
         <th>Control</th>
 
         {% for channel in radio %}
@@ -17,6 +18,7 @@
                 <td>{{ channel[1] }}</td>
                 {% if 'none' in channel[3](channel[0]) %}
                     <td><span class="label label-danger">stopped</span></td>
+                    <td><!--spacer--></td>
                 {% else %}
                     <td><span class="label label-success">running</span></td>
                     <td><span class="label label-warning">{{ channel[3](channel[0]) }}</span></td>
