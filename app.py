@@ -9,7 +9,7 @@ from get_watcher_log import watcher_log, clear_watcher_log
 from os import listdir
 import random
 from time import sleep
-from multiprocessing import Process
+import socket
 
 app = Flask(__name__)
 
@@ -303,6 +303,9 @@ def find_mp4(name):
 
 
 def encoder_check():
+
+    ip = socket.gethostbyname(socket.gethostname())
+
     unit_dict = {
             '192.168.55.3': '',
             '192.168.55.4': '',
@@ -319,20 +322,23 @@ def encoder_check():
             '192.168.55.15': ''
         }
 
-    for unit in unit_dict.keys():
-        res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
-        output, error = res.communicate()
-        output = output.decode('ascii')
-        if '0 received' in output:
-            unit_dict[unit] = 'offline'
+    if ip == '127.0.1.1':
+        for unit in unit_dict.keys():
+            res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
+            output, error = res.communicate()
+            output = output.decode('ascii')
+            if '0 received' in output:
+                unit_dict[unit] = 'offline'
+            else:
+                unit_dict[unit] = 'online'
+        if 'offline' in unit_dict.values():
+            for unit in unit_dict.items():
+                if 'offline' in unit:
+                    yield str(unit[0]) + ' ' + str(unit[1])
         else:
-            unit_dict[unit] = 'online'
-    if 'offline' in unit_dict.values():
-        for unit in unit_dict.items():
-            if 'offline' in unit:
-                yield str(unit[0]) + ' ' + str(unit[1])
+            yield 'online'
     else:
-        yield 'online'
+        yield 'not available for this host'
 
 
 def show_clips():
