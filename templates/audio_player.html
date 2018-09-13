@@ -1,11 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+
 <div class="container">
-{% for channel in radio %}
-{{ channel[0] }}<br>
-<audio src="{{ channel[1] }}" controls preload="none"></audio><br>
-{% endfor %}
+    {% for channel in radio %}
+        {{ channel[0] }}<br>
+        <audio src="{{ channel[1] }}" controls preload="none"></audio>
+        {% if 'none' in channel[3](channel[0]) %}
+            <span class="label label-danger">stopped</span>
+        {% else %}
+            <span class="label label-success">running</span>
+            <span class="label label-warning">{{ channel[3](channel[0]) }}</span>
+        {% endif %}
+        <br>
+        {% endfor %}
 </div>
 
 {% endblock %}
