@@ -2,18 +2,29 @@
 
 {% block body %}
 
-<div class="container-fluid">
-    {% for channel in radio %}
-        <audio src="{{ channel[1] }}" controls preload="none"></audio>
-            &emsp;{{ channel[0] }} &nbsp;&nbsp;&nbsp;&nbsp;
-        {% if 'none' in channel[3](channel[0]) %}
-            <span class="label label-danger">stopped</span>
-        {% else %}
-            <span class="label label-success">running</span>
-            <span class="label label-warning">{{ channel[3](channel[0]) }}</span>
-        {% endif %}
-        <br>
+<div class="container">
+    <table class="table table-striped table-hover">
+        <th>#</th>
+        <th>Channel</th>
+        <th>Url</th>
+        <th>Status</th>
+        <th>Control</th>
+
+        {% for channel in radio %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ channel[0] }}</td>
+                <td>{{ channel[1] }}</td>
+                {% if 'none' in channel[3](channel[0]) %}
+                    <td><span class="label label-danger">stopped</span></td>
+                {% else %}
+                    <td><span class="label label-success">running</span></td>
+                    <td><span class="label label-warning">{{ channel[3](channel[0]) }}</span></td>
+                {% endif %}
+                <td><audio src="{{ channel[1] }}" controls preload="none"></audio></td>
+            </tr>
         {% endfor %}
+    </table>
 </div>
 
 {% endblock %}
