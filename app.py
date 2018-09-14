@@ -126,11 +126,6 @@ def dab_check_pid(pid_num, name, rtl):
     if str(pid_num) in output and rtl not in output2:
         with open('pids/' + name + '.pid', 'w') as f:
             f.write('none')
-            # kill ?
-
-    elif str(pid_num) not in output2 and rtl not in output2:
-        with open('pids/' + name + '.pid', 'w') as f:
-            f.write('none')
 
     elif str(pid_num) not in output:
         with open('pids/' + name + '.pid', 'w') as f:
