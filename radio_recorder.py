@@ -62,3 +62,7 @@ def rad_record(name, url):
     else:
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + loc, 'is not mounted')
         flash(loc + ' is not mounted')
+
+
+def dab_record(name):
+    pass
