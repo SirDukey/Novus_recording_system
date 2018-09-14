@@ -67,7 +67,7 @@ def rad_record(name, url):
 
 def dab_record(name, dab_id, freq):
 
-    loc = '/tmp/'
+    loc = '/Novus_recording_system/clips_dab/'
     #loc = '/mnt/broadcast/unindexed/'
 
     def ffmpeg(name, dab_id, freq, loc):
