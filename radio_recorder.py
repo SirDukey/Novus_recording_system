@@ -91,6 +91,7 @@ def dab_record(name, dab_id, freq):
                             '-progress',
                             'timestamps/' + name + '.ts',
                             # '-y'
+                            '-f', 's16le',
                             '-i',
                             'pipe:0',
                             '-stimeout',
