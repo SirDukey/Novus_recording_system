@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, Response
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
-from radio_recorder import rad_record
+from radio_recorder import rad_record, dab_record
 from television_recorder import tv_record
 import subprocess as sp
 from info import mem_usage, cpu_usage, disk_usage
@@ -104,12 +104,53 @@ def check_pid(pid_num, name, url):
         print(error2)
 
 
-def rmain(name, url):
+def dab_check_pid(pid_num, name, rtl):
+
+    '''first test'''
+    cmd = 'pgrep ffmpeg'
+    res = sp.Popen(cmd, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
+
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+
+    '''second test'''
+    cmd2 = 'ps -ax | grep ffmpeg'
+    res2 = sp.Popen(cmd2, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
+
+    output2, error2 = res2.communicate()
+    output2 = output2.decode('ascii')
+    error2 = error2.decode('ascii')
+
+    if str(pid_num) in output and rtl not in output2:
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write('none')
+            # kill ?
+
+    elif str(pid_num) not in output2 and rtl not in output2:
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write('none')
+
+    elif str(pid_num) not in output:
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write('none')
+
+    elif error:
+        print(error)
+
+    elif error2:
+        print(error2)
+
+
+def rmain(name, url, type):
 
     if name + '_start' in request.form:
 
         print(name + '_start')
-        rad_record(name, url)
+        if 'www' in type:
+            rad_record(name, url)
+        elif 'dab' in type:
+            dab_record(name, url[0], url[1])
 
     elif name + '_stop' in request.form:
 
@@ -129,7 +170,11 @@ def rmain(name, url):
         pidf = open('pids/' + name + '.pid', 'r')
         pid_num = pidf.read()
         pidf.close()
-        check_pid(pid_num, name, url)
+
+        if 'www' in type:
+            check_pid(pid_num, name, url)
+        elif 'dab' in type:
+            check_pid(pid_num, name, 'rtl')
 
 
 def tmain(name, url):
@@ -434,7 +479,8 @@ def content():
             ['Voice_of_the_Cape', 'http://edge.iono.fm/xice/voc_live_high.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Voice_of_Wits', 'http://146.141.76.196:8080/stream/live.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www', get_auto, set_auto],
-            ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www', get_auto, set_auto]
+            ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www', get_auto, set_auto],
+            ['dab_test', [0, '98FM'], rmain, get_pid, 'dab', get_auto, set_auto],
         ],
         'tv': [
             ['M_NET', 'udp://@225.0.1.101:1101', tmain, get_pid, 'dstv', get_auto, set_auto],
@@ -564,7 +610,7 @@ def control_radio():
         rdisable_all()
 
     for item in radio:
-        item[2](item[0], item[1])
+        item[2](item[0], item[1], item[4])
         item[6](item[0])
 
     return render_template('control_radio.html', title='Novus recording system',

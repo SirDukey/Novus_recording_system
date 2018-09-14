@@ -50,8 +50,9 @@ def rad_record(name, url):
         with open('pids/' + name + '.pid', 'w') as f:
             f.write(str(process.pid))
 
-        print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:', str(process.pid))
-        #flash('started ' + name + ' on pid: ' + str(process.pid))
+        print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:',
+              str(process.pid))
+
         return process.pid
 
     p = Process(target=ffmpeg, args=(name, url, loc))
@@ -64,5 +65,72 @@ def rad_record(name, url):
         flash(loc + ' is not mounted')
 
 
-def dab_record(name):
-    pass
+def dab_record(name, dab_id, freq):
+
+    loc = '/tmp/'
+    #loc = '/mnt/broadcast/unindexed/'
+
+    def ffmpeg(name, dab_id, freq, loc):
+
+        rtl = sp.Popen(['rtl_fm',
+                        '-d', dab_id,
+                        '-f', freq,
+                        '-M', 'fm',
+                        '-s', '170k',
+                        '-A', 'std',
+                        '-l', '0',
+                        '-E', 'deemp',
+                        '-r', '44.1k'], stdout=sp.PIPE)
+
+        process = sp.Popen(['ffmpeg',
+                            # '-re',
+                            '-nostats',
+                            '-loglevel',
+                            '0',
+                            '-xerror',
+                            '-progress',
+                            'timestamps/' + name + '.ts',
+                            # '-y'
+                            '-i',
+                            'pipe:0',
+                            '-stimeout',
+                            '10000',
+                            # '-c, 'copy',
+                            '-codec:a',
+                            'libmp3lame',
+                            '-b:a',
+                            '64000',
+                            '-ac',
+                            '1',
+                            '-ar',
+                            '16000',
+                            # '-b:v', '1M',
+                            # '-vf', 'scale=320:240',
+                            '-f',
+                            'segment',
+                            '-segment_time',
+                            '120',
+                            '-strftime',
+                            '1',
+                            # '-force_key_frames', '120',
+                            '-reset_timestamps',
+                            '1',
+                            loc + name + '.%Y-%m-%d_%H-%M-%S.mp3'], stdin=rtl.stdout)
+
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write(str(process.pid))
+
+        print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:',
+              str(process.pid))
+
+        return process.pid
+
+    p = Process(target=ffmpeg, args=(name, dab_id, freq, loc))
+
+    if exists(loc):
+        p.start()
+
+    else:
+        print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + loc, 'is not mounted')
+        flash(loc + ' is not mounted')
+
