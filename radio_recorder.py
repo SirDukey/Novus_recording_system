@@ -73,7 +73,7 @@ def dab_record(name, dab_id, freq):
     def ffmpeg(name, dab_id, freq, loc):
 
         rtl = sp.Popen(['rtl_fm',
-                        '-d', dab_id,
+                        '-d', str(dab_id),
                         '-f', freq,
                         '-M', 'fm',
                         '-s', '170k',
