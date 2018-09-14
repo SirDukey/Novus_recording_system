@@ -16,10 +16,10 @@
     </div>
 </div>
 
-<div class="col-lg-4">
+<div class="col-lg-3">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title text-center">Clips recorded</h3>
+            <h3 class="panel-title text-center">TV clips recorded</h3>
         </div>
         <div class="panel-body col-md-6">
             {% for clip in show_clips() %}
@@ -31,8 +31,22 @@
     </div>
 </div>
 
+<div class="col-lg-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title text-center">DAB clips recorded</h3>
+        </div>
+        <div class="panel-body col-md-6">
+            {% for clip in show_clips_dab() %}
+                {% if clip != 'sync.sh' %}
+                    {{ clip }}<br>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
-<div class="col-lg-4">
+<div class="col-lg-3">
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title text-center">Unindexed directory</h3>
@@ -46,7 +60,7 @@
 </div>
 
 
-<div class="container-fluid col-lg-4">
+<div class="container-fluid col-lg-3">
 
     <div class="panel panel-default">
       <div class="panel-heading">

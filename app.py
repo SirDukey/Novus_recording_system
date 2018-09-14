@@ -392,6 +392,12 @@ def show_clips():
     return clip_dir
 
 
+def show_clips_dab():
+    clip_dir = listdir('clips_dab/')
+    clip_dir.sort()
+    return clip_dir
+
+
 def show_mnt():
     mnt_dir = listdir('/mnt/broadcast/unindexed/')
     mnt_dir.sort()
@@ -584,6 +590,7 @@ def ps_list():
                            rcount_enabled=rcount_enabled,
                            tcount_enabled=tcount_enabled,
                            show_clips=show_clips,
+                           show_clips_dab=show_clips_dab,
                            show_mnt=show_mnt
                            )
 
