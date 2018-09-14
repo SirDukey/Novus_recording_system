@@ -104,6 +104,7 @@ def check_pid(pid_num, name, url):
         print(error2)
 
 
+# TODO: get the freq to use in second test
 def dab_check_pid(pid_num, name, rtl):
 
     '''first test'''
@@ -115,7 +116,7 @@ def dab_check_pid(pid_num, name, rtl):
     error = error.decode('ascii')
 
     '''second test'''
-    cmd2 = 'ps -ax | grep ffmpeg'
+    cmd2 = 'ps -ax | grep rtl_fm'
     res2 = sp.Popen(cmd2, shell=True, stdout=sp.PIPE, stderr=sp.PIPE)
 
     output2, error2 = res2.communicate()
@@ -174,7 +175,7 @@ def rmain(name, url, rtype):
         if 'www' in rtype:
             check_pid(pid_num, name, url)
         elif 'dab' in rtype:
-            check_pid(pid_num, name, 'rtl')
+            dab_check_pid(pid_num, name, 'rtl')
 
 
 def tmain(name, url):
@@ -457,8 +458,8 @@ def content():
             ['Kaya_FM', 'http://iceant.antfarm.co.za:8000/Kaya_MP3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Lesedi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/273707ee34a94d87a51c4785b48256a5/playlist.m3u8?sid=3626cb83-cc20-446d-af4a-9bd9b2e85cd8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Ligwalagwala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/568fc5738cce4434aa6db69e928084be/playlist.m3u8?sid=d68ad834-f7c8-4054-91c8-04eb5fc5988d', rmain, get_pid, 'www', get_auto, set_auto],
-            # ['Lotus_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/9d1c7019ff894e5191b954eff03d7c77/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Lotus_FM', [0, '106.8M'], rmain, get_pid, 'dab', get_auto, set_auto],
+            ['Lotus_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/9d1c7019ff894e5191b954eff03d7c77/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
+            #['Lotus_FM', [0, '106.8M'], rmain, get_pid, 'dab', get_auto, set_auto],
             ['Metro_FM', 'http://server21a.oneradiohost.com/4rrv3hw6bq5tv', rmain, get_pid, 'www', get_auto, set_auto],
             ['Mix_93_8_FM', 'http://50.7.77.114:8007/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Motsweding_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/97f660b5d3c949e094ca1d8c983551d2/playlist.m3u8?sid=b2268fb7-3931-451d-bd85-d45061df1d14', rmain, get_pid, 'www', get_auto, set_auto],
