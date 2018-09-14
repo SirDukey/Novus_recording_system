@@ -142,14 +142,14 @@ def dab_check_pid(pid_num, name, rtl):
         print(error2)
 
 
-def rmain(name, url, type):
+def rmain(name, url, rtype):
 
     if name + '_start' in request.form:
 
         print(name + '_start')
-        if 'www' in type:
+        if 'www' in rtype:
             rad_record(name, url)
-        elif 'dab' in type:
+        elif 'dab' in rtype:
             dab_record(name, url[0], url[1])
 
     elif name + '_stop' in request.form:
@@ -171,9 +171,9 @@ def rmain(name, url, type):
         pid_num = pidf.read()
         pidf.close()
 
-        if 'www' in type:
+        if 'www' in rtype:
             check_pid(pid_num, name, url)
-        elif 'dab' in type:
+        elif 'dab' in rtype:
             check_pid(pid_num, name, 'rtl')
 
 
