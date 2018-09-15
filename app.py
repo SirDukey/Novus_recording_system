@@ -48,7 +48,7 @@ def du_clip_dir():
 
 
 def du_unindexed_dir():
-    res = sp.Popen(['du', '-hs', '/mnt/broadcast/unindexed'], stdout=sp.PIPE, stderr=sp.PIPE)
+    res = sp.Popen(['du', '-hs', 'mnt/broadcast/unindexed'], stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('ascii')
     error = error.decode('ascii')
@@ -395,7 +395,7 @@ def show_clips_dab():
 
 
 def show_mnt():
-    mnt_dir = listdir('/mnt/broadcast/unindexed/')
+    mnt_dir = listdir('mnt/broadcast/unindexed/')
     mnt_dir.sort()
     return mnt_dir
 
