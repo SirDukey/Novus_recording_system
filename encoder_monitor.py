@@ -25,6 +25,7 @@ def encoder_check():
 
     if host_name == 'novflask':
         for unit in unit_dict.keys():
+            print('checking if {}is online'.format(str(unit)))
             res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
             output, error = res.communicate()
             output = output.decode('ascii')
@@ -34,6 +35,7 @@ def encoder_check():
                 unit_dict[unit] = '1'
 
         for unit in unit_dict.items():
+            print('updating sql')
             SQL_UPDATE = "UPDATE encoders SET state={} WHERE ipaddr='{}';".format(unit[1], unit[0])
 
             cur.execute(SQL_UPDATE)
@@ -47,6 +49,7 @@ if __name__ == '__main__':
 
     connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
     conn = psycopg2.connect(connect_str)
+    print(conn)
     cur = conn.cursor()
     encoder_check()
     cur.close()
