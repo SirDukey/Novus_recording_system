@@ -5,6 +5,9 @@ import socket
 
 def encoder_check():
 
+    connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
+    conn = psycopg2.connect(connect_str)
+    cur = conn.cursor()
     host_name = socket.gethostname()
 
     unit_dict = {
@@ -44,13 +47,10 @@ def encoder_check():
     else:
         yield 'not available for this host'
 
+    cur.close()
+    conn.close()
+
 
 if __name__ == '__main__':
 
-    connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
-    conn = psycopg2.connect(connect_str)
-    print(conn)
-    cur = conn.cursor()
     encoder_check()
-    cur.close()
-    conn.close()
