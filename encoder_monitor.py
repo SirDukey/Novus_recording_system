@@ -5,12 +5,10 @@ import socket
 
 def encoder_check():
 
-    print('making database connection')
     connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
     conn = psycopg2.connect(connect_str)
     cur = conn.cursor()
     host_name = socket.gethostname()
-    print(host_name)
 
     unit_dict = {
             '192.168.55.3': '',
@@ -28,10 +26,8 @@ def encoder_check():
             '192.168.55.15': ''
         }
 
-    print('checking hostname')
     if host_name == 'novflask':
         for unit in unit_dict.keys():
-            print('checking if {} is online'.format(str(unit)))
             res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
             output, error = res.communicate()
             output = output.decode('ascii')
@@ -41,7 +37,6 @@ def encoder_check():
                 unit_dict[unit] = '1'
 
         for unit in unit_dict.items():
-            print('updating sql')
             SQL_UPDATE = "UPDATE encoders SET state={} WHERE ipaddr='{}';".format(unit[1], unit[0])
 
             cur.execute(SQL_UPDATE)
@@ -55,5 +50,4 @@ def encoder_check():
 
 
 if __name__ == '__main__':
-    print('running encoder check')
     encoder_check()
