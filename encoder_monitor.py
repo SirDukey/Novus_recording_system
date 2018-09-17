@@ -33,6 +33,8 @@ def encoder_check():
             else:
                 unit_dict[unit] = '1'
 
+
+        for unit in unit_dict.items():
             SQL_UPDATE = 'UPDATE encoders' \
                          'SET state = {}' \
                          'WHERE ipaddr = {}' \
@@ -40,14 +42,6 @@ def encoder_check():
 
             cur.execute(SQL_UPDATE)
             conn.commit()
-
-        if 'offline' in unit_dict.values():
-            for unit in unit_dict.items():
-                if 'offline' in unit:
-                    yield str(unit[0]) + ' ' + str(unit[1])
-        else:
-
-            yield 'online'
 
     else:
         yield 'not available for this host'
