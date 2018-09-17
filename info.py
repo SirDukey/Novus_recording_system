@@ -12,7 +12,7 @@ def disk_usage():
     if output:
         output = output.split('\n')
         for line in output:
-            if '/mnt/broadcast' in line:
+            if '/Novus_recording_system/mnt/broadcast' in line:
                 line = line.split(' ')
                 used_perc = list(filter(None, line))
                 return used_perc[-2]
