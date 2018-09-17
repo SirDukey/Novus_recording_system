@@ -5,6 +5,7 @@ import socket
 
 def encoder_check():
 
+    print('making database connection')
     connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
     conn = psycopg2.connect(connect_str)
     cur = conn.cursor()
@@ -28,7 +29,7 @@ def encoder_check():
 
     if host_name == 'novflask':
         for unit in unit_dict.keys():
-            print('checking if {}is online'.format(str(unit)))
+            print('checking if {} is online'.format(str(unit)))
             res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
             output, error = res.communicate()
             output = output.decode('ascii')
