@@ -524,20 +524,27 @@ def content():
 @app.route('/login')
 def login():
 
-    return render_template('login.html', title='Novus recording system')
+    return render_template('login.html',
+                           title='Novus recording system',
+                           hostname=get_hostname())
 
 
 @app.route('/logout')
 def logout():
 
-    return render_template('login.html', title='Novus recording system')
+    return render_template('login.html',
+                           title='Novus recording system',
+                           hostname=get_hostname())
 
 
 @app.route('/')
 @login_required
 def index():
 
-    return render_template('index.html', title='Novus recording system', readme=readme())
+    return render_template('index.html',
+                           title='Novus recording system',
+                           hostname=get_hostname(),
+                           readme=readme())
 
 
 @app.route('/info', methods=['GET', 'POST'])
@@ -557,7 +564,8 @@ def info():
     mem = mem_usage()
     cpu = cpu_usage()
 
-    return render_template('info.html', title='Novus recording system',
+    return render_template('info.html',
+                           title='Novus recording system',
                            hostname=get_hostname(),
                            radio=radio,
                            tv=tv,
@@ -583,6 +591,7 @@ def ps_list():
         ps_kill(pid)
 
     return render_template('ps_list.html', title='Novus recording system',
+                           hostname=get_hostname(),
                            show_running_ps=show_running_ps,
                            mp3_running=mp3_running,
                            tv_running=mp4_running,
@@ -598,7 +607,7 @@ def ps_list():
 @login_required
 def encoder():
 
-    return render_template('encoder.html', title='Novus recording system')
+    return render_template('encoder.html', title='Novus recording system', hostname=get_hostname())
 
 
 @app.route('/control_radio',  methods=['GET', 'POST'])
@@ -621,7 +630,9 @@ def control_radio():
         item[2](item[0], item[1], item[4])
         item[6](item[0])
 
-    return render_template('control_radio.html', title='Novus recording system',
+    return render_template('control_radio.html',
+                           title='Novus recording system',
+                           hostname=get_hostname(),
                            radio=radio,
                            running=mp3_running,
                            rcount_enabled=rcount_enabled)
@@ -647,7 +658,9 @@ def control_television():
         item[2](item[0], item[1])
         item[6](item[0])
 
-    return render_template('control_television.html', title='Novus recording system',
+    return render_template('control_television.html',
+                           title='Novus recording system',
+                           hostname=get_hostname(),
                            tv=tv,
                            running=mp4_running,
                            tcount_enabled=tcount_enabled)
@@ -660,7 +673,10 @@ def player():
     CMS_DICT = content()
     tv = CMS_DICT['tv']
 
-    return render_template('player.html', find_mp4=find_mp4, tv=tv)
+    return render_template('player.html',
+                           title='Novus recording system',
+                           hostname=get_hostname(),
+                           find_mp4=find_mp4, tv=tv)
 
 
 @app.route('/stream/<name>')
@@ -694,7 +710,9 @@ def audio_player():
     CMS_DICT = content()
     radio = CMS_DICT['radio']
 
-    return render_template('audio_player.html', title='Novus recording system',
+    return render_template('audio_player.html',
+                           title='Novus recording system',
+                           hostname=get_hostname(),
                            radio=radio
                            )
 
