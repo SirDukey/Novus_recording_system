@@ -21,6 +21,9 @@ app.config['SECRET_KEY'] = SECRET_KEY
 SimpleLogin(app)
 
 
+def get_hostname():
+    return socket.gethostname()
+
 def readme():
     read_me_file = []
     with open('README.md', 'r') as f:
@@ -275,7 +278,6 @@ def tcount_enabled():
     return counter
 
 
-# TODO: start_all
 def rstart_all():
 
     for item in radio:
@@ -556,6 +558,7 @@ def info():
     cpu = cpu_usage()
 
     return render_template('info.html', title='Novus recording system',
+                           hostname=get_hostname(),
                            radio=radio,
                            tv=tv,
                            mp3_running=mp3_running,
