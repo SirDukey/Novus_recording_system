@@ -8,7 +8,7 @@ from flask import flash
 def rad_record(name, url):
 
     #loc = '/home/mike/Documents/Python/Novus_recording_system/'
-    loc = '/mnt/broadcast/unindexed/'
+    loc = '/Novus_recording_system/mnt/broadcast/unindexed/'
 
     def ffmpeg(name, url, loc):
 
