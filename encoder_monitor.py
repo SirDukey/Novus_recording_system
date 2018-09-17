@@ -33,12 +33,8 @@ def encoder_check():
             else:
                 unit_dict[unit] = '1'
 
-
         for unit in unit_dict.items():
-            SQL_UPDATE = 'UPDATE encoders' \
-                         'SET state = {}' \
-                         'WHERE ipaddr = {}' \
-                         ';'.format(unit[1], unit[0])
+            SQL_UPDATE = "UPDATE encoders SET state={} WHERE ipaddr='{}';".format(unit[1], unit[0])
 
             cur.execute(SQL_UPDATE)
             conn.commit()
