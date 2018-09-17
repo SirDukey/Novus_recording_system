@@ -10,6 +10,7 @@ def encoder_check():
     conn = psycopg2.connect(connect_str)
     cur = conn.cursor()
     host_name = socket.gethostname()
+    print(host_name)
 
     unit_dict = {
             '192.168.55.3': '',
@@ -27,6 +28,7 @@ def encoder_check():
             '192.168.55.15': ''
         }
 
+    print('checking hostname')
     if host_name == 'novflask':
         for unit in unit_dict.keys():
             print('checking if {} is online'.format(str(unit)))
@@ -46,12 +48,12 @@ def encoder_check():
             conn.commit()
 
     else:
-        yield 'not available for this host'
+        print('not available for this host')
 
     cur.close()
     conn.close()
 
 
 if __name__ == '__main__':
-
+    print('running encoder check')
     encoder_check()
