@@ -1,6 +1,7 @@
 import subprocess as sp
 import psycopg2
 import socket
+from app import content
 
 
 def encoder_check():
@@ -49,5 +50,63 @@ def encoder_check():
     conn.close()
 
 
+def channel_check():
+
+    def SQL_TASK(channel):
+
+        name = channel[0]
+        pid = channel[3]
+        pid = pid(name)
+        state = channel[5]
+        state = state(name)
+        svr = host_name
+
+        SQL_QUERY = "SELECT * " \
+                    "FROM  channels;"
+
+        SQL_INSERT = "INSERT INTO channels (pid,name,state,svr) " \
+                     "VALUES ({},'{}','{}','{}');".format(pid, name, state, svr)
+
+        SQL_UPDATE = "UPDATE channels " \
+                     "SET pid={},state='{}',svr='{}' " \
+                     "WHERE name='{}';".format(pid, state, svr, name)
+
+        cur.execute(SQL_QUERY)
+        res = cur.fetchall()
+        my_list = []
+
+        for item in res:
+            my_list.append(item[2])
+
+        if name in my_list:
+            cur.execute(SQL_UPDATE)
+            conn.commit()
+        else:
+            cur.execute(SQL_INSERT)
+            conn.commit()
+
+    CMS_DICT = content()
+    radio = CMS_DICT['radio']
+    tv = CMS_DICT['tv']
+
+    connect_str = "dbname='recording' user='postgres' host='mail.novusgroup.co.za' password='global01a'"
+    conn = psycopg2.connect(connect_str)
+    cur = conn.cursor()
+    host_name = socket.gethostname()
+
+    if host_name == 'radio':
+        for channel in radio:
+            SQL_TASK(channel)
+
+    elif host_name == 'novflask':
+        for channel in tv:
+            SQL_TASK(channel)
+
+
+    cur.close()
+    conn.close()
+
+
 if __name__ == '__main__':
     encoder_check()
+    channel_check()
