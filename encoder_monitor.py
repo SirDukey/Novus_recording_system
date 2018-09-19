@@ -57,6 +57,8 @@ def channel_check():
         name = channel[0]
         pid = channel[3]
         pid = pid(name)
+        if pid == 'none':
+            pid = 0
         state = channel[5]
         state = state(name)
         svr = host_name
@@ -65,10 +67,10 @@ def channel_check():
                     "FROM  channels;"
 
         SQL_INSERT = "INSERT INTO channels (pid,name,state,svr) " \
-                     "VALUES ('{}','{}','{}','{}');".format(pid, name, state, svr)
+                     "VALUES ({},'{}','{}','{}');".format(pid, name, state, svr)
 
         SQL_UPDATE = "UPDATE channels " \
-                     "SET pid='{}',state='{}',svr='{}' " \
+                     "SET pid={},state='{}',svr='{}' " \
                      "WHERE name='{}';".format(pid, state, svr, name)
 
         cur.execute(SQL_QUERY)
