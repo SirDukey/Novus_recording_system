@@ -4,7 +4,7 @@ from os.path import getmtime
 from app import content
 from time import sleep
 from schedule import every, run_pending
-from os import kill, getpid
+from os import kill
 from radio_recorder import rad_record
 from television_recorder import tv_record
 import subprocess as sp
@@ -14,12 +14,9 @@ CMS_DICT = content()
 radio = CMS_DICT['radio']
 tv = CMS_DICT['tv']
 
-'''
-pid = getpid()
-with open('pids/watcher.pid', 'w') as f:
-    f.write(pid)
-print('Watcher started on pid:', str(pid))
-'''
+
+def double_check_for_duplicate_process():
+
 
 def get_time():
     return str(datetime.now())
