@@ -146,10 +146,12 @@ def rmain(name, url, rtype):
     if name + '_start' in request.form:
 
         print(name + '_start')
-        if 'www' in rtype and 'm3u8' not in url:
+
+        if 'www' in rtype:
+        #if 'www' in rtype and 'm3u8' not in url:
             rad_record(name, url)
-        elif 'www' in rtype and 'm3u8' in url:
-            rad_record_m3u8(name, url)
+        #elif 'www' in rtype and 'm3u8' in url:
+        #    rad_record_m3u8(name, url)
         elif 'dab' in rtype:
             dab_record(name, url[0], url[1])
 
