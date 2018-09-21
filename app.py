@@ -448,7 +448,6 @@ def content():
             ['Good_Hope_FM', 'http://radiostream.co.za:9104/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Heart_104_9_FM', 'http://capeant.antfarm.co.za:8000/HeartFM', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Hitradio_Namibia', 'http://85.25.217.22:8010/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Hot_91_9_FM', 'https://ice31.securenetsystems.net/HOT919?playSessionID=6BA86A5D-978A-CE95-E5FCD2BA152A9F00', rmain, get_pid, 'www', get_auto, set_auto],
             ['Ikwekwezi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/ff6c43748de44108a31d127b4b205c12/playlist.m3u8?sid=ec9213ca-5fb1-46fc-aee4-010f51a7b9a1', rmain, get_pid, 'www', get_auto, set_auto],
             # ['IMPACT_RADIO', 'http://zas1.ndx.co.za/proxy/impactradio?mp=/stream', rmain, get_pid, 'www', get_auto, set_auto],
