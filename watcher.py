@@ -16,7 +16,7 @@ tv = CMS_DICT['tv']
 
 
 def double_check_for_duplicate_process():
-
+    pass
 
 def get_time():
     return str(datetime.now())
@@ -89,7 +89,6 @@ def job():
                         print(get_time(), 'starting {}'.format(station[0]))
                         sleep(2)
                         tv_record(station[0], station[1])
-
 
                 else:
                     try:
