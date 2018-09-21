@@ -20,7 +20,7 @@ def rad_record(name, url):
                             '-progress', 'timestamps/' + name + '.ts',
                             #'-y'
                             '-live_start_index', '-1',
-                            '-i', '"{}"'.format(url),
+                            '-i', '{}'.format(url),
                             '-stimeout', '10000',
                             # '-c, 'copy',
                             '-codec:a', 'libmp3lame',
