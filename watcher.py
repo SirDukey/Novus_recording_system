@@ -30,7 +30,7 @@ def job():
         if station[5](station[0]) == 'enabled':
             if 'timestamps/{}.ts'.format(station[0]):
                 first_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
-                sleep(5)
+                sleep(10)
                 second_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
 
                 if str(second_timestamp) in str(first_timestamp):
@@ -67,7 +67,7 @@ def job():
         if station[5](station[0]) == 'enabled':
             if 'timestamps/{}.ts'.format(station[0]):
                 first_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
-                sleep(5)
+                sleep(10)
                 second_timestamp = getmtime('timestamps/{}.ts'.format(station[0]))
 
                 if str(second_timestamp) in str(first_timestamp):
