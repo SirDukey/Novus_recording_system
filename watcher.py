@@ -5,7 +5,7 @@ from app import content
 from time import sleep
 from schedule import every, run_pending
 from os import kill
-from radio_recorder import rad_record
+from radio_recorder import rad_record, rad_record_m3u8
 from television_recorder import tv_record
 import subprocess as sp
 from datetime import datetime
@@ -51,7 +51,13 @@ def job():
                             f.write(get_time() + ' starting {}\n'.format(station[0]))
                         print(get_time(), 'starting {}'.format(station[0]))
                         sleep(2)
-                        rad_record(station[0], station[1])
+
+                        # TODO: add logic if it is dab or www stream
+                        if 'm3u8' in station[1]:
+                            rad_record_m3u8(station[0], station[1])
+                        else:
+                            rad_record(station[0], station[1])
+                        
 
                 else:
                     try:
