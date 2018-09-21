@@ -59,3 +59,13 @@ def cpu_usage():
     idle = outlist[-1]
     used = 100.00 - float(idle)
     return '%.0f' % used + '%'
+
+
+def watcher_service():
+    res = sp.Popen(['systemctl', 'status', 'Novus_watcher.service'], stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('utf-8')
+    outlist = output.split('\n')
+    for i in outlist[:4]:
+        print(i)
+
