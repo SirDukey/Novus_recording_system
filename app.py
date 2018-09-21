@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, Response
 from flask_simplelogin import SimpleLogin, login_required
 from process_control import kill_pid, kill_all, show_running_ps, ps_kill
-from radio_recorder import rad_record, dab_record
+from radio_recorder import rad_record, dab_record, rad_record_m3u8
 from television_recorder import tv_record
 import subprocess as sp
 from info import mem_usage, cpu_usage, disk_usage
@@ -146,8 +146,10 @@ def rmain(name, url, rtype):
     if name + '_start' in request.form:
 
         print(name + '_start')
-        if 'www' in rtype:
+        if 'www' in rtype and 'm3u8' not in url:
             rad_record(name, url)
+        elif 'www' in rtype and 'm3u8' in url:
+            rad_record_m3u8(name, url)
         elif 'dab' in rtype:
             dab_record(name, url[0], url[1])
 
