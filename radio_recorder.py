@@ -135,8 +135,8 @@ def rad_record_m3u8(name, url):
 
         process = sp.Popen(['ffmpeg',
                             #'-re',
-                            #'-nostats',
-                            #'-loglevel', '0',
+                            '-nostats',
+                            '-loglevel', '0',
                             #'-xerror',
                             '-progress', 'timestamps/' + name + '.ts',
                             #'-y'
