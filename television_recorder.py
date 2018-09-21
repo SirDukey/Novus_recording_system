@@ -17,7 +17,7 @@ def tv_record(name, url):
                             '-re',
                             '-nostats',
                             '-loglevel', '0',
-                            '-xerror',
+                            #'-xerror',
                             '-progress', 'timestamps/' + name + '.ts',
                             # '-y'
                             '-i', url,

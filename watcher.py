@@ -57,7 +57,7 @@ def job():
                             rad_record_m3u8(station[0], station[1])
                         else:
                             rad_record(station[0], station[1])
-                        
+
 
                 else:
                     try:
@@ -66,6 +66,9 @@ def job():
                         pass
         else:
             pass
+
+        finally:
+
 
     # print('checking tv for enabled')
     for station in tv:
