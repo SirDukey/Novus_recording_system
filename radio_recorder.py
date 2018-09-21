@@ -137,7 +137,7 @@ def rad_record_m3u8(name, url):
                             #'-re',
                             #'-nostats',
                             #'-loglevel', '0',
-                            #'-xerror',
+                            '-xerror',
                             '-progress', 'timestamps/' + name + '.ts',
                             #'-y'
                             '-live_start_index', '-1',
