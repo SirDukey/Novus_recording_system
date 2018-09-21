@@ -101,7 +101,7 @@ def job():
 
 if __name__ == '__main__':
 
-    every(13).seconds.do(job)
+    every(30).seconds.do(job)
 
     while True:
         run_pending()
