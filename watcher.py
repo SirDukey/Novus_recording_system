@@ -16,7 +16,52 @@ tv = CMS_DICT['tv']
 
 
 def double_check_for_duplicate_process():
-    pass
+    res = sp.Popen(['ps', '-ax'], stdout=sp.PIPE, stderr=sp.PIPE)
+    output, error = res.communicate()
+    output = output.decode('ascii')
+    error = error.decode('ascii')
+    psl = list()
+    occurance = dict()
+    dups = list()
+    new_psl = dict()
+
+    if output:
+        ps_ls = output.split('\n')
+        for l in sorted(ps_ls):
+            if 'ffmpeg' in l:
+                l = l.split(' ')
+                l = list(filter(None, l))
+                l_pid = l[0]
+                l_name = l[-1].split('/')
+                l_name = l_name[-1].split('.')
+                l_name = l_name[0]
+                psl.append((l_name, int(l_pid)))
+
+    if error:
+        print(error)
+
+    for t in psl:
+        if t[0] in occurance:
+            occurance[t[0]] += 1
+        else:
+            occurance[t[0]] = 1
+
+    for station in occurance.items():
+        if station[1] > 1:
+            dups.append(station[0])
+
+    for station in psl:
+        if station[0] in dups:
+            new_psl[station[0]] = []
+
+    for station in psl:
+        if station[0] in dups:
+            new_psl[station[0]].append(station[1])
+
+    for x in new_psl.items():
+        pid = min(x[1])
+        kill(pid, 15)
+
 
 def get_time():
     return str(datetime.now())
@@ -105,6 +150,8 @@ def job():
                         pass
         else:
             pass
+
+    double_check_for_duplicate_process()
 
 
 if __name__ == '__main__':
