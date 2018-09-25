@@ -4,7 +4,7 @@ from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record, dab_record, rad_record_m3u8
 from television_recorder import tv_record
 import subprocess as sp
-from info import mem_usage, cpu_usage, disk_usage
+from info import mem_usage, cpu_usage, disk_usage, watcher_service
 from get_watcher_log import watcher_log, clear_watcher_log
 from os import listdir
 import random
@@ -568,6 +568,7 @@ def info():
     du = disk_usage()
     mem = mem_usage()
     cpu = cpu_usage()
+    ws = watcher_service()
 
     return render_template('info.html',
                            title='Novus recording system',
@@ -579,6 +580,7 @@ def info():
                            du=du,
                            mem=mem,
                            cpu=cpu,
+                           ws=ws,
                            watcher_log=watcher_log,
                            encoder_check=encoder_check(),
                            du_clip_dir=du_clip_dir(),

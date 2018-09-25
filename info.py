@@ -62,10 +62,7 @@ def cpu_usage():
 
 
 def watcher_service():
-    res = sp.Popen(['systemctl', 'status', 'Novus_watcher.service'], stdout=sp.PIPE, stderr=sp.PIPE)
+    res = sp.Popen(['systemctl', 'is-enabled', 'Novus_watcher.service'], stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('utf-8')
-    outlist = output.split('\n')
-    for i in outlist[:4]:
-        print(i)
-
+    yield output
