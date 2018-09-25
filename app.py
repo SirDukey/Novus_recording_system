@@ -568,7 +568,7 @@ def info():
     du = disk_usage()
     mem = mem_usage()
     cpu = cpu_usage()
-    ws = watcher_service()
+    ws = watcher_service
 
     return render_template('info.html',
                            title='Novus recording system',
