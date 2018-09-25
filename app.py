@@ -4,7 +4,7 @@ from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record, dab_record, rad_record_m3u8
 from television_recorder import tv_record
 import subprocess as sp
-from info import mem_usage, cpu_usage, disk_usage, watcher_service
+from info import mem_usage, cpu_usage, disk_usage, watcher_service, watcher_start, watcher_stop
 from get_watcher_log import watcher_log, clear_watcher_log
 from os import listdir
 import random
@@ -560,6 +560,10 @@ def info():
         clear_watcher_log()
     elif request.form.get('set_routes'):
         set_routes()
+    elif request.form.get('watcher_start'):
+        watcher_start()
+    elif request.form.get('watcher_stop'):
+        watcher_stop()
 
     CMS_DICT = content()
     radio = CMS_DICT['radio']

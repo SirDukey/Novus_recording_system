@@ -66,3 +66,11 @@ def watcher_service():
     output, error = res.communicate()
     output = output.decode('utf-8')
     return output
+
+
+def watcher_start():
+    sp.Popen(['systemctl', 'start', 'Novus_watcher.service'])
+
+
+def watcher_stop():
+    sp.Popen(['systemctl', 'stop', 'Novus_watcher.service'])
