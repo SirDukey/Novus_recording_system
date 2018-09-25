@@ -26,6 +26,7 @@ def tv_record(name, url):
                             '-b:a', '64000',
                             '-ac', '1',
                             '-ar', '16000',
+                            '-af', 'aresample=async=1000',
                             '-codec:v', 'libx264',
                             '-preset', 'ultrafast',
                             '-b:v', '768K',
