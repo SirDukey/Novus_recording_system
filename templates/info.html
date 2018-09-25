@@ -46,16 +46,16 @@
             <td>Watcher service</td>
             {% if ws() == 'active' %}
                 <td><span class="label label-success">{{ ws() }}</span></td>
-            {% else %}
+            {% elif ws() == 'inactive' %}
                 <td><span class="label label-danger">{{ ws() }}</span></td>
             {% endif %}
             <td>
                 <form action="" method="POST">
                     <div class="btn-group">
-                        {%  if 'active' in ws() %}
+                        {%  if ws() == 'active' %}
                         <input class="btn btn-primary" type="submit" value="start" name="watcher_start">
                         <input class="btn btn-primary active" type="submit" value="stop" disabled="disabled" name="watcher_stop">
-                        {% else %}
+                        {% elif ws() == 'inactive' %}
                         <input class="btn btn-primary active" type="submit" disabled="disabled" value="start" name="watcher_start">
                         <input class="btn btn-primary" type="submit" value="stop" name="watcher_stop">
                         {% endif %}
