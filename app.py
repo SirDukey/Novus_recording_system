@@ -351,7 +351,8 @@ def find_mp4(name):
 
 def encoder_check():
 
-    ip = socket.gethostbyname(socket.gethostname())
+    #ip = socket.gethostbyname(socket.gethostname())
+    name = socket.gethostname()
 
     unit_dict = {
             '192.168.55.3': '',
@@ -369,7 +370,7 @@ def encoder_check():
             '192.168.55.15': ''
         }
 
-    if ip == '127.0.1.1':
+    if name == 'novflask':
         for unit in unit_dict.keys():
             res = sp.Popen(['ping', '-c1', unit], stdout=sp.PIPE, stderr=sp.PIPE)
             output, error = res.communicate()

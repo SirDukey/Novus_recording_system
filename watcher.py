@@ -68,6 +68,7 @@ def job():
             pass
 
 
+
     # print('checking tv for enabled')
     for station in tv:
 
