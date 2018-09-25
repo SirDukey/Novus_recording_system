@@ -65,4 +65,4 @@ def watcher_service():
     res = sp.Popen(['systemctl', 'is-enabled', 'Novus_watcher.service'], stdout=sp.PIPE, stderr=sp.PIPE)
     output, error = res.communicate()
     output = output.decode('utf-8')
-    yield output
+    return output
