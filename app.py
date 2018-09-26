@@ -573,7 +573,8 @@ def info():
     mem = mem_usage()
     cpu = cpu_usage()
     ws = watcher_service
-    restart_st = restart_stats(radio)
+    radio_restart_stats = restart_stats(radio)
+    tv_restart_stats = restart_stats(tv)
 
     return render_template('info.html',
                            title='Novus recording system',
@@ -591,7 +592,8 @@ def info():
                            du_clip_dir=du_clip_dir(),
                            du_unindexed_dir=du_unindexed_dir(),
                            get_routes=get_routes,
-                           restart_stats=restart_st
+                           radio_restart_stats=radio_restart_stats,
+                           tv_restart_stats=tv_restart_stats
            )
 
 @app.route('/ps_list', methods=['GET', 'POST'])

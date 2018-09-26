@@ -106,11 +106,22 @@
         </div>
         <div class="panel-body">
             <br>
-            <table class="table table-hover">
-                {% for stat in restart_stats.items() %}
-                <tr><td>{{ stat[0]}}</td><td>{{ stat[1] }}</td></tr>
-                {% endfor %}
-            </table>
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    {% for stat in radio_restart_stats.items() %}
+                    <tr><td>{{ stat[0]}}</td><td>{{ stat[1] }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <div class="col-md-6">
+                <table class="table table-hover">
+                    {% for stat in tv_restart_stats.items() %}
+                    <tr><td>{{ stat[0]}}</td><td>{{ stat[1] }}</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+
         </div>
     </div>
 
