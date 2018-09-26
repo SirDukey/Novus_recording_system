@@ -4,7 +4,7 @@ from process_control import kill_pid, kill_all, show_running_ps, ps_kill
 from radio_recorder import rad_record, dab_record, rad_record_m3u8
 from television_recorder import tv_record
 import subprocess as sp
-from info import mem_usage, cpu_usage, disk_usage, watcher_service, watcher_start, watcher_stop
+from info import mem_usage, cpu_usage, disk_usage, watcher_service, watcher_start, watcher_stop, restart_stats
 from get_watcher_log import watcher_log, clear_watcher_log
 from os import listdir
 import random
@@ -573,6 +573,7 @@ def info():
     mem = mem_usage()
     cpu = cpu_usage()
     ws = watcher_service
+    restart_stats = restart_stats(radio)
 
     return render_template('info.html',
                            title='Novus recording system',
@@ -589,9 +590,9 @@ def info():
                            encoder_check=encoder_check(),
                            du_clip_dir=du_clip_dir(),
                            du_unindexed_dir=du_unindexed_dir(),
-                           get_routes=get_routes
+                           get_routes=get_routes,
+                           restart_stats=restart_stats
            )
-
 
 @app.route('/ps_list', methods=['GET', 'POST'])
 @login_required

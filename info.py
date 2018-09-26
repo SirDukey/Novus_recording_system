@@ -74,3 +74,16 @@ def watcher_start():
 
 def watcher_stop():
     sp.Popen(['systemctl', 'stop', 'Novus_watcher.service'])
+
+
+def restart_stats(station_list):
+    results = dict()
+    for station in station_list:
+        wc = 0
+        with open('/Novus_recording_system/logs/watcher.log', 'r') as f:
+            for line in f:
+                if station[0] in line:
+                    wc += 1
+        amount = wc / 4
+        results[station[0]] = amount
+    return results
