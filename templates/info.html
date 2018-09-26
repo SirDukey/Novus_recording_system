@@ -69,8 +69,9 @@
 
 <div class="container-fluid col-lg-6">
     <div class="panel panel-default">
-        <h3 class="panel-title">Watcher log file</h3>
-      </div>
+        <div class="panel-heading">
+            <h3 class="panel-title">Watcher log file</h3>
+        </div>
       <div class="panel-body">
           <form action="" method="POST">
             <input class="btn btn-default" type="submit" value="clear log" name="cwl">
@@ -103,9 +104,15 @@
         <div class="panel-heading">
             <h3 class="panel-title">Restart stats</h3>
         </div>
-        {{ restart_stats }}
+        <div class="panel-body">
+            <br>
+            <table class="table table-hover">
+                {% for stat in restart_stats.items() %}
+                <tr><td>{{ stat[0]}}</td><td>{{ stat[1] }}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
-
 
 </div>
 

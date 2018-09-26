@@ -80,7 +80,7 @@ def restart_stats(station_list):
     results = dict()
     for station in station_list:
         wc = 0
-        with open('/Novus_recording_system/logs/watcher.log', 'r') as f:
+        with open('logs/watcher.log', 'r') as f:
             for line in f:
                 if station[0] in line:
                     wc += 1
