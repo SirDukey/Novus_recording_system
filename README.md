@@ -13,6 +13,7 @@ Checkout the screenshots folder to see examples of the system.
 * mpstat from the systat package used for cpu info
 * nginx for client requests, config is found in services directory
 * DSTV streams via Televes HDMI encoders
+* shellinabox (apt install shellinabox)
 * crontab entries as follows:
 
   "# truncate timestamp files"
@@ -21,11 +22,3 @@ Checkout the screenshots folder to see examples of the system.
   "* * * * * sh /Novus_recording_system/clips/sync.sh >> /var/log/clips_sync.log"
 
 * systemd service files to start main frontend and watcher, config in services directory
-
-
-## TODO: 
-* logs
-* create way for make display the running states, currently it reads a .pid file < DONE
-* create cms dictionaries for control pages to iterate over, will allow system to be updated dynamically without hardcoding in channels < DONE
-* monitor cpu, memory, hdd and running ffmpeg processes < DONE
-* create watcher to auto restart broken ffmpeg processes/streams, run from cron and flock < DONE
