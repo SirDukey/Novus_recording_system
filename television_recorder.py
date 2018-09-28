@@ -7,8 +7,6 @@ from flask import flash
 
 def tv_record(name, url):
 
-    #loc = '/home/mike/Documents/Python/Novus_recording_system/test/'
-    #loc = '/mnt/broadcast/unindexed/'
     loc = '/Novus_recording_system/clips/'
 
     def ffmpeg(name, url, loc):
@@ -17,17 +15,14 @@ def tv_record(name, url):
                             '-re',
                             '-nostats',
                             '-loglevel', '0',
-                            #'-xerror',
                             '-progress', 'timestamps/' + name + '.ts',
-                            # '-y'
                             '-i', url,
                             '-stimeout', '10000',
-                            # '-c, 'copy',
+                            '-c:a', 'copy',
                             '-b:a', '64000',
                             '-ac', '1',
                             '-ar', '16000',
-                            '-af', 'aresample=async=1000',
-                            '-codec:v', 'libx264',
+                            '-c:v', 'mpeg2video',
                             '-preset', 'ultrafast',
                             '-b:v', '768K',
                              '-vf', 'scale=320:240',
@@ -35,7 +30,6 @@ def tv_record(name, url):
                             '-segment_time', '120',
                             '-segment_atclocktime', '1',
                             '-strftime', '1',
-                            # '-force_key_frames', '120',
                             '-reset_timestamps', '1',
                             loc + name + '.%Y-%m-%d_%H-%M-%S.mp4'])
 
@@ -43,7 +37,6 @@ def tv_record(name, url):
             f.write(str(process.pid))
 
         print(str(datetime.now().strftime('%d-%m-%Y__%H:%M:%S ')) + 'started recording', name, 'on process id:', str(process.pid))
-        #flash('started ' + name + ' on pid: ' + str(process.pid))
         return process.pid
 
     p = Process(target=ffmpeg, args=(name, url, loc))

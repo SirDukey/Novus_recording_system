@@ -520,7 +520,9 @@ def content():
             ['eNews_Channel_Africa', 'udp://@225.0.1.43:1403', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['Sky_News', 'udp://@225.0.1.45:1405', tmain, get_pid, 'dstv', get_auto, set_auto],
             ['CNN_International', 'udp://@225.0.1.46:1401', tmain, get_pid, 'dstv', get_auto, set_auto],
-            ['BBC_Brit', 'udp://@225.0.1.120:1120', tmain, get_pid, 'dstv', get_auto, set_auto]
+            ['BBC_Brit', 'udp://@225.0.1.120:1120', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Mzansi_Magic', 'udp://@225.0.1.161:1161', tmain, get_pid, 'dstv', get_auto, set_auto],
+            ['Parliament_SA', 'udp://@225.0.1.48:1408', tmain, get_pid, 'dstv', get_auto, set_auto]
         ]
     }
 
