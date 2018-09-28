@@ -734,5 +734,12 @@ def audio_player():
                            )
 
 
+@app.route('/shell')
+@login_required
+def shell():
+    return render_template('shell.html',
+                           title='Novus recording system',
+                           hostname=get_hostname())
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, port=5001, threaded=True)
