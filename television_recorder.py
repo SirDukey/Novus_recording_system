@@ -18,7 +18,7 @@ def tv_record(name, url):
                             '-progress', 'timestamps/' + name + '.ts',
                             '-i', url,
                             '-stimeout', '10000',
-                            '-c:a', 'libmp3lame',
+                            '-c:a', 'libvo_aacenc',
                             '-b:a', '64000',
                             '-ac', '1',
                             '-ar', '16000',
