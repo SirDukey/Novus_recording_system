@@ -460,6 +460,7 @@ def content():
             ['Jacaranda_FM', 'https://edge.iono.fm/xice/jacarandafm_live_medium.aac', rmain, get_pid, 'www', get_auto, set_auto],
             ['Jozi_FM', 'http://capeant.antfarm.co.za:8000/JoziFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Kaya_FM', 'http://iceant.antfarm.co.za:8000/Kaya_MP3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['KingfisherFM', 'http://zas2.ndx.co.za/proxy/kingfisherfm?mp=/stream', rmain, get_pid, 'www', get_auto, set_auto],
             ['Lesedi_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/273707ee34a94d87a51c4785b48256a5/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Ligwalagwala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/568fc5738cce4434aa6db69e928084be/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Lotus_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/9d1c7019ff894e5191b954eff03d7c77/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
