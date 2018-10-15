@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+&emsp;<a href="{{ url_for('player') }}"><button>refresh</button></a>
+<br>
+<br>
+
+<div class="container-fluid">
+
+    {% for channel in tv %}
+        {% if 'mp4' in find_mp4(channel[0]) %}
+            {{ channel[0] }}
+            <video src="{{ url_for('stream', name=find_mp4(channel[0])) }}"
+                   poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                   controls autoplay loop muted width="300" height="250"></video>
+
+        {% endif %}
+    {% endfor %}
+    </div>
+
+{% endblock %}

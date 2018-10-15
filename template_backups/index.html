@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+
+<p>
+  <div style="background:transparent !important" class="jumbotron text-center">
+    <h1>Novus Group</h1>
+       <div class="lead">We're a South African company specialising in providing News Monitoring, Media Monitoring and Analysis Services.</div>
+       <img src="http://novusonlinenews.co.za/backend/web/assets/img/33.png" height="200px">
+  </div>
+
+</p>
+
+<p>
+    <div class="container">
+        {% for line in readme[0] %}
+            {{ line }}<br>
+        {% endfor %}
+    </div>
+</p>
+{% endblock %}

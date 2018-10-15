@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="container">
+    {% if 'novflask' in hostname %}
+        <iframe src="http://flask.novusgroup.co.za:4200" style="border:none;" height="1000px" width="100%"></iframe>
+    {% elif 'radio' in hostname %}
+        <iframe src="http://radio.novusgroup.co.za:4200" style="border:none;" height="1000px" width="100%"></iframe>
+    {% else %}
+    <h3>not available for this host</h3>
+    {% endif %}
+</div>
+
+{% endblock %}

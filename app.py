@@ -594,7 +594,7 @@ def info():
                            watcher_log=watcher_log,
                            encoder_check=encoder_check(),
                            du_clip_dir=du_clip_dir(),
-                           du_unindexed_dir=du_unindexed_dir(),
+                           #du_unindexed_dir=du_unindexed_dir(),
                            get_routes=get_routes,
                            radio_restart_stats=radio_restart_stats,
                            tv_restart_stats=tv_restart_stats
@@ -617,7 +617,7 @@ def ps_list():
                            tcount_enabled=tcount_enabled,
                            show_clips=show_clips,
                            show_clips_dab=show_clips_dab,
-                           show_mnt=show_mnt
+                           #show_mnt=show_mnt
                            )
 
 
