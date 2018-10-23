@@ -14,6 +14,10 @@ Checkout the screenshots folder to see examples of the system.
 * nginx for client requests, config is found in services directory
 * DSTV streams via Televes HDMI encoders
 * shellinabox (apt install shellinabox)
+* pip3
+* flask (pip3 install)
+* flask_simplelogin (pip3 install)
+* schedule (pip3 isntall)
 * crontab entries as follows:
 
   "# truncate timestamp files"

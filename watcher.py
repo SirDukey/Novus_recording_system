@@ -59,8 +59,12 @@ def double_check_for_duplicate_process():
             new_psl[station[0]].append(station[1])
 
     for x in new_psl.items():
+        name = x[0]
         pid = min(x[1])
+        new_pid = max(x[1])
         kill(pid, 15)
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write(str(new_pid))
 
 
 def get_time():
