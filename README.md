@@ -7,22 +7,24 @@ The name_dab.py is used to start conversion from the DAB+FM usb dongle to an ip 
 Checkout the screenshots folder to see examples of the system.
 
 ## Dependancies
-* DAB+FM (Realtek 2832) usb dongle for stations that do not have an internet stream
-* rtl_fm (found in rtl-sdr) for accessing the usb dongle fm stream
-* gunicorn wsgi server
-* mpstat from the systat package used for cpu info
-* nginx for client requests, config is found in services directory
+* _DAB+FM_ (Realtek 2832) usb dongle for stations that do not have an internet stream
+* _rtl_fm_ (found in rtl-sdr) for accessing the usb dongle fm stream
+* _gunicorn_ wsgi server
+* _mpstat_ from the _systat_ package used for cpu info
+* _nginx_ for client requests, config is found in services directory
 * DSTV streams via Televes HDMI encoders
-* shellinabox (apt install shellinabox)
-* pip3
-* flask (pip3 install)
-* flask_simplelogin (pip3 install)
-* schedule (pip3 isntall)
-* crontab entries as follows:
+* _shellinabox_ (apt install shellinabox)
+* _pip3_
+* _flask_ (pip3 install)
+* _flask_simplelogin_ (pip3 install)
+* _schedule_ for watcher(pip3 isntall)
+* _paramiko_ for monitoring (pip3 install)
+* _crontab_ entries as follows:
 
   "# truncate timestamp files"
-  "0 * * * * truncate -s0 /Novus_recording_system/timestamps/*
+  "_0 * * * * truncate -s0 /Novus_recording_system/timestamps/*_"
+
   "# rsync from clip dir to /mnt/broadcast/unindexed"
-  "* * * * * sh /Novus_recording_system/clips/sync.sh >> /var/log/clips_sync.log"
+  "_* * * * * flock -xn /root/sync.lck -c '/root/sync.sh >> /var/log/sync.log'_"
 
 * systemd service files to start main frontend and watcher, config in services directory
