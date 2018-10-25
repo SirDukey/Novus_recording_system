@@ -18,6 +18,9 @@ try:
     except:
         '''cant read online.txt file'''
         print(2)
+
+    finally:
+        client.close()
 except:
     '''cant connect'''
     print(3)
