@@ -17,8 +17,8 @@ try:
 
     except:
         '''cant read online.txt file'''
-        print(1)
+        print(2)
 except:
     '''cant connect'''
-    print(1)
+    print(3)
 
