@@ -63,8 +63,8 @@ def double_check_for_duplicate_process():
         pid = min(x[1])
         new_pid = max(x[1])
         kill(pid, 15)
-        #with open('pids/' + name + '.pid', 'w') as f:
-        #    f.write(str(new_pid))
+        with open('pids/' + name + '.pid', 'w') as f:
+            f.write(str(new_pid))
 
 
 def get_time():
