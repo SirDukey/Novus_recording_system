@@ -87,7 +87,7 @@ def channel_check():
             cur.execute(SQL_INSERT)
             conn.commit()
         elif state == 'disabled':
-            continue
+            break
 
     CMS_DICT = content()
     radio = CMS_DICT['radio']
