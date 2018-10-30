@@ -100,6 +100,10 @@ def channel_check():
         for channel in radio:
             SQL_TASK(channel)
 
+    elif host_name == 'radio-backup':
+        for channel in radio:
+            SQL_TASK(channel)
+
     elif host_name == 'novflask':
         for channel in tv:
             SQL_TASK(channel)
