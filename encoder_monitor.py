@@ -70,8 +70,8 @@ def channel_check():
                      "VALUES ({},'{}','{}','{}');".format(pid, name, state, svr)
 
         SQL_UPDATE = "UPDATE channels " \
-                     "SET pid={},state='{}',svr='{}' " \
-                     "WHERE name='{}';".format(pid, state, svr, name)
+                     "SET pid={pid},state='{state}',svr='{svr}' " \
+                     "WHERE name='{name}'AND svr='{svr}';".format(pid, state, svr, name, svr)
 
         cur.execute(SQL_QUERY)
         res = cur.fetchall()
