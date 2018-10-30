@@ -80,14 +80,14 @@ def channel_check():
         for item in res:
             my_list.append(item[2])
 
-        if name in my_list:
-            if state == 'enabled':
-                cur.execute(SQL_UPDATE)
-                conn.commit()
-        else:
-            if state == 'enabled':
-                cur.execute(SQL_INSERT)
-                conn.commit()
+        if name in my_list and state == 'enabled':
+            cur.execute(SQL_UPDATE)
+            conn.commit()
+        elif name not in my_list and state == 'enabled':
+            cur.execute(SQL_INSERT)
+            conn.commit()
+        elif state == 'disabled':
+            continue
 
     CMS_DICT = content()
     radio = CMS_DICT['radio']
