@@ -81,8 +81,9 @@ def channel_check():
             my_list.append(item[2])
 
         if name in my_list:
-            cur.execute(SQL_UPDATE)
-            conn.commit()
+            if state == 'enabled':
+                cur.execute(SQL_UPDATE)
+                conn.commit()
         else:
             cur.execute(SQL_INSERT)
             conn.commit()
