@@ -427,7 +427,7 @@ def set_routes():
 
 def content():
 
-    CMS_DICT = {
+    CMS_Dcd /ICT = {
         'radio': [
             ['1FM', 'http://5.153.107.45:2016/mp3_ultra', rmain, get_pid, 'www', get_auto, set_auto],
             ['5FM', 'http://albert.antfarm.co.za:8000/5fm', rmain, get_pid, 'www', get_auto, set_auto],

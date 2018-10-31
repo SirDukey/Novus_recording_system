@@ -10,10 +10,11 @@ Checkout the screenshots folder to see examples of the system.
 * _DAB+FM_ (Realtek 2832) usb dongle for stations that do not have an internet stream
 * _rtl_fm_ (found in rtl-sdr) for accessing the usb dongle fm stream
 * _gunicorn_ wsgi server
-* _mpstat_ from the _systat_ package used for cpu info
+* _mpstat_ from the _sysstat_ package used for cpu info
 * _nginx_ for client requests, config is found in services directory
 * DSTV streams via Televes HDMI encoders
 * _shellinabox_ (apt install shellinabox)
+* _ubuntu-restricted-extras_ from apt repository
 * _pip3_
 * _flask_ (pip3 install)
 * _flask_simplelogin_ (pip3 install)
