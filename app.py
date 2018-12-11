@@ -471,7 +471,7 @@ def content():
             ['Munghana_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/14e03c487fa44d3686ff65f483373d62/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['OFM', 'http://edge.iono.fm/xice/ofm_live_medium.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Phalaphala_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/0e6fc9cfa7aa4264ad93f87dc4f75c3b/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Power_FM', 'http://colony.antfarm.co.za/powerfm_64k/powerfm_64k.stream/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Power_FM', 'https://edge.iono.fm/xice/65_medium.aac', rmain, get_pid, 'www', get_auto, set_auto],
             ['PRETORIA_FM', 'http://capeant.antfarm.co.za:8000/ptafm', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_2000', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/a3d1e938cf9c49db874906a8138ecf10/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_aBr', 'http://20873.live.streamtheworld.com/AFRICABUSINESSRADIO_S01.mp3?tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=none&sbmid=5986bfc2-741c-4dd0-a045-4ed9c00754fd', rmain, get_pid, 'www', get_auto, set_auto],
