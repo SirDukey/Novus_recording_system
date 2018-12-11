@@ -73,6 +73,7 @@ def verify(file):
                 aud = 'FALSE'
                 vid = 'FALSE'
                 chan = chan[2:]
+                print(chan)
                 SQLupdate(vid, aud, fileType, chan)
             else:
                 print('error found with file')
