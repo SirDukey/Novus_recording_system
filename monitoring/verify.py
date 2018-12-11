@@ -72,6 +72,7 @@ def verify(file):
             elif 'audio' not in output:
                 aud = 'FALSE'
                 vid = 'FALSE'
+                chan = chan[2:]
                 SQLupdate(vid, aud, fileType, chan)
             else:
                 print('error found with file')
