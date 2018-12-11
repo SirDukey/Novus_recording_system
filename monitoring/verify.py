@@ -68,15 +68,17 @@ def verify(file):
                 print('audio present')
                 aud = 'TRUE'
                 vid = 'FALSE'
-                chan = chan[2:]
-                print(chan)
-                SQLupdate(vid, aud, fileType, chan)
+                chan = chanList[1]
+                print(chan[1:])
+                SQLupdate(vid, aud, fileType, chan[1:])
+
             elif 'audio' not in output:
                 aud = 'FALSE'
                 vid = 'FALSE'
-                chan = chan[2:]
-                print(chan)
-                SQLupdate(vid, aud, fileType, chan)
+                chan = chanList[1]
+                print(chan[1:])
+                SQLupdate(vid, aud, fileType, chan[1:])
+
             else:
                 print('error found with file')
             print()
