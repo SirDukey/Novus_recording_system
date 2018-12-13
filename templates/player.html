@@ -25,230 +25,263 @@
 
 <div class="container-fluid">
 
-    <div class="col-lg-2">
-        M_NET
-        <video src="{{ url_for('stream', name=find_mp4('M_NET')) }}"
-               poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-               controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">M_NET</div>
+        <div class="col-lg-2">Vuzu</div>
+        <div class="col-lg-2">kykNET</div>
+        <div class="col-lg-2">Ignition</div>
+        <div class="col-lg-2">SABC_News</div>
+        <div class="col-lg-2">SABC1</div>
     </div>
 
-    <div class="col-lg-2">
-        Vuzu
-        <video src="{{ url_for('stream', name=find_mp4('Vuzu')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('M_NET')) }}"
+                   poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                   controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Vuzu')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('kykNET')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Ignition')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SABC_News')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SABC1')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
     </div>
 
-    <div class="col-lg-2">
-        kykNET
-        <video src="{{ url_for('stream', name=find_mp4('kykNET')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">SABC2</div>
+        <div class="col-lg-2">SABC3</div>
+        <div class="col-lg-2">ETV</div>
+        <div class="col-lg-2">Soweto_TV</div>
+        <div class="col-lg-2">SuperSport_1</div>
+        <div class="col-lg-2">SuperSport_2</div>
     </div>
 
-    <div class="col-lg-2">
-        Ignition
-        <video src="{{ url_for('stream', name=find_mp4('Ignition')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SABC2')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SABC3')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('ETV')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Soweto_TV')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_1')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_2')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
     </div>
 
-    <div class="col-lg-2">
-        SABC_News
-        <video src="{{ url_for('stream', name=find_mp4('SABC_News')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">SuperSport_3</div>
+        <div class="col-lg-2">SuperSport_4</div>
+        <div class="col-lg-2">SuperSport_5</div>
+        <div class="col-lg-2">SuperSport_6</div>
+        <div class="col-lg-2">SuperSport_7</div>
+        <div class="col-lg-2">SuperSport_8</div>
     </div>
 
-    <div class="col-lg-2">
-        SABC1
-        <video src="{{ url_for('stream', name=find_mp4('SABC1')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_3')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_4')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_5')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_6')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_7')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_8')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
     </div>
 
-    <div class="col-lg-2">
-        SABC2
-        <video src="{{ url_for('stream', name=find_mp4('SABC2')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">SuperSport_Blitz</div>
+        <div class="col-lg-2">CNBC_Africa</div>
+        <div class="col-lg-2">BusinessDay_TV</div>
+        <div class="col-lg-2">BBC_World_News</div>
+        <div class="col-lg-2">eNews_Channel_Africa</div>
+        <div class="col-lg-2">Sky_News</div>
     </div>
 
-    <div class="col-lg-2">
-        SABC3
-        <video src="{{ url_for('stream', name=find_mp4('SABC3')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('SuperSport_Blitz')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('CNBC_Africa')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('BusinessDay_TV')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-3">
+            <video src="{{ url_for('stream', name=find_mp4('BBC_World_News')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('eNews_Channel_Africa')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Sky_News')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
+
     </div>
 
-    <div class="col-lg-2">
-        ETV
-        <video src="{{ url_for('stream', name=find_mp4('ETV')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+    <div class="row">
+        <div class="col-lg-2">CNN_International</div>
+        <div class="col-lg-2">BBC_Brit</div>
+        <div class="col-lg-2">Mzansi_Magic</div>
+        <div class="col-lg-2">Parliament_SA</div>
     </div>
 
-    <div class="col-lg-2">
-        Soweto_TV
-        <video src="{{ url_for('stream', name=find_mp4('Soweto_TV')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
+    <div class="row">
 
-    <div class="col-lg-2">
-        SuperSport_1
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_1')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
+        <div class="col-lg-3">
+            <video src="{{ url_for('stream', name=find_mp4('CNN_International')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
 
-    <div class="col-lg-2">
-        SuperSport_2
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_2')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('BBC_Brit')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
 
-    <div class="col-lg-2">
-        SuperSport_3
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_3')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Mzansi_Magic')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
 
-    <div class="col-lg-2">
-        SuperSport_4
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_4')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
+        <div class="col-lg-2">
+            <video src="{{ url_for('stream', name=find_mp4('Parliament_SA')) }}"
+                           poster="{{ url_for('static', filename='test_pattern.jpg') }}"
+                           controls autoplay loop muted width="300" height="250">
+            </video>
+        </div>
     </div>
-
-    <div class="col-lg-2">
-        SuperSport_5
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_5')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        SuperSport_6
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_6')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        SuperSport_7
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_7')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        SuperSport_8
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_8')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        SuperSport_Blitz
-        <video src="{{ url_for('stream', name=find_mp4('SuperSport_Blitz')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        CNBC_Africa
-        <video src="{{ url_for('stream', name=find_mp4('CNBC_Africa')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        BusinessDay_TV
-        <video src="{{ url_for('stream', name=find_mp4('BusinessDay_TV')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-3">
-        BBC_World_News
-        <video src="{{ url_for('stream', name=find_mp4('BBC_World_News')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        eNews_Channel_Africa
-        <video src="{{ url_for('stream', name=find_mp4('eNews_Channel_Africa')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        Sky_News
-        <video src="{{ url_for('stream', name=find_mp4('Sky_News')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-3">
-        CNN_International
-        <video src="{{ url_for('stream', name=find_mp4('CNN_International')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        BBC_Brit
-        <video src="{{ url_for('stream', name=find_mp4('BBC_Brit')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        Mzansi_Magic
-        <video src="{{ url_for('stream', name=find_mp4('Mzansi_Magic')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
-    <div class="col-lg-2">
-        Parliament_SA
-        <video src="{{ url_for('stream', name=find_mp4('Parliament_SA')) }}"
-                       poster="{{ url_for('static', filename='test_pattern.jpg') }}"
-                       controls autoplay loop muted width="300" height="250">
-        </video>
-    </div>
-
 </div>
 
 {% endblock %}
