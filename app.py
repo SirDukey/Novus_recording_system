@@ -492,7 +492,7 @@ def content():
             ['Voice_of_the_Cape', 'http://edge.iono.fm/xice/voc_live_high.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Voice_of_Wits', 'http://146.141.76.196:8080/stream/live.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www', get_auto, set_auto],
-            ['YFM', 'http://node-05.strongradiohost.com/ahbatmbfpv5tv?rj-ttl=5&rj-token=AAABZSSHdcT8oxjvoPEluLP7TycxeODyiUX9Unko4spxzCwYx7nPVA', rmain, get_pid, 'www', get_auto, set_auto],
+            ['YFM', 'http://streaming.fabrik.fm/yfm/echocast/audio/index.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             # ['dab_test', [0, '98M'], rmain, get_pid, 'dab', get_auto, set_auto],
         ],
         'tv': [
@@ -734,6 +734,13 @@ def audio_player():
                            radio=radio
                            )
 
+
+@app.route('/audio_monitor')
+@login_required
+def audio_monitor():
+    return render_template('audio_monitor.html',
+                           titel='Novus recording system',
+                           hostname=get_hostname())
 
 @app.route('/shell')
 @login_required
