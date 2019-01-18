@@ -21,7 +21,7 @@ def rad_record(name, url):
                             #'-y'
                             #'-live_start_index', '-1',
                             '-i', '{}'.format(url),
-                            '-stimeout', '10000',
+                            '-stimeout', '2000000',
                             # '-c, 'copy',
                             '-codec:a', 'libmp3lame',
                             '-b:a', '64000',
@@ -85,7 +85,7 @@ def dab_record(name, dab_id, freq):
                             '-i',
                             'pipe:0',
                             '-stimeout',
-                            '10000',
+                            '2000000',
                             # '-c, 'copy',
                             '-codec:a',
                             'libmp3lame',
@@ -142,7 +142,7 @@ def rad_record_m3u8(name, url):
                             #'-y'
                             '-live_start_index', '-1',
                             '-i', '{}'.format(url),
-                            '-stimeout', '10000',
+                            '-stimeout', '2000000',
                             # '-c, 'copy',
                             '-codec:a', 'libmp3lame',
                             '-b:a', '64000',
