@@ -493,7 +493,7 @@ def content():
             ['Voice_of_Wits', 'http://146.141.76.196:8080/stream/live.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['YFM', 'http://streaming.fabrik.fm/yfm/echocast/audio/index.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
-            # ['dab_test', [0, '98M'], rmain, get_pid, 'dab', get_auto, set_auto],
+            ['dab_test', [0, '105.18M'], rmain, get_pid, 'dab', get_auto, set_auto]
         ],
         'tv': [
             ['M_NET', 'udp://@225.0.1.101:1101', tmain, get_pid, 'dstv', get_auto, set_auto],
