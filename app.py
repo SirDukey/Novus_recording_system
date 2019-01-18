@@ -495,8 +495,8 @@ def content():
             ['YFM', 'http://streaming.fabrik.fm/yfm/echocast/audio/index.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['SAFM_test', [0, '105.1M'], rmain, get_pid, 'dab', get_auto, set_auto],
             ['RSG_test', [0, '101.5M'], rmain, get_pid, 'dab', get_auto, set_auto],
-            ['Highveld_test', [0, '94.7M'], rmain, get_pid, 'dab', get_auto, set_auto],
-            ['FiveFM_test', [0, '98M'], rmain, get_pid, 'dab', get_auto, set_auto]
+            ['Highveld_test', [1, '94.7M'], rmain, get_pid, 'dab', get_auto, set_auto],
+            ['FiveFM_test', [1, '98M'], rmain, get_pid, 'dab', get_auto, set_auto]
         ],
         'tv': [
             ['M_NET', 'udp://@225.0.1.101:1101', tmain, get_pid, 'dstv', get_auto, set_auto],

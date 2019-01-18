@@ -75,7 +75,7 @@ def dab_record(name, dab_id, freq):
                             # '-re',
                             '-nostats',
                             '-loglevel', '0',
-                            '-xerror',
+                            #'-xerror',
                             '-progress', 'timestamps/' + name + '.ts',
                             # '-y'
                             '-f', 's16le',
