@@ -494,7 +494,9 @@ def content():
             ['Wild_Coast_FM', 'http://91.109.4.193:8010/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['YFM', 'http://streaming.fabrik.fm/yfm/echocast/audio/index.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['dab_test', [0, '105.1M'], rmain, get_pid, 'dab', get_auto, set_auto],
-            ['dab_test2', [0, '101.5M'], rmain, get_pid, 'dab', get_auto, set_auto]
+            ['dab_test2', [0, '101.5M'], rmain, get_pid, 'dab', get_auto, set_auto],
+            ['dab2_test', [1, '105.1M'], rmain, get_pid, 'dab', get_auto, set_auto],
+            ['dab2_test2', [1, '98M'], rmain, get_pid, 'dab', get_auto, set_auto]
         ],
         'tv': [
             ['M_NET', 'udp://@225.0.1.101:1101', tmain, get_pid, 'dstv', get_auto, set_auto],
