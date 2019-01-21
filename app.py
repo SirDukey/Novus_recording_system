@@ -439,7 +439,7 @@ def content():
             ['Algoa_FM', 'https://edge.iono.fm/xice/54_medium.aac?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
             ['BayFM', 'http://85.25.18.48/;.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Cape_Pulpit', 'http://albert.antfarm.co.za:8000/RadioPulpit', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Capricorn', 'http://albert.antfarm.co.za:8000/CapricornFM', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Capricorn', 'https://edge.iono.fm/xice/67_medium.aac', rmain, get_pid, 'www', get_auto, set_auto],
             ['ChaiFM', 'http://listenlive-c2p1.ndstream.net:8060/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Channel_Africa', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/557f47f80b264cea8e88346a123eedcd/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Classic_FM', 'https://edge.iono.fm/xice/49_medium.aac?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
