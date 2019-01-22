@@ -448,7 +448,7 @@ def content():
             ['Eldos_FM', 'http://core2.netdynamix.co.za:8100/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Energy_100FM', 'http://196.44.136.119:8080/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Fine_Music_Radio', 'http://edge.iono.fm/xice/fmr_live_medium.mp3?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Fresh_FM', 'http://ample-zeno-02.radiojar.com/2b729cqx73duv?rj-ttl=5&rj-token=AAABZTMPpQtBNgSGaINlnak7_XktOhkAJPzuWahBJlaZ6r70oYUqJQ', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Fresh_FM', 'http://ice31.securenetsystems.net/FRESHFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Gagasi_FM', 'http://colony.antfarm.co.za/gagasifm/gagasifm.stream/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Good_Hope_FM', 'http://radiostream.co.za:9104/;', rmain, get_pid, 'www', get_auto, set_auto],
             ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
