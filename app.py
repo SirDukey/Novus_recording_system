@@ -450,7 +450,7 @@ def content():
             ['Fine_Music_Radio', 'http://edge.iono.fm/xice/fmr_live_medium.mp3?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
             ['Fresh_FM', 'http://ice31.securenetsystems.net/FRESHFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Gagasi_FM', 'http://colony.antfarm.co.za/gagasifm/gagasifm.stream/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Good_Hope_FM', 'http://radiostream.co.za:9104/;', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Good_Hope_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/1e60ff4028fe4164a3e43071da9fb86f/chunklist_w1544571935.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Heart_104_9_FM', 'http://capeant.antfarm.co.za:8000/HeartFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Hindvani', 'http://capeant.antfarm.co.za:8000/Hindvani', rmain, get_pid, 'www', get_auto, set_auto],
