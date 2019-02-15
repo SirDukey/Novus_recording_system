@@ -450,7 +450,7 @@ def content():
             ['Fine_Music_Radio', 'http://edge.iono.fm/xice/fmr_live_medium.mp3?p=embed', rmain, get_pid, 'www', get_auto, set_auto],
             ['Fresh_FM', 'http://ice31.securenetsystems.net/FRESHFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Gagasi_FM', 'http://colony.antfarm.co.za/gagasifm/gagasifm.stream/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Good_Hope_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/1e60ff4028fe4164a3e43071da9fb86f/chunklist_w1544571935.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Good_Hope_FM', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/1e60ff4028fe4164a3e43071da9fb86f/chunklist_w1544571935.m3u8', rmain, get_pid, 'www', get_auto, set_auto], jpg
             ['Groot_FM', 'http://grootfm.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Heart_104_9_FM', 'http://capeant.antfarm.co.za:8000/HeartFM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Hindvani', 'http://capeant.antfarm.co.za:8000/Hindvani', rmain, get_pid, 'www', get_auto, set_auto],
@@ -476,7 +476,7 @@ def content():
             ['Radio_2000', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/a3d1e938cf9c49db874906a8138ecf10/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_aBr', 'http://20873.live.streamtheworld.com/AFRICABUSINESSRADIO_S01.mp3?tdsdk=js-2.9&pname=TDSdk&pversion=2.9&banners=none&sbmid=5986bfc2-741c-4dd0-a045-4ed9c00754fd', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_Sonder_Grense', 'http://albert.antfarm.co.za:8000/RSG', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Radio_Today', 'http://radiotoday.ddns.net:8000/radio.mp3', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Radio_Today', 'http://radiotodaystream.tk:8000/radio.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_Tygerberg', 'http://radiotygerberg.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radiowave', 'http://ice31.securenetsystems.net/967FM', rmain, get_pid, 'www', get_auto, set_auto],
             ['Rise_FM', 'http://zas2.ndx.co.za/proxy/risefm?mp=/stream&1533914047229', rmain, get_pid, 'www', get_auto, set_auto],
