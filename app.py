@@ -479,7 +479,7 @@ def content():
             ['Radio_Today', 'http://radiotodaystream.tk:8000/radio.mp3', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radio_Tygerberg', 'http://radiotygerberg.highquality.radiostream.co.za/', rmain, get_pid, 'www', get_auto, set_auto],
             ['Radiowave', 'http://ice31.securenetsystems.net/967FM', rmain, get_pid, 'www', get_auto, set_auto],
-            ['Rise_FM', 'http://zas2.ndx.co.za/proxy/risefm?mp=/stream&1533914047229', rmain, get_pid, 'www', get_auto, set_auto],
+            ['Rise_FM', 'https://edge.iono.fm/xice/73_medium.aac', rmain, get_pid, 'www', get_auto, set_auto],
             ['SAfm', 'http://proradiocloud.antfarm.co.za/ant-lre-sabc/620e01258f5b49568546ff239ff2a32f/playlist.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
             # ['SAfm', [1, '105.1M'], rmain, get_pid, 'dab', get_auto, set_auto],
             ['Smile_90_4_FM', 'http://streaming.fabrik.fm/smile/echocast/audio/index.m3u8', rmain, get_pid, 'www', get_auto, set_auto],
