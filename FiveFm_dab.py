@@ -2,7 +2,7 @@ from os import system
 
 system('rtl_fm '
        '-d 0 '
-       '-f 98M '
+       '-f 105.1M '
        '-M fm '
        '-s 170k '
        '-A std  '
@@ -12,12 +12,10 @@ system('rtl_fm '
        '| '
        'ffmpeg '
        '-nostats '
-       '-loglevel '
-       '0 '
+       '-loglevel 0 '
        '-f s16le '
-       '-ac 1 '
        '-i pipe:0  '
        '-acodec libmp3lame '
        '-ab 128k '
        '-f rtp '
-       'rtp://127.0.0.1:1234')
+       'rtp://192.168.1.51:1234')
